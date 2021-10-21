@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		7690AC6327217DA600884843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690AC6227217DA600884843 /* AppDelegate.swift */; };
 		7690AC6527217DA600884843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690AC6427217DA600884843 /* SceneDelegate.swift */; };
-		7690AC6727217DA600884843 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690AC6627217DA600884843 /* ViewController.swift */; };
 		7690AC6C27217DA700884843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7690AC6B27217DA700884843 /* Assets.xcassets */; };
 		7690AC6F27217DA700884843 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7690AC6D27217DA700884843 /* LaunchScreen.storyboard */; };
+		7690ACB82721A3D900884843 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690ACB72721A3D900884843 /* SearchVC.swift */; };
+		7690ACBA2721A40400884843 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690ACB92721A40400884843 /* FavoritesListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7690AC5F27217DA600884843 /* ios-Github-Followers-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-Github-Followers-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7690AC6227217DA600884843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7690AC6427217DA600884843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7690AC6627217DA600884843 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7690AC6B27217DA700884843 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7690AC6E27217DA700884843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7690AC7027217DA700884843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7690ACB72721A3D900884843 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		7690ACB92721A40400884843 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +58,11 @@
 			children = (
 				7690AC6227217DA600884843 /* AppDelegate.swift */,
 				7690AC6427217DA600884843 /* SceneDelegate.swift */,
-				7690AC6627217DA600884843 /* ViewController.swift */,
 				7690AC6B27217DA700884843 /* Assets.xcassets */,
 				7690AC6D27217DA700884843 /* LaunchScreen.storyboard */,
 				7690AC7027217DA700884843 /* Info.plist */,
+				7690ACB72721A3D900884843 /* SearchVC.swift */,
+				7690ACB92721A40400884843 /* FavoritesListVC.swift */,
 			);
 			path = "ios-Github-Followers-Clone";
 			sourceTree = "<group>";
@@ -134,7 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7690AC6727217DA600884843 /* ViewController.swift in Sources */,
+				7690ACBA2721A40400884843 /* FavoritesListVC.swift in Sources */,
+				7690ACB82721A3D900884843 /* SearchVC.swift in Sources */,
 				7690AC6327217DA600884843 /* AppDelegate.swift in Sources */,
 				7690AC6527217DA600884843 /* SceneDelegate.swift in Sources */,
 			);
