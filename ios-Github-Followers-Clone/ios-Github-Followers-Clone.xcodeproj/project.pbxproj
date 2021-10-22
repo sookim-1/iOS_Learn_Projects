@@ -20,6 +20,7 @@
 		76B808422722E3010020FB0A /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B808412722E3010020FB0A /* GFTitleLabel.swift */; };
 		76B808442722E4630020FB0A /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B808432722E4630020FB0A /* GFBodyLabel.swift */; };
 		76B808462722E5460020FB0A /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B808452722E5460020FB0A /* GFAlertVC.swift */; };
+		76B808482722EF320020FB0A /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B808472722EF320020FB0A /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		76B808412722E3010020FB0A /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		76B808432722E4630020FB0A /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		76B808452722E5460020FB0A /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
+		76B808472722EF320020FB0A /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				76B808412722E3010020FB0A /* GFTitleLabel.swift */,
 				76B808432722E4630020FB0A /* GFBodyLabel.swift */,
 				76B808452722E5460020FB0A /* GFAlertVC.swift */,
+				76B808472722EF320020FB0A /* UIViewController+Ext.swift */,
 			);
 			path = "ios-Github-Followers-Clone";
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			files = (
 				76B8083C2722A6120020FB0A /* GFTextField.swift in Sources */,
 				7690ACBA2721A40400884843 /* FavoritesListVC.swift in Sources */,
+				76B808482722EF320020FB0A /* UIViewController+Ext.swift in Sources */,
 				76B8083A2722A1580020FB0A /* GFButton.swift in Sources */,
 				7690ACB82721A3D900884843 /* SearchVC.swift in Sources */,
 				76B8083E2722CEA60020FB0A /* FollowerListVC.swift in Sources */,
