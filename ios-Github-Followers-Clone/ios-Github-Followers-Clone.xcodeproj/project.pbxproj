@@ -14,6 +14,7 @@
 		7690ACB82721A3D900884843 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690ACB72721A3D900884843 /* SearchVC.swift */; };
 		7690ACBA2721A40400884843 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690ACB92721A40400884843 /* FavoritesListVC.swift */; };
 		76B8083A2722A1580020FB0A /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B808392722A1580020FB0A /* GFButton.swift */; };
+		76B8083C2722A6120020FB0A /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8083B2722A6120020FB0A /* GFTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7690ACB72721A3D900884843 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		7690ACB92721A40400884843 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		76B808392722A1580020FB0A /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
+		76B8083B2722A6120020FB0A /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				7690ACB72721A3D900884843 /* SearchVC.swift */,
 				7690ACB92721A40400884843 /* FavoritesListVC.swift */,
 				76B808392722A1580020FB0A /* GFButton.swift */,
+				76B8083B2722A6120020FB0A /* GFTextField.swift */,
 			);
 			path = "ios-Github-Followers-Clone";
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76B8083C2722A6120020FB0A /* GFTextField.swift in Sources */,
 				7690ACBA2721A40400884843 /* FavoritesListVC.swift in Sources */,
 				76B8083A2722A1580020FB0A /* GFButton.swift in Sources */,
 				7690ACB82721A3D900884843 /* SearchVC.swift in Sources */,
