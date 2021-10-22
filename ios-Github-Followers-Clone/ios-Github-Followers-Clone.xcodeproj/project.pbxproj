@@ -72,23 +72,55 @@
 		7690AC6127217DA600884843 /* ios-Github-Followers-Clone */ = {
 			isa = PBXGroup;
 			children = (
+				76B8084C2722FB5B0020FB0A /* Support */,
+				76B8084B2722FAFD0020FB0A /* Extensions */,
+				76B8084A2722FAC30020FB0A /* Custom Views */,
+				76B808492722FA7B0020FB0A /* Screens */,
+				7690AC7027217DA700884843 /* Info.plist */,
+			);
+			path = "ios-Github-Followers-Clone";
+			sourceTree = "<group>";
+		};
+		76B808492722FA7B0020FB0A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				7690ACB72721A3D900884843 /* SearchVC.swift */,
+				7690ACB92721A40400884843 /* FavoritesListVC.swift */,
+				76B8083D2722CEA60020FB0A /* FollowerListVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		76B8084A2722FAC30020FB0A /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				76B808452722E5460020FB0A /* GFAlertVC.swift */,
+				76B808392722A1580020FB0A /* GFButton.swift */,
+				76B8083B2722A6120020FB0A /* GFTextField.swift */,
+				76B808412722E3010020FB0A /* GFTitleLabel.swift */,
+				76B808432722E4630020FB0A /* GFBodyLabel.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		76B8084B2722FAFD0020FB0A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				76B8083F2722DA120020FB0A /* String+Ext.swift */,
+				76B808472722EF320020FB0A /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		76B8084C2722FB5B0020FB0A /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				7690AC6227217DA600884843 /* AppDelegate.swift */,
 				7690AC6427217DA600884843 /* SceneDelegate.swift */,
 				7690AC6B27217DA700884843 /* Assets.xcassets */,
 				7690AC6D27217DA700884843 /* LaunchScreen.storyboard */,
-				7690AC7027217DA700884843 /* Info.plist */,
-				7690ACB72721A3D900884843 /* SearchVC.swift */,
-				7690ACB92721A40400884843 /* FavoritesListVC.swift */,
-				76B808392722A1580020FB0A /* GFButton.swift */,
-				76B8083B2722A6120020FB0A /* GFTextField.swift */,
-				76B8083D2722CEA60020FB0A /* FollowerListVC.swift */,
-				76B8083F2722DA120020FB0A /* String+Ext.swift */,
-				76B808412722E3010020FB0A /* GFTitleLabel.swift */,
-				76B808432722E4630020FB0A /* GFBodyLabel.swift */,
-				76B808452722E5460020FB0A /* GFAlertVC.swift */,
-				76B808472722EF320020FB0A /* UIViewController+Ext.swift */,
 			);
-			path = "ios-Github-Followers-Clone";
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
