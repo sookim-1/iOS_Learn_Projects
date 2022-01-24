@@ -13,9 +13,12 @@
 		767C48A3279E7B2E00F48F2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 767C48A2279E7B2E00F48F2B /* Assets.xcassets */; };
 		767C48A6279E7B2E00F48F2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767C48A4279E7B2E00F48F2B /* LaunchScreen.storyboard */; };
 		767C48AE279E7E6700F48F2B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C48AD279E7E6700F48F2B /* WelcomeViewController.swift */; };
+		A206234E9FBDC20652C61158 /* Pods_ios_chatting_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B6465CA363F375B232F32E6 /* Pods_ios_chatting_app.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B6465CA363F375B232F32E6 /* Pods_ios_chatting_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_chatting_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D085E30967C57E3DA2F1234 /* Pods-ios-chatting-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-chatting-app.release.xcconfig"; path = "Target Support Files/Pods-ios-chatting-app/Pods-ios-chatting-app.release.xcconfig"; sourceTree = "<group>"; };
 		767C4896279E7B2C00F48F2B /* ios-chatting-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-chatting-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		767C4899279E7B2C00F48F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767C489B279E7B2C00F48F2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		767C48A5279E7B2E00F48F2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		767C48A7279E7B2E00F48F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		767C48AD279E7E6700F48F2B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A967D0E368076A1AE0550A75 /* Pods-ios-chatting-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-chatting-app.debug.xcconfig"; path = "Target Support Files/Pods-ios-chatting-app/Pods-ios-chatting-app.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A206234E9FBDC20652C61158 /* Pods_ios_chatting_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				767C4898279E7B2C00F48F2B /* ios-chatting-app */,
 				767C4897279E7B2C00F48F2B /* Products */,
+				8619ACE4CD7D96CA5D8B1F62 /* Pods */,
+				D4F0865DC6573FFBF37F0A36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = "ios-chatting-app";
 			sourceTree = "<group>";
 		};
+		8619ACE4CD7D96CA5D8B1F62 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A967D0E368076A1AE0550A75 /* Pods-ios-chatting-app.debug.xcconfig */,
+				5D085E30967C57E3DA2F1234 /* Pods-ios-chatting-app.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D4F0865DC6573FFBF37F0A36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B6465CA363F375B232F32E6 /* Pods_ios_chatting_app.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 767C48AA279E7B2E00F48F2B /* Build configuration list for PBXNativeTarget "ios-chatting-app" */;
 			buildPhases = (
+				3692FFDE8D68D5C317257594 /* [CP] Check Pods Manifest.lock */,
 				767C4892279E7B2C00F48F2B /* Sources */,
 				767C4893279E7B2C00F48F2B /* Frameworks */,
 				767C4894279E7B2C00F48F2B /* Resources */,
+				2C604C1ECF32F50E4524B658 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C604C1ECF32F50E4524B658 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios-chatting-app/Pods-ios-chatting-app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios-chatting-app/Pods-ios-chatting-app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ios-chatting-app/Pods-ios-chatting-app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3692FFDE8D68D5C317257594 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ios-chatting-app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		767C4892279E7B2C00F48F2B /* Sources */ = {
@@ -284,6 +353,7 @@
 		};
 		767C48AB279E7B2E00F48F2B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A967D0E368076A1AE0550A75 /* Pods-ios-chatting-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -312,6 +382,7 @@
 		};
 		767C48AC279E7B2E00F48F2B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D085E30967C57E3DA2F1234 /* Pods-ios-chatting-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
