@@ -82,6 +82,43 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    
+    // MARK: - TableViewDelegate
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        var tempRecent: NSDictionary!
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            tempRecent = filteredChates[indexPath.row]
+        } else {
+            tempRecent = recentChats[indexPath.row]
+        }
+        
+        var muteTitle = "음소거해제"
+        var mute = false
+        
+        if (tempRecent[kMEMBERSTOPUSH] as! [String]).contains(FUser.currentId()) {
+            muteTitle = "음소거"
+            mute = true
+        }
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "삭제") { action, indexPath in
+            print("Delete\(indexPath)")
+        }
+        
+        let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { action, indexPath in
+            print("mute \(indexPath)")
+        }
+        
+        muteAction.backgroundColor = .systemBlue
+        
+        return [deleteAction, muteAction]
+    }
+    
     // MARK: - LoadRecentChats
     
     // 새로운 변경이없다면 네트워크통신을 중단합니다.
