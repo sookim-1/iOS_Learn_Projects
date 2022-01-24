@@ -102,8 +102,18 @@ class FinishRegistrationViewController: UIViewController {
                 return
             }
             
-            
+            ProgressHUD.dismiss()
+            self.goToApp()
         }
+    }
+    
+    func goToApp() {
+        cleanTextFields()
+        dismissKeyboard()
+        
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
+        
+        self.present(mainView, animated: true, completion: nil)
     }
     
     func dismissKeyboard() {

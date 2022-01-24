@@ -98,7 +98,9 @@ class WelcomeViewController: UIViewController {
         cleanTextFields()
         dismissKeyboard()
         
-        print("show the app")
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
+        
+        self.present(mainView, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
