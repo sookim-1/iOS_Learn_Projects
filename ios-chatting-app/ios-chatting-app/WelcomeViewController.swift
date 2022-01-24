@@ -40,7 +40,12 @@ class WelcomeViewController: UIViewController {
         dismissKeyboard()
         
         if emailTextField.text != "" && passwordTextField.text != "" && repeatPasswordTextField.text != "" {
-            registerUser()
+            
+            if passwordTextField.text == repeatPasswordTextField.text {
+                registerUser()
+            } else {
+                ProgressHUD.showError("비밀번호가 맞지 않습니다!")
+            }
         } else {
             ProgressHUD.showError("비어있는 항목을 확인해주세요!")
         }
