@@ -123,6 +123,24 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return [deleteAction, muteAction]
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        var recent: NSDictionary!
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            recent = filteredChates[indexPath.row]
+        } else {
+            recent = recentChats[indexPath.row]
+        }
+        
+        //restart chat
+        restartRecentChat(recent: recent)
+        
+        //show chat view
+        
+    }
+    
     // MARK: - LoadRecentChats
     
     // 새로운 변경이없다면 네트워크통신을 중단합니다.
