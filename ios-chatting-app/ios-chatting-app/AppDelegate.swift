@@ -8,17 +8,40 @@
 import UIKit
 import Firebase
 
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var authListener: AuthStateDidChangeListenerHandle?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         
+        // Firebase 자동로그인기능
+        authListener = Auth.auth().addStateDidChangeListener({ auth, user in
+            Auth.auth().removeStateDidChangeListener(self.authListener!)
+            
+            if user != nil {
+                if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
+                    
+                    DispatchQueue.main.async {
+                        self.goToApp()
+                    }
+                }
+            }
+            
+        })
+        
         return true
+    }
+    
+    func goToApp() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
+        
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: mainView)
+        windowScene.windows.first?.makeKeyAndVisible()
     }
 
     // MARK: UISceneSession Lifecycle
