@@ -53,3 +53,15 @@ func imageFromInitials(firstName: String?, lastName: String?, withBlock: @escapi
     
     withBlock(img!)
 }
+
+// Firebase에서 가져온 String -> Data
+func imageFromData(pictureData: String, withBlock: (_ image: UIImage?) -> Void) {
+    
+    var image: UIImage?
+    
+    let decodedData = NSData(base64Encoded: pictureData, options: NSData.Base64DecodingOptions(rawValue: 0))
+    
+    image = UIImage(data: decodedData! as Data)
+    
+    withBlock(image)
+}

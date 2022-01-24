@@ -279,6 +279,81 @@
             </objects>
             <point key="canvasLocation" x="2535" y="-280"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="26K-o9-BME">
+            <objects>
+                <tableViewController id="K4C-1Q-r9o" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="6rm-Zc-gKl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="vbQ-7b-M2A">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BVj-iP-5NT">
+                                    <rect key="frame" x="8" y="10" width="398" height="32"/>
+                                    <segments>
+                                        <segment title="도시"/>
+                                        <segment title="국가"/>
+                                        <segment title="모두"/>
+                                    </segments>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="BVj-iP-5NT" firstAttribute="centerY" secondItem="vbQ-7b-M2A" secondAttribute="centerY" id="05A-KV-DfA"/>
+                                <constraint firstAttribute="trailing" secondItem="BVj-iP-5NT" secondAttribute="trailing" constant="8" id="2fR-gG-3MT"/>
+                                <constraint firstItem="BVj-iP-5NT" firstAttribute="centerX" secondItem="vbQ-7b-M2A" secondAttribute="centerX" id="Iew-08-Xq4"/>
+                                <constraint firstItem="BVj-iP-5NT" firstAttribute="leading" secondItem="vbQ-7b-M2A" secondAttribute="leading" constant="8" id="ZGm-ql-JIy"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="LC1-C6-W0E" customClass="UserTableViewCell" customModule="ios_chatting_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="95.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LC1-C6-W0E" id="rmW-mv-wwj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FULL NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmt-hM-O9D">
+                                            <rect key="frame" x="76" y="29.5" width="318" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="QlW-hl-kk6">
+                                            <rect key="frame" x="8" y="10" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="TmZ-pk-idf"/>
+                                                <constraint firstAttribute="height" constant="60" id="a18-if-rET"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QlW-hl-kk6" firstAttribute="leading" secondItem="rmW-mv-wwj" secondAttribute="leading" constant="8" id="Mqj-4d-dRE"/>
+                                        <constraint firstItem="kmt-hM-O9D" firstAttribute="trailing" secondItem="rmW-mv-wwj" secondAttribute="trailingMargin" id="WIe-bh-BKI"/>
+                                        <constraint firstItem="QlW-hl-kk6" firstAttribute="centerY" secondItem="rmW-mv-wwj" secondAttribute="centerY" id="bGX-2w-0w0"/>
+                                        <constraint firstItem="kmt-hM-O9D" firstAttribute="centerY" secondItem="rmW-mv-wwj" secondAttribute="centerY" id="lCy-wZ-QbC"/>
+                                        <constraint firstItem="kmt-hM-O9D" firstAttribute="leading" secondItem="QlW-hl-kk6" secondAttribute="trailing" constant="8" id="yI1-wt-hep"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="QlW-hl-kk6" id="sHd-L0-tRg"/>
+                                    <outlet property="fullNameLabel" destination="kmt-hM-O9D" id="cTl-6R-48Y"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="K4C-1Q-r9o" id="m6G-2s-fze"/>
+                            <outlet property="delegate" destination="K4C-1Q-r9o" id="A68-UT-cUG"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRL-5p-P15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4405.7971014492759" y="-267.1875"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ICM-BY-NyP">
             <objects>
