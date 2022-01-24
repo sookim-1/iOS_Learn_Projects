@@ -247,42 +247,32 @@
             </objects>
             <point key="canvasLocation" x="755.07246376811599" y="22.767857142857142"/>
         </scene>
-        <!--통화-->
+        <!--채팅-->
         <scene sceneID="0yY-Q7-uvQ">
             <objects>
-                <viewController id="CMY-sU-Foa" sceneMemberID="viewController">
+                <viewController id="CMY-sU-Foa" customClass="ChatsViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NrY-62-ikQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwA-Y4-7gd">
-                                <rect key="frame" x="16" y="44" width="382" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="nVq-y1-8y2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hes-hx-4WT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="WwA-Y4-7gd" firstAttribute="leading" secondItem="hes-hx-4WT" secondAttribute="leading" constant="16" id="4AM-td-5aT"/>
-                            <constraint firstItem="WwA-Y4-7gd" firstAttribute="top" secondItem="hes-hx-4WT" secondAttribute="top" id="KTG-zm-vaj"/>
-                            <constraint firstItem="hes-hx-4WT" firstAttribute="trailing" secondItem="WwA-Y4-7gd" secondAttribute="trailing" constant="16" id="bfp-FR-dNd"/>
-                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="통화" image="call" id="JXn-2g-bey"/>
+                    <navigationItem key="navigationItem" title="채팅" id="Tam-d1-YcK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="m9b-ex-bDI">
+                            <connections>
+                                <action selector="createNewChatButtonPressed:" destination="CMY-sU-Foa" id="yiI-bP-DbT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VD2-CR-sjz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2535" y="-280"/>
+            <point key="canvasLocation" x="3444.9275362318845" y="-280.58035714285711"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Users Table View Controller-->
         <scene sceneID="26K-o9-BME">
             <objects>
-                <tableViewController id="K4C-1Q-r9o" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="usersTableView" id="K4C-1Q-r9o" customClass="UsersTableViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="6rm-Zc-gKl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,10 +339,14 @@
                             <outlet property="delegate" destination="K4C-1Q-r9o" id="A68-UT-cUG"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="filterSegmentControl" destination="BVj-iP-5NT" id="gWG-GP-hhT"/>
+                        <outlet property="headerView" destination="vbQ-7b-M2A" id="BDs-nY-FDC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRL-5p-P15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4405.7971014492759" y="-267.1875"/>
+            <point key="canvasLocation" x="4422" y="-281"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ICM-BY-NyP">
@@ -364,7 +358,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="CMY-sU-Foa" kind="relationship" relationship="viewControllers" id="E2h-80-mxy"/>
+                        <segue destination="RTs-Jz-A79" kind="relationship" relationship="viewControllers" id="E2h-80-mxy"/>
                         <segue destination="HDX-DD-eXz" kind="relationship" relationship="viewControllers" id="hDq-Vv-kff"/>
                     </connections>
                 </tabBarController>
@@ -456,10 +450,29 @@
             </objects>
             <point key="canvasLocation" x="2534.7826086956525" y="483.48214285714283"/>
         </scene>
+        <!--채팅-->
+        <scene sceneID="iNo-pP-Zmc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RTs-Jz-A79" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="채팅" image="chat" id="JXn-2g-bey"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="toW-HM-TFP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CMY-sU-Foa" kind="relationship" relationship="rootViewController" id="jrw-QY-aeO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Noc-5C-aps" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2534.7826086956525" y="-280.58035714285711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="avatarPlaceholder" width="101" height="101"/>
-        <image name="call" width="30" height="30"/>
+        <image name="chat" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
