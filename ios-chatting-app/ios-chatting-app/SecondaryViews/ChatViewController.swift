@@ -91,7 +91,22 @@ class ChatViewController: JSQMessagesViewController {
         optionMenu.addAction(shareVideo)
         optionMenu.addAction(shareLocation)
         optionMenu.addAction(cancelAction)
-        self.present(optionMenu, animated: true, completion: nil)
+        
+        // iPad도 ActionSheet대응 처리 방법
+        if ( UI_USER_INTERFACE_IDIOM() == .pad )
+        {
+            if let currentPopoverpresentioncontroller = optionMenu.popoverPresentationController{
+                
+                currentPopoverpresentioncontroller.sourceView = self.inputToolbar.contentView.leftBarButtonItem
+                currentPopoverpresentioncontroller.sourceRect = self.inputToolbar.contentView.leftBarButtonItem.bounds
+                
+                currentPopoverpresentioncontroller.permittedArrowDirections = .up
+                self.present(optionMenu, animated: true, completion: nil)
+            }
+        }else{
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        
     }
 
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
