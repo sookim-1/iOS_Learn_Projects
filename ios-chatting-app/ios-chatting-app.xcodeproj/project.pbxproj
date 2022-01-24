@@ -26,6 +26,7 @@
 		767C48C7279ECC7D00F48F2B /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C48C6279ECC7D00F48F2B /* ChatsViewController.swift */; };
 		7696B4F6279EE11800CC5245 /* ProfileViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696B4F5279EE11800CC5245 /* ProfileViewTableViewController.swift */; };
 		7696B4F9279EE47200CC5245 /* UserTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696B4F8279EE47200CC5245 /* UserTableViewCellDelegate.swift */; };
+		7696B4FF279EEDC500CC5245 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696B4FE279EEDC500CC5245 /* Recent.swift */; };
 		A206234E9FBDC20652C61158 /* Pods_ios_chatting_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B6465CA363F375B232F32E6 /* Pods_ios_chatting_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		767C48C6279ECC7D00F48F2B /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		7696B4F5279EE11800CC5245 /* ProfileViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTableViewController.swift; sourceTree = "<group>"; };
 		7696B4F8279EE47200CC5245 /* UserTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		7696B4FE279EEDC500CC5245 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		A967D0E368076A1AE0550A75 /* Pods-ios-chatting-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-chatting-app.debug.xcconfig"; path = "Target Support Files/Pods-ios-chatting-app/Pods-ios-chatting-app.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				767C48B1279E894400F48F2B /* FUser.swift */,
+				7696B4FE279EEDC500CC5245 /* Recent.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				767C48C7279ECC7D00F48F2B /* ChatsViewController.swift in Sources */,
 				767C489A279E7B2C00F48F2B /* AppDelegate.swift in Sources */,
 				767C48C0279EC07200F48F2B /* UserTableViewCell.swift in Sources */,
+				7696B4FF279EEDC500CC5245 /* Recent.swift in Sources */,
 				7696B4F9279EE47200CC5245 /* UserTableViewCellDelegate.swift in Sources */,
 				767C48BA279E996E00F48F2B /* FinishRegistrationViewController.swift in Sources */,
 				767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */,
