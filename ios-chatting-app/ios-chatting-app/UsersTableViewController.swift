@@ -100,6 +100,21 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    // MARK: - IBActions
+    @IBAction func filterSegmentValueChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            loadUsers(filter: kCITY)
+        case 1:
+            loadUsers(filter: kCOUNTRY)
+        case 2:
+            loadUsers(filter: "")
+        default:
+            return
+        }
+    }
+    
+    
     // MARK: - Search Controller Func
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {

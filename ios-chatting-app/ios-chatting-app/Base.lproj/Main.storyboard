@@ -288,6 +288,9 @@
                                         <segment title="국가"/>
                                         <segment title="모두"/>
                                     </segments>
+                                    <connections>
+                                        <action selector="filterSegmentValueChanged:" destination="K4C-1Q-r9o" eventType="valueChanged" id="KoG-5g-VyC"/>
+                                    </connections>
                                 </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
