@@ -179,6 +179,8 @@ class FUser {
     
     class func loginUserWith(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
         
+        // Firebase의 로그인 메서드 - 성공하면 Firebase사용자, error를 반환합니다.
+        // Firebase사용자는 Firebase Authentication Users에서 확인 가능합니다. 각 사용자는 고유한 ID를 가집니다.
         Auth.auth().signIn(withEmail: email, password: password, completion: { (firUser, error) in
             
             if error != nil {
@@ -329,6 +331,7 @@ func saveUserLocally(fUser: FUser) {
 //New firestore
 func fetchCurrentUserFromFirestore(userId: String) {
     
+    // Firebase Database의 User컬렉션의 document에서 정보를 가져오는 메서드
     reference(.User).document(userId).getDocument { (snapshot, error) in
         
         guard let snapshot = snapshot else {  return }
@@ -336,6 +339,7 @@ func fetchCurrentUserFromFirestore(userId: String) {
         if snapshot.exists {
             print("updated current users param")
             
+            // 가져온 정보를 로컬(기기)에 저장
             UserDefaults.standard.setValue(snapshot.data() as! NSDictionary, forKeyPath: kCURRENTUSER)
             UserDefaults.standard.synchronize()
             
