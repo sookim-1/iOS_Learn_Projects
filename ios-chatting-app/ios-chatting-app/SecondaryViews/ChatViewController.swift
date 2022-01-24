@@ -56,8 +56,47 @@ class ChatViewController: JSQMessagesViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - JSQMessage Delegate functions
     
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let takePhotoOrVideo = UIAlertAction(title: "카메라", style: .default) { action in
+            print("카메라")
+        }
+        
+        let sharePhoto = UIAlertAction(title: "사진 앨범", style: .default) { action in
+            print("사진 앨범")
+        }
+        
+        let shareVideo = UIAlertAction(title: "동영상 앨범", style: .default) { action in
+            print("동영상 앨범")
+        }
+        
+        let shareLocation = UIAlertAction(title: "위치 전송", style: .default) { action in
+            print("위치 전송")
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
+            
+        }
+        
+        takePhotoOrVideo.setValue(UIImage(named: "camera"), forKey: "image")
+        sharePhoto.setValue(UIImage(named: "picture"), forKey: "image")
+        shareVideo.setValue(UIImage(named: "video"), forKey: "image")
+        shareLocation.setValue(UIImage(named: "location"), forKey: "image")
+        
+        optionMenu.addAction(takePhotoOrVideo)
+        optionMenu.addAction(sharePhoto)
+        optionMenu.addAction(shareVideo)
+        optionMenu.addAction(shareLocation)
+        optionMenu.addAction(cancelAction)
+        self.present(optionMenu, animated: true, completion: nil)
+    }
 
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        print("send")
+    }
 }
 
 extension JSQMessagesInputToolbar {
