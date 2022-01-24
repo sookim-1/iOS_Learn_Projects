@@ -97,6 +97,7 @@
                         <outlet property="emailTextField" destination="qBr-5b-RDu" id="V7j-jv-w6O"/>
                         <outlet property="passwordTextField" destination="gtV-Qm-bXV" id="ZdJ-Zu-DTn"/>
                         <outlet property="repeatPasswordTextField" destination="Zww-dh-lMT" id="i9j-ht-a2l"/>
+                        <segue destination="qvT-CG-ZIj" kind="presentation" identifier="welcomeToFinishReg" id="Y3m-bY-A0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -108,16 +109,16 @@
             </objects>
             <point key="canvasLocation" x="13.043478260869566" y="22.767857142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Finish Registration View Controller-->
         <scene sceneID="zqo-ra-3bk">
             <objects>
-                <viewController id="qvT-CG-ZIj" sceneMemberID="viewController">
+                <viewController id="qvT-CG-ZIj" customClass="FinishRegistrationViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3LH-gm-LdL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y3-Pj-O7y">
-                                <rect key="frame" x="0.0" y="44" width="414" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSf-zX-68o">
                                         <rect key="frame" x="8" y="22.5" width="398" height="30"/>
@@ -133,6 +134,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="qvT-CG-ZIj" eventType="touchUpInside" id="f1k-h1-23M"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-4K-I98">
                                         <rect key="frame" x="331" y="22.5" width="75" height="30"/>
@@ -143,6 +147,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="확인"/>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="qvT-CG-ZIj" eventType="touchUpInside" id="umv-58-5Uv"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igv-Rn-HCK">
                                         <rect key="frame" x="0.0" y="72" width="414" height="2"/>
@@ -168,35 +175,35 @@
                                     <constraint firstAttribute="trailing" secondItem="USI-4K-I98" secondAttribute="trailing" constant="8" id="nDl-J3-uAx"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gs0-vu-lFh">
-                                <rect key="frame" x="157" y="127" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="gs0-vu-lFh">
+                                <rect key="frame" x="157" y="83" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="D1Z-Lk-Vh1"/>
                                     <constraint firstAttribute="width" constant="100" id="lIu-Nu-d4m"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="32t-er-1hV">
-                                <rect key="frame" x="16" y="237" width="382" height="34"/>
+                                <rect key="frame" x="16" y="193" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="성" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NMb-Ut-NiW">
-                                <rect key="frame" x="16" y="281" width="382" height="34"/>
+                                <rect key="frame" x="16" y="237" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="국가" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cYF-HJ-4Mz">
-                                <rect key="frame" x="16" y="325" width="382" height="34"/>
+                                <rect key="frame" x="16" y="281" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="도시" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UN9-mS-cdn">
-                                <rect key="frame" x="16" y="369" width="382" height="34"/>
+                                <rect key="frame" x="16" y="325" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="전화번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-Ye-XYm">
-                                <rect key="frame" x="16" y="413" width="382" height="34"/>
+                                <rect key="frame" x="16" y="369" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -226,6 +233,15 @@
                             <constraint firstItem="gs0-vu-lFh" firstAttribute="centerX" secondItem="CZR-ej-Eu1" secondAttribute="centerX" id="w7S-Sf-jds"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HrB-kT-hFP"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="gs0-vu-lFh" id="YXE-RY-JyT"/>
+                        <outlet property="cityTextField" destination="UN9-mS-cdn" id="oxj-im-zFW"/>
+                        <outlet property="countryTextField" destination="cYF-HJ-4Mz" id="bTa-XS-7eW"/>
+                        <outlet property="nameTextField" destination="32t-er-1hV" id="sh7-Vd-Rg1"/>
+                        <outlet property="phoneTextField" destination="4Iu-Ye-XYm" id="pc9-FC-WP6"/>
+                        <outlet property="surnameTextField" destination="NMb-Ut-NiW" id="JbN-4o-qxv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYi-Ax-dXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,6 +249,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="avatarPlaceholder" width="101" height="101"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

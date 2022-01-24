@@ -73,7 +73,10 @@ class WelcomeViewController: UIViewController {
     }
     
     func registerUser() {
-        print("register")
+        performSegue(withIdentifier: "welcomeToFinishReg", sender: self)
+        
+        cleanTextFields()
+        dismissKeyboard()
     }
     
     func dismissKeyboard() {
@@ -96,5 +99,15 @@ class WelcomeViewController: UIViewController {
         dismissKeyboard()
         
         print("show the app")
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "welcomeToFinishReg" {
+            let vc = segue.destination as! FinishRegistrationViewController
+            vc.email = emailTextField.text!
+            vc.password = passwordTextField.text!
+        }
     }
 }
