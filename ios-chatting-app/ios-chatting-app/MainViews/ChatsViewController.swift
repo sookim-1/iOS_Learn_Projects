@@ -107,7 +107,11 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         let deleteAction = UITableViewRowAction(style: .default, title: "삭제") { action, indexPath in
-            print("Delete\(indexPath)")
+            self.recentChats.remove(at: indexPath.row)
+            
+            deleteRecentChat(recentChatDictionary: tempRecent)
+            
+            self.tableView.reloadData()
         }
         
         let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { action, indexPath in
@@ -214,3 +218,4 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 }
+
