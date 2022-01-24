@@ -54,6 +54,52 @@ func imageFromInitials(firstName: String?, lastName: String?, withBlock: @escapi
     withBlock(img!)
 }
 
+func timeElapsed(date: Date) -> String {
+    
+    let seconds = NSDate().timeIntervalSince(date)
+    
+    var elapsed: String?
+    
+    
+    if (seconds < 60) {
+        elapsed = "지금"
+    } else if (seconds < 60 * 60) {
+        let minutes = Int(seconds / 60)
+        
+        var minText = "분"
+        if minutes > 1 {
+            minText = "분 전"
+        }
+        elapsed = "\(minutes) \(minText)"
+        
+    } else if (seconds < 24 * 60 * 60) {
+        let hours = Int(seconds / (60 * 60))
+        var hourText = "시간"
+        if hours > 1 {
+            hourText = "시간 전"
+        }
+        elapsed = "\(hours) \(hourText)"
+    } else {
+        let currentDateFormater = dateFormatter()
+        currentDateFormater.dateFormat = "YYYY/MM/dd"
+        
+        elapsed = "\(currentDateFormater.string(from: date))"
+    }
+    
+    return elapsed!
+}
+
+//for calls and chats : DocumentSnapshot를 딕셔너리 자료형으로 변경해주는 메서드
+func dictionaryFromSnapshots(snapshots: [DocumentSnapshot]) -> [NSDictionary] {
+    
+    var allMessages: [NSDictionary] = []
+    for snapshot in snapshots {
+        allMessages.append(snapshot.data() as! NSDictionary)
+    }
+    return allMessages
+}
+
+
 // Firebase에서 가져온 String -> Data
 func imageFromData(pictureData: String, withBlock: (_ image: UIImage?) -> Void) {
     

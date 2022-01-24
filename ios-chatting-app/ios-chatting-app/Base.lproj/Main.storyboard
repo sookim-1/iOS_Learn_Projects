@@ -255,11 +255,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mhc-9i-wZ9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mhc-9i-wZ9">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="100" id="Wmh-ng-CLP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RecentChatsTableViewCell" id="Wmh-ng-CLP" customClass="RecentChatsTableViewCell" customModule="ios_chatting_app" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wmh-ng-CLP" id="vaB-3k-yiJ">
@@ -333,8 +333,20 @@
                                                 <constraint firstItem="vrA-Dr-9jg" firstAttribute="centerY" secondItem="vaB-3k-yiJ" secondAttribute="centerY" id="zXk-mn-4ti"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="vrA-Dr-9jg" id="1cF-3j-0Sm"/>
+                                            <outlet property="dateLabel" destination="YEO-lK-uR4" id="LwN-aX-AP2"/>
+                                            <outlet property="lastMessageLabel" destination="xhu-OC-hzA" id="5L2-Gh-RSV"/>
+                                            <outlet property="messageCounterBackground" destination="5tp-0F-lNn" id="TGO-jR-z4e"/>
+                                            <outlet property="messageCounterLabel" destination="xWK-sv-Bn7" id="c2U-gQ-04w"/>
+                                            <outlet property="nameLabel" destination="LXb-NS-vhO" id="oTR-Lb-sjg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="CMY-sU-Foa" id="fWX-9v-kKw"/>
+                                    <outlet property="delegate" destination="CMY-sU-Foa" id="Wbp-yh-nNA"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hes-hx-4WT"/>
@@ -353,6 +365,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Mhc-9i-wZ9" id="Wy7-R2-tik"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VD2-CR-sjz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
