@@ -16,6 +16,10 @@ import FirebaseFirestore
 
 class ChatViewController: JSQMessagesViewController {
 
+    var chatRoomId: String!
+    var memberIds: [String]!
+    var membersToPush: [String]!
+    
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     
     var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
@@ -110,7 +114,46 @@ class ChatViewController: JSQMessagesViewController {
     }
 
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        print("send")
+        
+        if text != "" {
+            self.sendMessage(text: text, date: date, picture: nil, location: nil, video: nil, audio: nil)
+            updateSendButton(isSend: false)
+        } else {
+            print("audio message")
+        }
+    }
+    
+    // MARK: - CustomSendButton
+    
+    override func textViewDidChange(_ textView: UITextView) {
+        if textView.text != "" {
+            updateSendButton(isSend: true)
+        } else {
+            updateSendButton(isSend: false)
+        }
+    }
+    
+    func updateSendButton(isSend: Bool) {
+        if isSend {
+            self.inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "send"), for: .normal)
+        } else {
+            self.inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "mic"), for: .normal)
+        }
+    }
+    
+    // MARK: - Send Messages
+    
+    func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?, video: NSURL?, audio: String?) {
+        
+        var outgoingMessage: OutgoingMessage?
+        let currentUser = FUser.currentUser()!
+        
+        //text message
+        if let text = text {
+            outgoingMessage = OutgoingMessage(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELETED, type: kTEXT)
+        }
+        
+        outgoingMessage!.sendMessage(chatRoomID: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memberIds, membersToPush: membersToPush)
     }
 }
 
