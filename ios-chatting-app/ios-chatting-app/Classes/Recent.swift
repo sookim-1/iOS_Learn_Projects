@@ -100,7 +100,7 @@ func createRecentItems(userId: String, chatRoomId: String, members: [String], wi
 //Restart Chat
 func restartRecentChat(recent: NSDictionary) {
     if recent[kTYPE] as! String == kPRIVATE {
-        createRecent(members: recent[kMEMBERSTOPUSH] as! [String], chatRoomId: recent[kCHATROOMID] as! String, withUserUserName: recent[kWITHUSERUSERNAME] as! String, type: kPRIVATE, users: [FUser.currentUser()!], avatarOfGroup: nil)
+        createRecent(members: recent[kMEMBERSTOPUSH] as! [String], chatRoomId: recent[kCHATROOMID] as! String, withUserUserName: FUser.currentUser()!.firstname, type: kPRIVATE, users: [FUser.currentUser()!], avatarOfGroup: nil)
     }
     
     if recent[kTYPE] as! String == kGROUP {
