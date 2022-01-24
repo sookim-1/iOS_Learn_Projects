@@ -29,6 +29,7 @@
 		7696B4FF279EEDC500CC5245 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696B4FE279EEDC500CC5245 /* Recent.swift */; };
 		7696B501279EFB6C00CC5245 /* RecentChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696B500279EFB6C00CC5245 /* RecentChatsTableViewCell.swift */; };
 		7696B503279EFEE900CC5245 /* RecentChatsTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696B502279EFEE800CC5245 /* RecentChatsTableViewCellDelegate.swift */; };
+		7696B505279F123900CC5245 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696B504279F123900CC5245 /* ChatViewController.swift */; };
 		A206234E9FBDC20652C61158 /* Pods_ios_chatting_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B6465CA363F375B232F32E6 /* Pods_ios_chatting_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		7696B4FE279EEDC500CC5245 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		7696B500279EFB6C00CC5245 /* RecentChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsTableViewCell.swift; sourceTree = "<group>"; };
 		7696B502279EFEE800CC5245 /* RecentChatsTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		7696B504279F123900CC5245 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A967D0E368076A1AE0550A75 /* Pods-ios-chatting-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-chatting-app.debug.xcconfig"; path = "Target Support Files/Pods-ios-chatting-app/Pods-ios-chatting-app.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +184,7 @@
 			children = (
 				767C48C4279EC4DC00F48F2B /* UsersTableViewController.swift */,
 				7696B4F5279EE11800CC5245 /* ProfileViewTableViewController.swift */,
+				7696B504279F123900CC5245 /* ChatViewController.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				767C48C0279EC07200F48F2B /* UserTableViewCell.swift in Sources */,
 				7696B4FF279EEDC500CC5245 /* Recent.swift in Sources */,
 				7696B4F9279EE47200CC5245 /* UserTableViewCellDelegate.swift in Sources */,
+				7696B505279F123900CC5245 /* ChatViewController.swift in Sources */,
 				7696B503279EFEE900CC5245 /* RecentChatsTableViewCellDelegate.swift in Sources */,
 				767C48BA279E996E00F48F2B /* FinishRegistrationViewController.swift in Sources */,
 				767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */,

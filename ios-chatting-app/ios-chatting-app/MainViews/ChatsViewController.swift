@@ -138,7 +138,9 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         restartRecentChat(recent: recent)
         
         //show chat view
+        let chatVC = ChatViewController()
         
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     // MARK: - LoadRecentChats
