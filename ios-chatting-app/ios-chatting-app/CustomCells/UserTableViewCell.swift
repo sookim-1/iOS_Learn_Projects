@@ -12,7 +12,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var fullNameLabel: UILabel!
 
     var indexPath: IndexPath!
-    
+    var delegate: UserTableViewCellDelegate?
     let tapGestureRecognizer = UITapGestureRecognizer()
     
     override func awakeFromNib() {
@@ -45,6 +45,6 @@ class UserTableViewCell: UITableViewCell {
     }
     
     @objc func avatarTap() {
-        print("avatar tap at \(indexPath)")
+        delegate!.didTapAvatarImage(indexPath: indexPath)
     }
 }
