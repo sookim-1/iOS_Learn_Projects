@@ -23,8 +23,18 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.largeTitleDisplayMode = .never
+        
+        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"), style: .plain, target: self, action: #selector(self.backAction))]
+        collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        
         self.senderId = FUser.currentId()
         self.senderDisplayName = FUser.currentUser()!.firstname
+        
+        //custom send button
+        self.inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "mic"), for: .normal)
+        self.inputToolbar.contentView.rightBarButtonItem.setTitle("", for: .normal)
         
         // MARK: - JSQMessages라이브러리 SafeArea이슈 해결방법 - 3 작동안함
         /*
@@ -42,9 +52,14 @@ class ChatViewController: JSQMessagesViewController {
          */
     }
     
-
+    @objc func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
 
 }
+
 extension JSQMessagesInputToolbar {
     // MARK: - JSQMessages라이브러리 SafeArea이슈 해결방법 -1 정상
     override open func didMoveToWindow() {
