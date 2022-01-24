@@ -27,26 +27,85 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "사용자 목록"
+        navigationItem.largeTitleDisplayMode = .never
+        tableView.tableFooterView = UIView() // 비어있는 셀 안보이도록 표시
+        
+        navigationItem.searchController = searchController
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
         loadUsers(filter: kCITY)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return 1
+        } else {
+            return allUsersGroupped.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allUsers.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filterdUsers.count
+        } else {
+            
+            // find section Title(섹션 알파벳순으로)
+            let sectionTitle = self.sectionTitleList[section]
+            
+            // user for given title (섹션별 알맞는 사용자목록)
+            let users = self.allUsersGroupped[sectionTitle]
+            
+            return users!.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserTableViewCell
-
-        cell.generateCellWith(fUser: allUsers[indexPath.row], indexPath: indexPath)
+        
+        var user: FUser
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filterdUsers[indexPath.row]
+        } else {
+            let sectionTitle = self.sectionTitleList[indexPath.section]
+            
+            let users = self.allUsersGroupped[sectionTitle]
+            
+            user = users![indexPath.row]
+        }
+        cell.generateCellWith(fUser: user, indexPath: indexPath)
         
         return cell
+    }
+    
+    // MARK: - TableView Delegate
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return ""
+        } else {
+            return sectionTitleList[section]
+        }
+    }
+    
+    // 테이블뷰 옆에 섹션타이틀을 스크롤 부분에 표시
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return nil
+        } else {
+            return self.sectionTitleList
+        }
+    }
+    
+    // 섹션인덱스 클릭하면 해당 섹션으로 이동
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
     }
 
     func loadUsers(filter: String) {
@@ -93,7 +152,8 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating {
                     }
                 }
                 
-                //
+                self.splitDataIntoSection()
+                self.tableView.reloadData()
             }
             self.tableView.reloadData()
             ProgressHUD.dismiss()
@@ -128,5 +188,26 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
-    
+ 
+    // MARK: - Helper functions
+    fileprivate func splitDataIntoSection() {
+        var sectionTitle: String = ""
+        
+        for i in 0..<self.allUsers.count {
+            let currentUser = self.allUsers[i]
+            
+            let firstChar = currentUser.firstname.first!
+            
+            let firstCharString = "\(firstChar)"
+            
+            if firstCharString != sectionTitle {
+                sectionTitle = firstCharString
+                
+                self.allUsersGroupped[sectionTitle] = []
+                self.sectionTitleList.append(sectionTitle)
+                
+            }
+            self.allUsersGroupped[firstCharString]?.append(currentUser)
+        }
+    }
 }
