@@ -203,6 +203,7 @@ class FUser {
     
     class func registerUserWith(email: String, password: String, firstName: String, lastName: String, avatar: String = "", completion: @escaping (_ error: Error?) -> Void ) {
         
+        // 회원가입 하는 Firebase메서드 - Firebase에 회원가입하는 과정
         Auth.auth().createUser(withEmail: email, password: password, completion: { (firuser, error) in
             
             if error != nil {
@@ -211,11 +212,12 @@ class FUser {
                 return
             }
             
+            // Firebase데이터베이스에 저장하기 위한 사용자 정보
             let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: firuser!.user.email!, _firstname: firstName, _lastname: lastName, _avatar: avatar, _loginMethod: kEMAIL, _phoneNumber: "", _city: "", _country: "")
             
             
-            saveUserLocally(fUser: fUser)
-            saveUserToFirestore(fUser: fUser)
+            saveUserLocally(fUser: fUser) // 기기에 저장
+            saveUserToFirestore(fUser: fUser) //Firebase 데이터베이스에 저장
             completion(error)
             
         })
@@ -416,6 +418,7 @@ func getUsersFromFirestore(withIds: [String], completion: @escaping (_ usersArra
 }
 
 
+// 가장 처음 저장된 Fuser의 데이터를 registerUser() - 커스텀한 세팅으로 업데이트
 func updateCurrentUserInFirestore(withValues : [String : Any], completion: @escaping (_ error: Error?) -> Void) {
     
     if let dictionary = UserDefaults.standard.object(forKey: kCURRENTUSER) {
