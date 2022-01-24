@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-        windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: mainView)
+        windowScene.windows.first?.rootViewController = mainView
         windowScene.windows.first?.makeKeyAndVisible()
     }
 
