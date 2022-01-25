@@ -84,6 +84,19 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         return subTitle
     }()
     
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        clearRecentCounter(chatRoomId: chatRoomId)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        clearRecentCounter(chatRoomId: chatRoomId)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -125,6 +138,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     
     // MARK: - IBACtions
     @objc func backAction() {
+        
+        clearRecentCounter(chatRoomId: chatRoomId)
         removeListeners()
         self.navigationController?.popViewController(animated: true)
     }
