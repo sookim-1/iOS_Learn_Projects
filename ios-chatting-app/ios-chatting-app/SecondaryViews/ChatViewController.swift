@@ -620,6 +620,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                 self.initialLoadComplete = true
                 // initial loading is done
                 // listen for new chats
+                self.listenForNewChats()
                 
                 return
             }
@@ -636,12 +637,13 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             
             self.initialLoadComplete = true
             
-            print("we have \(self.messages.count) messages  loaded")
             // get picture messages
+            
             // get old messages in background
             self.getOldMessagesInBackground()
-            self.listenForNewChats()
+            
             // start listening for new chats
+            self.listenForNewChats()
         }
     }
     
