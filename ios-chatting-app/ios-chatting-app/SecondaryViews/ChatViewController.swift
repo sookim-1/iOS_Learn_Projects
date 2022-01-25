@@ -21,6 +21,20 @@ class ChatViewController: JSQMessagesViewController {
     var membersToPush: [String]!
     var titleName: String!
     
+    let legitTypes = [kAUDIO, kVIDEO, kTEXT, kLOCATION, kPICTURE]
+    
+    var maxMessageNumber = 0
+    var minMessageNumber = 0
+    var loadOld = false
+    var loadedMessagesCount = 0
+    
+    var messages: [JSQMessage] = []
+    var objectMessages: [NSDictionary] = []
+    var loadedMessages: [NSDictionary] = []
+    var allPictureMessages: [String] = []
+    
+    var initialLoadComplete = false // 첫화면 11개 메시지 로드 불값
+    
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     
     var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
@@ -33,6 +47,8 @@ class ChatViewController: JSQMessagesViewController {
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"), style: .plain, target: self, action: #selector(self.backAction))]
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        
+        loadMessages()
         
         self.senderId = FUser.currentId()
         self.senderDisplayName = FUser.currentUser()!.firstname
@@ -61,7 +77,45 @@ class ChatViewController: JSQMessagesViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // MARK: - JSQMessage Delegate functions
+    // MARK: - JSQMessages DataSource functions
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        
+        let data = messages[indexPath.row]
+        
+        //set text color
+        if data.senderId == FUser.currentId() {
+            cell.textView?.textColor = .white
+        } else {
+            cell.textView?.textColor = .black
+        }
+        
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        
+        return messages[indexPath.row]
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        
+        let data = messages[indexPath.row]
+        
+        if data.senderId == FUser.currentId() {
+            return outgoingBubble
+        } else {
+            return incomingBubble
+        }
+    }
+    
+    
+    // MARK: - JSQMessages Delegate functions
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -158,6 +212,108 @@ class ChatViewController: JSQMessagesViewController {
         self.finishSendingMessage()
         
         outgoingMessage!.sendMessage(chatRoomID: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memberIds, membersToPush: membersToPush)
+    }
+    
+    // MARK: - LoadMessages
+    func loadMessages() {
+        
+        // get last 11 messages : 뷰컨트롤러에 화면 한번에 보여줄 내용들 11개인 이유? 네트워크절약을위해
+        reference(.Message).document(FUser.currentId()).collection(chatRoomId).order(by: kDATE, descending: true).limit(to: 11).getDocuments { snapshot, error in
+            guard let snapshot = snapshot else {
+                self.initialLoadComplete = true
+                // initial loading is done
+                // listen for new chats
+                
+                return
+            }
+            
+            let sorted = ((dictionaryFromSnapshots(snapshots: snapshot.documents)) as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: true)]) as! [NSDictionary]
+            
+            // remove bad messages
+            self.loadedMessages = self.removeBadMessages(allMessages: sorted)
+            
+            
+            // insert messages
+            self.insertMesages()
+            self.finishReceivingMessage(animated: true)
+            
+            self.initialLoadComplete = true
+            
+            print("we have \(self.messages.count) messages  loaded")
+            // get picture messages
+            // get old messages in background
+            // start listening for new chats
+        }
+    }
+    
+    // MARK: - InsertMessages
+    func insertMesages() {
+        maxMessageNumber = loadedMessages.count - loadedMessagesCount
+        minMessageNumber = maxMessageNumber - kNUMBEROFMESSAGES
+        
+        if minMessageNumber < 0 {
+            minMessageNumber = 0
+        }
+        
+        for i in minMessageNumber..<maxMessageNumber {
+            let messageDictionary = loadedMessages[i]
+        
+            // insert message
+            insertInitialLoadMessages(messageDictionary: messageDictionary)
+            loadedMessagesCount += 1
+        }
+        
+        self.showLoadEarlierMessagesHeader = (loadedMessagesCount != loadedMessages.count)
+    }
+    
+    func insertInitialLoadMessages(messageDictionary: NSDictionary) -> Bool {
+        // check if incoming (채팅을 오른쪽에 보여줄지 검사)
+        let incomingMessage = IncomingMessage(collectionView_: self.collectionView!)
+        
+        if (messageDictionary[kSENDERID] as! String) != FUser.currentId() {
+            
+            // update message status (메시지 읽음 확인)
+            
+        }
+        
+        let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
+        
+        if message != nil {
+            objectMessages.append(messageDictionary)
+            messages.append(message!)
+        }
+        
+        return isIncoming(messageDictionary: messageDictionary)
+        
+    }
+    
+    // MARK: - Helper functions
+    
+    func removeBadMessages(allMessages: [NSDictionary]) -> [NSDictionary] {
+        var tempMessages = allMessages
+        
+        for message in tempMessages {
+            if message[kTYPE] != nil {
+                if !self.legitTypes.contains(message[kTYPE] as! String) {
+                    // remove the message
+                    tempMessages.remove(at: tempMessages.index(of: message)!)
+                }
+            } else {
+                tempMessages.remove(at: tempMessages.index(of: message)!)
+            }
+        }
+        
+        return tempMessages
+    }
+    
+    
+    // 메시지 수신,발신여부 체크
+    func isIncoming(messageDictionary: NSDictionary) -> Bool {
+        if FUser.currentId() == messageDictionary[kSENDERID] as! String {
+            return false
+        } else {
+            return true
+        }
     }
 }
 
