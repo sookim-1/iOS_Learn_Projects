@@ -21,6 +21,10 @@ class ChatViewController: JSQMessagesViewController {
     var membersToPush: [String]!
     var titleName: String!
     
+    var typingListener: ListenerRegistration?
+    var updatedChatListener: ListenerRegistration?
+    var newChatListener: ListenerRegistration?
+    
     let legitTypes = [kAUDIO, kVIDEO, kTEXT, kLOCATION, kPICTURE]
     
     var maxMessageNumber = 0
@@ -29,7 +33,7 @@ class ChatViewController: JSQMessagesViewController {
     var loadedMessagesCount = 0
     
     var messages: [JSQMessage] = []
-    var objectMessages: [NSDictionary] = []
+    var objectMessages: [NSDictionary] = [] // objectMessages 와 loadedMessages는 항상동기화되어야 함
     var loadedMessages: [NSDictionary] = []
     var allPictureMessages: [String] = []
     
@@ -239,6 +243,13 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
+        
+        // load More Messages
+        self.loadMoreMessages(maxNumber: maxMessageNumber, minNumber: minMessageNumber)
+        self.collectionView.reloadData()
+    }
+    
     // MARK: - CustomSendButton
     
     override func textViewDidChange(_ textView: UITextView) {
@@ -303,8 +314,100 @@ class ChatViewController: JSQMessagesViewController {
             print("we have \(self.messages.count) messages  loaded")
             // get picture messages
             // get old messages in background
+            self.getOldMessagesInBackground()
+            self.listenForNewChats()
             // start listening for new chats
         }
+    }
+    
+    // 새로운 메시지 가져오는 함수
+    func listenForNewChats() {
+        var lastMessageDate = "0"
+        
+        if loadedMessages.count > 0 {
+            lastMessageDate = loadedMessages.last![kDATE] as! String
+        }
+        
+        newChatListener = reference(.Message).document(FUser.currentId()).collection(chatRoomId).whereField(kDATE, isGreaterThan: lastMessageDate).addSnapshotListener({ snapshot, error in
+            guard let snapshot = snapshot else { return }
+            
+            if !snapshot.isEmpty {
+                for diff in snapshot.documentChanges {
+                    if (diff.type == .added) {
+                        let item = diff.document.data() as NSDictionary
+                        if let type = item[kTYPE] {
+                            if self.legitTypes.contains(type as! String) {
+                                
+                                // this is for picture messages
+                                if type as! String == kPICTURE {
+                                    // add to pictures
+                                }
+                                
+                                if self.insertInitialLoadMessages(messageDictionary: item) {
+                                    JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
+                                }
+                                
+                                self.finishReceivingMessage()
+                            }
+                        }
+                    }
+                }
+            }
+            
+        })
+    }
+    
+    // 지난 메시지 가져오는 함수 - 한번에 가져오면 데이터 낭비를 절약하기 위해 필요한 경우에 11개이상 다운로드
+    func getOldMessagesInBackground() {
+        if loadedMessages.count > 10 {
+            let firstMessageDate = loadedMessages.first![kDATE] as! String
+            
+            reference(.Message).document(FUser.currentId()).collection(chatRoomId).whereField(kDATE, isLessThan: firstMessageDate).getDocuments { snapshot, error in
+                
+                guard let snapshot = snapshot else { return }
+                
+                let sorted = ((dictionaryFromSnapshots(snapshots: snapshot.documents)) as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: true)]) as! [NSDictionary]
+                
+                self.loadedMessages = self.removeBadMessages(allMessages: sorted) + self.loadedMessages
+
+                //get the picture messages
+                self.maxMessageNumber = self.loadedMessages.count - self.loadedMessagesCount - 1
+                self.minMessageNumber = self.maxMessageNumber - kNUMBEROFMESSAGES
+            }
+        }
+    }
+    
+    // MARK: - LoadMoreMessages
+    func loadMoreMessages(maxNumber: Int, minNumber: Int) {
+        
+        if loadOld {
+            maxMessageNumber = minNumber - 1
+            minMessageNumber = maxMessageNumber - kNUMBEROFMESSAGES
+        }
+        
+        if minMessageNumber < 0 {
+            minMessageNumber = 0
+        }
+        
+        for i in (minMessageNumber ... maxMessageNumber).reversed() {
+            
+            let messageDictionary = loadedMessages[i]
+            insertNewMessage(messageDictionary: messageDictionary)
+            loadedMessagesCount += 1
+        }
+        
+        loadOld = true
+        self.showLoadEarlierMessagesHeader = (loadedMessagesCount != loadedMessages.count)
+    }
+    
+    func insertNewMessage(messageDictionary: NSDictionary) {
+        
+        let incomingMessage = IncomingMessage(collectionView_: self.collectionView!)
+        
+        let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
+        
+        objectMessages.insert(messageDictionary, at: 0)
+        messages.insert(message!, at: 0)
     }
     
     // MARK: - InsertMessages
