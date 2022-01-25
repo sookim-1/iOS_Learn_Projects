@@ -531,6 +531,22 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     
     // MARK: - LoadMessages
     func loadMessages() {
+        //to update message status
+        updatedChatListener = reference(.Message).document(FUser.currentId()).collection(chatRoomId).addSnapshotListener({ (snapshot, error) in
+            
+            guard let snapshot = snapshot else { return }
+            
+            if !snapshot.isEmpty {
+           
+                snapshot.documentChanges.forEach({ (diff) in
+                    
+                    if diff.type == .modified {
+                        
+                        self.updateMessage(messageDictionary: diff.document.data() as NSDictionary)
+                    }
+                })
+            }
+        })
         
         // get last 11 messages : 뷰컨트롤러에 화면 한번에 보여줄 내용들 11개인 이유? 네트워크절약을위해
         reference(.Message).document(FUser.currentId()).collection(chatRoomId).order(by: kDATE, descending: true).limit(to: 11).getDocuments { snapshot, error in
@@ -620,6 +636,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
     }
     
+    
+    
     // MARK: - LoadMoreMessages
     func loadMoreMessages(maxNumber: Int, minNumber: Int) {
         
@@ -680,7 +698,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         if (messageDictionary[kSENDERID] as! String) != FUser.currentId() {
             
             // update message status (메시지 읽음 확인)
-            
+            OutgoingMessage.updateMessage(withId: messageDictionary[kMESSAGEID] as! String, chatRoomId: chatRoomId, memberIds: memberIds)
         }
         
         let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
@@ -693,6 +711,19 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         return isIncoming(messageDictionary: messageDictionary)
         
     }
+    
+    func updateMessage(messageDictionary: NSDictionary) {
+        
+        for index in 0 ..< objectMessages.count {
+            let temp = objectMessages[index]
+            
+            if messageDictionary[kMESSAGEID] as! String == temp[kMESSAGEID] as! String {
+                objectMessages[index] = messageDictionary
+                self.collectionView!.reloadData()
+            }
+        }
+    }
+    
     
     // MARK: - Location access
     
