@@ -213,6 +213,43 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        
+        let messageDictionary = objectMessages[indexPath.row]
+        let messageType = messageDictionary[kTYPE] as! String
+        
+        switch messageType {
+        case kPICTURE:
+            print("picture tapped")
+        case kLOCATION:
+            print("location tapped")
+
+        case kVIDEO:
+
+            let message = messages[indexPath.row]
+            
+            let mediaItem = message.media as! VideoMediaItem
+            
+            let player = AVPlayer(url: mediaItem.fileURL! as URL)
+            let moviePlayer = AVPlayerViewController()
+            
+            let session = AVAudioSession.sharedInstance()
+            
+            try! session.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+
+            moviePlayer.player = player
+            
+            self.present(moviePlayer, animated: true) {
+                moviePlayer.player!.play()
+            }
+            
+        default:
+            print("unkown mess tapped")
+
+        }
+        
+    }
+    
     
     // MARK: - JSQMessages Delegate functions
     
