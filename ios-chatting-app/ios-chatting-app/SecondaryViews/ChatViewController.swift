@@ -46,6 +46,11 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     
     var initialLoadComplete = false // 첫화면 11개 메시지 로드 불값
     
+    var jsqAvatarDictionary: NSMutableDictionary?
+    var avatarImageDictionary: NSMutableDictionary?
+    var showAvatars = true
+    var firstLoad: Bool?
+    
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     
     var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
@@ -89,6 +94,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
+        jsqAvatarDictionary = [ : ]
+        
         setCustomTitle()
         
         loadMessages()
@@ -120,6 +127,15 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     @objc func backAction() {
         removeListeners()
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func presentUserProfile(forUser: FUser) {
+        
+        let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as! ProfileViewTableViewController
+        
+        profileVC.user = forUser
+        self.navigationController?.pushViewController(profileVC, animated: true)
+
     }
     
     // MARK: - Typing Indicator
@@ -325,6 +341,40 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapAvatarImageView avatarImageView: UIImageView!, at indexPath: IndexPath!) {
+        
+        let senderId = messages[indexPath.row].senderId
+        var selectedUser: FUser?
+        
+        if senderId == FUser.currentId() {
+            selectedUser = FUser.currentUser()
+        } else {
+            for user in withUsers {
+                if user.objectId == senderId {
+                    selectedUser = user
+                }
+            }
+        }
+
+        presentUserProfile(forUser: selectedUser!)
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        
+        let message = messages[indexPath.row]
+        
+        var avatar: JSQMessageAvatarImageDataSource
+        
+        if let testAvatar = jsqAvatarDictionary!.object(forKey: message.senderId) {
+            avatar = testAvatar as! JSQMessageAvatarImageDataSource
+        } else {
+            avatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder"), diameter: 70)
+        }
+        
+        return avatar
+    }
+    
+
     
     // MARK: - JSQMessages Delegate functions
     
@@ -457,7 +507,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         // 네비게이션바 커스텀헤더 클릭하는 경우 어떤사용자인지 알기위해 회원정보 얻기
         getUsersFromFirestore(withIds: memberIds) { withUsers in
             self.withUsers = withUsers
-            
+            self.getAvatarImages()
             // get avatars
             if !self.isGroup! {
                 // update user info
@@ -842,7 +892,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
     }
     
-    // UIImagePickerController delegate
+    // MARK: - UIImagePickerController delegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let video = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL
@@ -866,6 +916,71 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
     }
     
+    // MARK: - GetAvatars
+    
+    func getAvatarImages() {
+        
+        if showAvatars {
+            
+            collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 30, height: 30)
+            collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 30, height: 30)
+            
+            //get current user avatar
+            avatarImageFrom(fUser: FUser.currentUser()!)
+            
+            for user in withUsers {
+                avatarImageFrom(fUser: user)
+            }
+            
+        }
+    }
+    
+    func avatarImageFrom(fUser: FUser) {
+        
+        if fUser.avatar != "" {
+            
+            dataImageFromString(pictureString: fUser.avatar) { (imageData) in
+                
+                if imageData == nil {
+                    return
+                }
+                
+                
+                if self.avatarImageDictionary != nil {
+                    //update avatar if we had one
+                    self.avatarImageDictionary!.removeObject(forKey: fUser.objectId)
+                    self.avatarImageDictionary!.setObject(imageData!, forKey: fUser.objectId as NSCopying)
+                } else {
+                    self.avatarImageDictionary = [fUser.objectId : imageData!]
+                }
+                
+                self.createJSQAvatars(avatarDictionary: self.avatarImageDictionary)
+            }
+        }
+    }
+    
+    func createJSQAvatars(avatarDictionary: NSMutableDictionary?) {
+        
+        let defaultAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder"), diameter: 70)
+        
+        if avatarDictionary != nil {
+            
+            for userId in memberIds {
+                
+                if let avatarImageData = avatarDictionary![userId] {
+                    
+                    let jsqAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(data: avatarImageData as! Data), diameter: 70)
+                    
+                    self.jsqAvatarDictionary!.setValue(jsqAvatar, forKey: userId)
+                } else {
+                    self.jsqAvatarDictionary!.setValue(defaultAvatar, forKey: userId)
+                }
+
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 extension JSQMessagesInputToolbar {
