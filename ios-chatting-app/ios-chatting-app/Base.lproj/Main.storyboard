@@ -616,6 +616,35 @@
             </objects>
             <point key="canvasLocation" x="5786" y="-281"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="x8L-HY-CfS">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="Y28-k4-atf" customClass="MapViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xcr-2s-h4D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sCj-qQ-iqX">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="v0U-Ug-6Sv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sCj-qQ-iqX" firstAttribute="trailing" secondItem="v0U-Ug-6Sv" secondAttribute="trailing" id="5sd-W8-hkO"/>
+                            <constraint firstItem="sCj-qQ-iqX" firstAttribute="top" secondItem="v0U-Ug-6Sv" secondAttribute="top" id="84O-E5-rPH"/>
+                            <constraint firstItem="sCj-qQ-iqX" firstAttribute="leading" secondItem="v0U-Ug-6Sv" secondAttribute="leading" id="WRe-2V-HgT"/>
+                            <constraint firstItem="sCj-qQ-iqX" firstAttribute="bottom" secondItem="v0U-Ug-6Sv" secondAttribute="bottom" id="e6J-OD-FAY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="sCj-qQ-iqX" id="a5a-WG-4Vw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10R-en-eOx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6492.753623188406" y="-280.58035714285711"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ICM-BY-NyP">
             <objects>
