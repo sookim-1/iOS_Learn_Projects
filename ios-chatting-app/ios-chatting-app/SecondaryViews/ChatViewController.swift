@@ -20,6 +20,9 @@ class ChatViewController: JSQMessagesViewController {
     var memberIds: [String]!
     var membersToPush: [String]!
     var titleName: String!
+    var isGroup: Bool?
+    var group: NSDictionary?
+    var withUsers: [FUser] = []
     
     var typingListener: ListenerRegistration?
     var updatedChatListener: ListenerRegistration?
@@ -43,6 +46,35 @@ class ChatViewController: JSQMessagesViewController {
     
     var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     
+    // 아바타 버튼뷰 (네비게이션바)
+    let leftBarButtonView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        
+        return view
+    }()
+    
+    let avatarButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 10, width: 25, height: 25))
+        
+        return button
+    }()
+    
+    let titleLabel: UILabel = {
+        let title = UILabel(frame: CGRect(x: 30, y: 10, width: 140, height: 15))
+        title.textAlignment = .left
+        title.font = UIFont(name: title.font.fontName, size: 14)
+        
+        return title
+    }()
+    
+    let subTitleLabel: UILabel = {
+        let subTitle = UILabel(frame: CGRect(x: 30, y: 25, width: 140, height: 15))
+        subTitle.textAlignment = .left
+        subTitle.font = UIFont(name: subTitle.font.fontName, size: 10)
+        
+        return subTitle
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +83,8 @@ class ChatViewController: JSQMessagesViewController {
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"), style: .plain, target: self, action: #selector(self.backAction))]
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        
+        setCustomTitle()
         
         loadMessages()
         
@@ -266,6 +300,74 @@ class ChatViewController: JSQMessagesViewController {
         } else {
             self.inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "mic"), for: .normal)
         }
+    }
+    
+    // MARK: - Update UI
+    func setCustomTitle() {
+        leftBarButtonView.addSubview(avatarButton)
+        leftBarButtonView.addSubview(titleLabel)
+        leftBarButtonView.addSubview(subTitleLabel)
+
+        let infoButton = UIBarButtonItem(image: UIImage(named: "info"), style: .plain, target: self, action: #selector(self.infoButtonPressed))
+        
+        self.navigationItem.rightBarButtonItem = infoButton
+        
+        let leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
+        self.navigationItem.leftBarButtonItems?.append(leftBarButtonItem)
+        
+        // 그룹채팅에서는 아이콘 커스텀뷰 표시하지않기
+        if isGroup! {
+            avatarButton.addTarget(self, action: #selector(self.showGroup), for: .touchUpInside)
+        } else {
+            avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)
+        }
+        
+        // 네비게이션바 커스텀헤더 클릭하는 경우 어떤사용자인지 알기위해 회원정보 얻기
+        getUsersFromFirestore(withIds: memberIds) { withUsers in
+            self.withUsers = withUsers
+            
+            // get avatars
+            if !self.isGroup! {
+                // update user info
+                self.setUIForSingleChat()
+            }
+        }
+    }
+    
+    func setUIForSingleChat() {
+        let withUser = withUsers.first!
+
+        imageFromData(pictureData: withUser.avatar) { (image) in
+            
+            if image != nil {
+                avatarButton.setImage(image!.circleMasked, for: .normal)
+            }
+        }
+        
+        titleLabel.text = withUser.fullname
+        
+        if withUser.isOnline {
+            subTitleLabel.text = "온라인"
+        } else {
+            subTitleLabel.text = "오프라인"
+        }
+        
+        avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)
+    }
+    
+    @objc func infoButtonPressed() {
+        print("show image mssages")
+    }
+    
+    @objc func showGroup() {
+        print("show group")
+    }
+    
+    @objc func showUserProfile() {
+        let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as! ProfileViewTableViewController
+        
+        profileVC.user = withUsers.first!
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
     // MARK: - Send Messages
