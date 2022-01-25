@@ -220,10 +220,9 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         
         switch messageType {
         case kPICTURE:
-            print("picture tapped")
+            print("image tapped")
         case kLOCATION:
             print("location tapped")
-
         case kVIDEO:
 
             let message = messages[indexPath.row]
@@ -260,7 +259,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let takePhotoOrVideo = UIAlertAction(title: "카메라", style: .default) { action in
-            print("카메라")
+            camera.PresentMultyCamera(target: self, canEdit: false)
         }
         
         let sharePhoto = UIAlertAction(title: "사진 앨범", style: .default) { action in
