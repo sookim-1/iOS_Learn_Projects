@@ -36,6 +36,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     var minMessageNumber = 0
     var loadOld = false
     var loadedMessagesCount = 0
+
+    var typingCounter = 0 // 타이핑
     
     var messages: [JSQMessage] = []
     var objectMessages: [NSDictionary] = [] // objectMessages 와 loadedMessages는 항상동기화되어야 함
@@ -80,6 +82,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        createTypingObserver()
         navigationItem.largeTitleDisplayMode = .never
         
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -113,8 +116,71 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
          */
     }
     
+    // MARK: - IBACtions
     @objc func backAction() {
+        removeListeners()
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Typing Indicator
+    
+    func createTypingObserver() {
+        
+        // Firebase Listener로 입력중인지 확인
+        typingListener = reference(.Typing).document(chatRoomId).addSnapshotListener({ (snapshot, error) in
+            
+            guard let snapshot = snapshot else { return }
+            
+            if snapshot.exists {
+                
+                for data in snapshot.data()! {
+                    if data.key != FUser.currentId() {
+                        
+                        let typing = data.value as! Bool
+                        self.showTypingIndicator = typing
+                        
+                        if typing {
+                            self.scrollToBottom(animated: true)
+                        }
+                    }
+                }
+            } else {
+                reference(.Typing).document(self.chatRoomId).setData([FUser.currentId() : false])
+            }
+            
+        })
+        
+    }
+
+    func typingCounterStart() {
+        
+        typingCounter += 1
+        
+        typingCounterSave(typing: true)
+        
+        // 2초 동안 입력없으면 타이핑인식 종료
+        self.perform(#selector(self.typingCounterStop), with: nil, afterDelay: 2.0)
+    }
+    
+    @objc func typingCounterStop() {
+        typingCounter -= 1
+
+        if typingCounter == 0 {
+            typingCounterSave(typing: false)
+        }
+    }
+
+    func typingCounterSave(typing: Bool) {
+        
+        reference(.Typing).document(chatRoomId).updateData([FUser.currentId() : typing])
+    }
+    
+    //MARK: UITextViewDelegate
+    
+    override func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        typingCounterStart()
+        return true
     }
     
     // MARK: - JSQMessages DataSource functions
@@ -784,6 +850,20 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         
         picker.dismiss(animated: true)
     }
+    
+    func removeListeners() {
+        
+        if typingListener != nil {
+            typingListener!.remove()
+        }
+        if newChatListener != nil {
+            newChatListener!.remove()
+        }
+        if updatedChatListener != nil {
+            updatedChatListener!.remove()
+        }
+    }
+    
 }
 
 extension JSQMessagesInputToolbar {
