@@ -16,6 +16,8 @@ import FirebaseFirestore
 
 class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, IQAudioRecorderViewControllerDelegate {
 
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var chatRoomId: String!
     var memberIds: [String]!
     var membersToPush: [String]!
@@ -271,7 +273,9 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
         
         let shareLocation = UIAlertAction(title: "위치 전송", style: .default) { action in
-            print("위치 전송")
+            if self.haveAccessToUserLocation() {
+                self.sendMessage(text: nil, date: Date(), picture: nil, location: kLOCATION, video: nil, audio: nil)
+            }
         }
         
         let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
@@ -500,7 +504,16 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             return
         }
         
-        
+        //send location message
+        if location != nil {
+            
+            let lat: NSNumber = NSNumber(value: appDelegate.coordinates!.latitude) // 위도
+            let long: NSNumber = NSNumber(value: appDelegate.coordinates!.longitude) // 경도
+            
+            let text = "[\(kLOCATION)]"
+
+            outgoingMessage = OutgoingMessage(message: text, latitude: lat, longitude: long, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kLOCATION)
+        }
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         self.finishSendingMessage()
@@ -671,6 +684,17 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         
         return isIncoming(messageDictionary: messageDictionary)
         
+    }
+    
+    // MARK: - Location access
+    
+    func haveAccessToUserLocation() -> Bool {
+        if appDelegate.locationManager != nil {
+            return true
+        } else {
+            ProgressHUD.showError("위치 권한을 확인해주세요!")
+            return false
+        }
     }
     
     // MARK: - Helper functions
