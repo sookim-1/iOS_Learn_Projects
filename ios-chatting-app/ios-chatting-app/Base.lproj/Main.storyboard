@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -644,6 +645,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10R-en-eOx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6492.753623188406" y="-280.58035714285711"/>
+        </scene>
+        <!--Pictures Collection View Controller-->
+        <scene sceneID="j5P-rR-sDr">
+            <objects>
+                <collectionViewController storyboardIdentifier="mediaView" id="HFp-aP-g4e" customClass="PicturesCollectionViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="y1X-BW-jFF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aC0-Hj-je0">
+                            <size key="itemSize" width="105" height="105"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="25" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PicturesCollectionViewCell" id="89G-oe-lmF" customClass="PicturesCollectionViewCell" customModule="ios_chatting_app" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="105" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vR5-dn-Ytb">
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o2N-aN-nmE">
+                                            <rect key="frame" x="0.0" y="4" width="105" height="97"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="o2N-aN-nmE" firstAttribute="width" secondItem="vR5-dn-Ytb" secondAttribute="width" id="QZT-jv-Cf3"/>
+                                        <constraint firstItem="o2N-aN-nmE" firstAttribute="centerX" secondItem="vR5-dn-Ytb" secondAttribute="centerX" id="aeP-Yg-Src"/>
+                                        <constraint firstItem="o2N-aN-nmE" firstAttribute="centerY" secondItem="vR5-dn-Ytb" secondAttribute="centerY" id="keI-t4-5zX"/>
+                                        <constraint firstItem="o2N-aN-nmE" firstAttribute="height" secondItem="vR5-dn-Ytb" secondAttribute="height" multiplier="0.92381" id="vrg-z7-Nfd"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="imageView" destination="o2N-aN-nmE" id="YvJ-oK-ezx"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="HFp-aP-g4e" id="Jfq-Mx-NVV"/>
+                            <outlet property="delegate" destination="HFp-aP-g4e" id="QwE-7T-1tf"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iub-Eb-3bb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6492.753623188406" y="407.8125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ICM-BY-NyP">
