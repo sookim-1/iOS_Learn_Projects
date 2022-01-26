@@ -471,6 +471,60 @@
             </objects>
             <point key="canvasLocation" x="5064" y="-281"/>
         </scene>
+        <!--Contacts Table View Controller-->
+        <scene sceneID="low-HF-eqY">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIE-gy-7dw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="contactsView" id="fVA-2a-XfC" customClass="ContactsTableViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="yhc-9X-E7P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" id="Ays-Ns-zzG" customClass="UserTableViewCell" customModule="ios_chatting_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ays-Ns-zzG" id="T82-DU-65J">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTp-G2-lL0">
+                                            <rect key="frame" x="76" y="39.5" width="318" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Aba-Gg-6iT">
+                                            <rect key="frame" x="8" y="20" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="ax9-8K-hyr"/>
+                                                <constraint firstAttribute="width" constant="60" id="nGd-CH-LbK"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GTp-G2-lL0" firstAttribute="centerY" secondItem="T82-DU-65J" secondAttribute="centerY" id="Cqe-NP-Ps8"/>
+                                        <constraint firstItem="Aba-Gg-6iT" firstAttribute="centerY" secondItem="T82-DU-65J" secondAttribute="centerY" id="WV6-Zm-CUK"/>
+                                        <constraint firstItem="GTp-G2-lL0" firstAttribute="leading" secondItem="Aba-Gg-6iT" secondAttribute="trailing" constant="8" id="a9U-ta-ZVS"/>
+                                        <constraint firstItem="Aba-Gg-6iT" firstAttribute="leading" secondItem="T82-DU-65J" secondAttribute="leading" constant="8" id="n4e-NH-y1a"/>
+                                        <constraint firstItem="GTp-G2-lL0" firstAttribute="trailing" secondItem="T82-DU-65J" secondAttribute="trailingMargin" id="sN3-Qc-Uw2"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="Aba-Gg-6iT" id="6gu-yU-q6C"/>
+                                    <outlet property="fullNameLabel" destination="GTp-G2-lL0" id="aPD-ej-A16"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fVA-2a-XfC" id="32k-Po-SBL"/>
+                            <outlet property="delegate" destination="fVA-2a-XfC" id="KkS-2T-2Ax"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="4299" y="-953"/>
+        </scene>
         <!--Profile View Table View Controller-->
         <scene sceneID="ovv-Pt-CXC">
             <objects>

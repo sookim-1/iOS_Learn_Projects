@@ -12,6 +12,8 @@
 		762E74E527A11BE400F1D16E /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74E427A11BE400F1D16E /* BackgroundCollectionViewCell.swift */; };
 		762E74E727A11EC200F1D16E /* TermsAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74E627A11EC200F1D16E /* TermsAndConditionViewController.swift */; };
 		762E74E927A136B800F1D16E /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74E827A136B800F1D16E /* EditProfileTableViewController.swift */; };
+		762E74EC27A13BA300F1D16E /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74EB27A13BA300F1D16E /* ContactsTableViewController.swift */; };
+		762E74EE27A13DED00F1D16E /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74ED27A13DED00F1D16E /* CountryCode.swift */; };
 		767C489A279E7B2C00F48F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C4899279E7B2C00F48F2B /* AppDelegate.swift */; };
 		767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C489B279E7B2C00F48F2B /* SceneDelegate.swift */; };
 		767C48A1279E7B2C00F48F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767C489F279E7B2C00F48F2B /* Main.storyboard */; };
@@ -57,6 +59,8 @@
 		762E74E427A11BE400F1D16E /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		762E74E627A11EC200F1D16E /* TermsAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionViewController.swift; sourceTree = "<group>"; };
 		762E74E827A136B800F1D16E /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		762E74EB27A13BA300F1D16E /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		762E74ED27A13DED00F1D16E /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		767C4896279E7B2C00F48F2B /* ios-chatting-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-chatting-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		767C4899279E7B2C00F48F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767C489B279E7B2C00F48F2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		762E74EA27A13B7600F1D16E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				762E74E027A115DD00F1D16E /* BlockedUsersViewController.swift */,
+				762E74E227A11BCF00F1D16E /* BackgroundCollectionViewController.swift */,
+				762E74E627A11EC200F1D16E /* TermsAndConditionViewController.swift */,
+				762E74E827A136B800F1D16E /* EditProfileTableViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		767C488D279E7B2C00F48F2B = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +186,7 @@
 				7696B51027A0590F00CC5245 /* PhotoMediaItem.swift */,
 				7696B51227A0605000CC5245 /* VideoMediaItem.swift */,
 				7696B51427A06C6200CC5245 /* AudioViewController.swift */,
+				762E74ED27A13DED00F1D16E /* CountryCode.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -229,10 +245,8 @@
 				7696B504279F123900CC5245 /* ChatViewController.swift */,
 				7696B51627A0771900CC5245 /* MapViewController.swift */,
 				7696B51827A086D700CC5245 /* PicturesCollectionViewController.swift */,
-				762E74E027A115DD00F1D16E /* BlockedUsersViewController.swift */,
-				762E74E227A11BCF00F1D16E /* BackgroundCollectionViewController.swift */,
-				762E74E627A11EC200F1D16E /* TermsAndConditionViewController.swift */,
-				762E74E827A136B800F1D16E /* EditProfileTableViewController.swift */,
+				762E74EB27A13BA300F1D16E /* ContactsTableViewController.swift */,
+				762E74EA27A13B7600F1D16E /* Settings */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -396,12 +410,14 @@
 				7696B505279F123900CC5245 /* ChatViewController.swift in Sources */,
 				7696B503279EFEE900CC5245 /* RecentChatsTableViewCellDelegate.swift in Sources */,
 				767C48BA279E996E00F48F2B /* FinishRegistrationViewController.swift in Sources */,
+				762E74EC27A13BA300F1D16E /* ContactsTableViewController.swift in Sources */,
 				767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */,
 				767C48B2279E894400F48F2B /* FUser.swift in Sources */,
 				767C48B6279E8C3500F48F2B /* CollectionReference.swift in Sources */,
 				767C48BE279EB22900F48F2B /* SettingsTableViewController.swift in Sources */,
 				762E74E127A115DD00F1D16E /* BlockedUsersViewController.swift in Sources */,
 				7696B50D27A0501600CC5245 /* Download.swift in Sources */,
+				762E74EE27A13DED00F1D16E /* CountryCode.swift in Sources */,
 				767C48C2279EC23B00F48F2B /* UIImage+Ext.swift in Sources */,
 				762E74E727A11EC200F1D16E /* TermsAndConditionViewController.swift in Sources */,
 				7696B51727A0771900CC5245 /* MapViewController.swift in Sources */,
