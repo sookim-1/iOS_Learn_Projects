@@ -17,7 +17,7 @@ Pods/
 
 ### GoogleInfo.plist
 ios-chatting-app/ios-chatting-app/GoogleService-Info.plist
-
+ios-chatting-app/ios-chatting-app/Helpers/Keys.swift
 
 ### API
 
