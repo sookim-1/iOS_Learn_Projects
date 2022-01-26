@@ -1575,6 +1575,177 @@
             </objects>
             <point key="canvasLocation" x="5064" y="-954"/>
         </scene>
+        <!--Group View Controller-->
+        <scene sceneID="yeL-BV-LSt">
+            <objects>
+                <viewController storyboardIdentifier="groupView" id="Nnw-d3-PbW" customClass="GroupViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kg2-YA-wYM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OjB-SN-ttO">
+                                <rect key="frame" x="16" y="49" width="80" height="80"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="RWu-U4-sjd"/>
+                                    <constraint firstAttribute="height" constant="80" id="v39-c7-Ozr"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8b1-pe-hKk" appends="YES" id="NJI-Ax-6Zm"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="채팅방 이름" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEg-zr-9rS">
+                                <rect key="frame" x="109" y="69" width="289" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="채팅방 이름을 입력해주세요" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTu-80-RAr">
+                                <rect key="frame" x="109" y="122" width="289" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbJ-eT-yzp">
+                                <rect key="frame" x="16" y="133" width="80" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="AUz-vj-MhO"/>
+                                    <constraint firstAttribute="width" constant="80" id="oB0-33-Cdf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="수정"/>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="Nnw-d3-PbW" eventType="touchUpInside" id="Orj-Oo-Bup"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zid-jX-xhN">
+                                <rect key="frame" x="16" y="178" width="382" height="41"/>
+                                <color key="backgroundColor" red="0.21259039029999999" green="0.64081493270000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="fFi-g7-npu"/>
+                                </constraints>
+                                <state key="normal" title="저장하기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="Nnw-d3-PbW" eventType="touchUpInside" id="Nqx-ow-Mke"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a5N-Bd-Alh"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a5N-Bd-Alh" firstAttribute="trailing" secondItem="PEg-zr-9rS" secondAttribute="trailing" constant="16" id="8eT-Lw-hh4"/>
+                            <constraint firstItem="Zid-jX-xhN" firstAttribute="leading" secondItem="a5N-Bd-Alh" secondAttribute="leading" constant="16" id="AES-G5-ncc"/>
+                            <constraint firstItem="OjB-SN-ttO" firstAttribute="leading" secondItem="a5N-Bd-Alh" secondAttribute="leading" constant="16" id="IHw-9n-Zmd"/>
+                            <constraint firstItem="PEg-zr-9rS" firstAttribute="top" secondItem="a5N-Bd-Alh" secondAttribute="top" constant="25" id="InF-Jn-4jS"/>
+                            <constraint firstItem="cTu-80-RAr" firstAttribute="leading" secondItem="OjB-SN-ttO" secondAttribute="trailing" constant="13" id="MbK-3c-thS"/>
+                            <constraint firstItem="pbJ-eT-yzp" firstAttribute="leading" secondItem="a5N-Bd-Alh" secondAttribute="leading" constant="16" id="fJh-ub-RIU"/>
+                            <constraint firstItem="PEg-zr-9rS" firstAttribute="leading" secondItem="OjB-SN-ttO" secondAttribute="trailing" constant="13" id="jjM-fo-W6l"/>
+                            <constraint firstItem="OjB-SN-ttO" firstAttribute="top" secondItem="a5N-Bd-Alh" secondAttribute="top" constant="5" id="l5C-2L-puj"/>
+                            <constraint firstItem="a5N-Bd-Alh" firstAttribute="trailing" secondItem="cTu-80-RAr" secondAttribute="trailing" constant="16" id="mA4-gf-j1d"/>
+                            <constraint firstItem="pbJ-eT-yzp" firstAttribute="top" secondItem="OjB-SN-ttO" secondAttribute="bottom" constant="4" id="mGg-U6-wIQ"/>
+                            <constraint firstItem="cTu-80-RAr" firstAttribute="top" secondItem="PEg-zr-9rS" secondAttribute="bottom" constant="19" id="mKy-ky-Phe"/>
+                            <constraint firstItem="Zid-jX-xhN" firstAttribute="top" secondItem="pbJ-eT-yzp" secondAttribute="bottom" constant="19" id="tM4-bv-YKX"/>
+                            <constraint firstItem="a5N-Bd-Alh" firstAttribute="trailing" secondItem="Zid-jX-xhN" secondAttribute="trailing" constant="16" id="vUg-yh-HlP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButtonOutlet" destination="OjB-SN-ttO" id="fMP-a0-5gP"/>
+                        <outlet property="editButtonOutlet" destination="pbJ-eT-yzp" id="CfJ-GK-Y8s"/>
+                        <outlet property="groupNameTextField" destination="PEg-zr-9rS" id="PZS-QQ-DKU"/>
+                        <outlet property="iconTapGesture" destination="8b1-pe-hKk" id="jiI-0j-RQR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2XR-R0-Sf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8b1-pe-hKk">
+                    <connections>
+                        <action selector="cameraIconTapped:" destination="Nnw-d3-PbW" id="JxJ-Mc-mtJ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="5786" y="-954"/>
+        </scene>
+        <!--Invite Users Table View Controller-->
+        <scene sceneID="XpL-P0-APD">
+            <objects>
+                <tableViewController storyboardIdentifier="inviteUsersTableView" id="Qpx-xd-BgM" customClass="InviteUsersTableViewController" customModule="ios_chatting_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="aEc-iv-aO4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="G0H-9g-bao">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZLx-c3-1Qt">
+                                    <rect key="frame" x="8" y="10" width="398" height="32"/>
+                                    <segments>
+                                        <segment title="도시"/>
+                                        <segment title="국가"/>
+                                        <segment title="모두"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="filterSegmentValueChanged:" destination="Qpx-xd-BgM" eventType="valueChanged" id="7Qr-dt-Uvj"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="ZLx-c3-1Qt" firstAttribute="centerX" secondItem="G0H-9g-bao" secondAttribute="centerX" id="6il-WU-puQ"/>
+                                <constraint firstAttribute="trailing" secondItem="ZLx-c3-1Qt" secondAttribute="trailing" constant="8" id="IGA-Kq-2SG"/>
+                                <constraint firstItem="ZLx-c3-1Qt" firstAttribute="centerY" secondItem="G0H-9g-bao" secondAttribute="centerY" id="cbl-oN-XkY"/>
+                                <constraint firstItem="ZLx-c3-1Qt" firstAttribute="leading" secondItem="G0H-9g-bao" secondAttribute="leading" constant="8" id="f2O-72-9CO"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" id="WcL-KZ-0lj" customClass="UserTableViewCell" customModule="ios_chatting_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="95.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WcL-KZ-0lj" id="WSe-4x-g4c">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uq3-gF-gw9">
+                                            <rect key="frame" x="76" y="29.5" width="318" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="e1U-Ux-fSh">
+                                            <rect key="frame" x="8" y="10" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="Igz-MW-ba8"/>
+                                                <constraint firstAttribute="height" constant="60" id="h9m-qf-dpV"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Uq3-gF-gw9" firstAttribute="centerY" secondItem="WSe-4x-g4c" secondAttribute="centerY" id="Fqx-WC-Bgz"/>
+                                        <constraint firstItem="e1U-Ux-fSh" firstAttribute="leading" secondItem="WSe-4x-g4c" secondAttribute="leading" constant="8" id="K0i-Tn-8gf"/>
+                                        <constraint firstItem="Uq3-gF-gw9" firstAttribute="trailing" secondItem="WSe-4x-g4c" secondAttribute="trailingMargin" id="mvo-vG-hF2"/>
+                                        <constraint firstItem="e1U-Ux-fSh" firstAttribute="centerY" secondItem="WSe-4x-g4c" secondAttribute="centerY" id="vOD-I6-yPL"/>
+                                        <constraint firstItem="Uq3-gF-gw9" firstAttribute="leading" secondItem="e1U-Ux-fSh" secondAttribute="trailing" constant="8" id="xya-5E-r72"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="e1U-Ux-fSh" id="aOs-LH-YRb"/>
+                                    <outlet property="fullNameLabel" destination="Uq3-gF-gw9" id="yXc-PM-sju"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qpx-xd-BgM" id="stv-ht-0cB"/>
+                            <outlet property="delegate" destination="Qpx-xd-BgM" id="pWC-A4-eRv"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="headerView" destination="G0H-9g-bao" id="ID6-ZP-52e"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbM-Lm-6K3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6493" y="-954"/>
+        </scene>
     </scenes>
     <resources>
         <image name="avatarPlaceholder" width="101" height="101"/>

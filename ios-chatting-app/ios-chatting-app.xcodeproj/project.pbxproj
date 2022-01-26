@@ -18,6 +18,8 @@
 		762E74F227A14CE800F1D16E /* GroupMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74F127A14CE800F1D16E /* GroupMemberCollectionViewCell.swift */; };
 		762E74F427A14D0E00F1D16E /* GroupMemberCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74F327A14D0E00F1D16E /* GroupMemberCollectionViewCellDelegate.swift */; };
 		762E74F627A14D7F00F1D16E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74F527A14D7F00F1D16E /* Group.swift */; };
+		762E74FA27A1654F00F1D16E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74F927A1654F00F1D16E /* GroupViewController.swift */; };
+		762E74FC27A168DE00F1D16E /* InviteUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74FB27A168DE00F1D16E /* InviteUsersTableViewController.swift */; };
 		767C489A279E7B2C00F48F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C4899279E7B2C00F48F2B /* AppDelegate.swift */; };
 		767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C489B279E7B2C00F48F2B /* SceneDelegate.swift */; };
 		767C48A1279E7B2C00F48F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767C489F279E7B2C00F48F2B /* Main.storyboard */; };
@@ -69,6 +71,8 @@
 		762E74F127A14CE800F1D16E /* GroupMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		762E74F327A14D0E00F1D16E /* GroupMemberCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		762E74F527A14D7F00F1D16E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		762E74F927A1654F00F1D16E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		762E74FB27A168DE00F1D16E /* InviteUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersTableViewController.swift; sourceTree = "<group>"; };
 		767C4896279E7B2C00F48F2B /* ios-chatting-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-chatting-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		767C4899279E7B2C00F48F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767C489B279E7B2C00F48F2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				7696B51827A086D700CC5245 /* PicturesCollectionViewController.swift */,
 				762E74EB27A13BA300F1D16E /* ContactsTableViewController.swift */,
 				762E74EF27A14C1000F1D16E /* NewGroupViewController.swift */,
+				762E74F927A1654F00F1D16E /* GroupViewController.swift */,
+				762E74FB27A168DE00F1D16E /* InviteUsersTableViewController.swift */,
 				762E74EA27A13B7600F1D16E /* Settings */,
 			);
 			path = SecondaryViews;
@@ -402,6 +408,7 @@
 				7696B509279F277100CC5245 /* IncomingMessages.swift in Sources */,
 				767C48B8279E8CEB00F48F2B /* HelperFunctions.swift in Sources */,
 				762E74F427A14D0E00F1D16E /* GroupMemberCollectionViewCellDelegate.swift in Sources */,
+				762E74FA27A1654F00F1D16E /* GroupViewController.swift in Sources */,
 				762E74F627A14D7F00F1D16E /* Group.swift in Sources */,
 				7696B51127A0590F00CC5245 /* PhotoMediaItem.swift in Sources */,
 				7696B51527A06C6200CC5245 /* AudioViewController.swift in Sources */,
@@ -430,6 +437,7 @@
 				767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */,
 				767C48B2279E894400F48F2B /* FUser.swift in Sources */,
 				767C48B6279E8C3500F48F2B /* CollectionReference.swift in Sources */,
+				762E74FC27A168DE00F1D16E /* InviteUsersTableViewController.swift in Sources */,
 				767C48BE279EB22900F48F2B /* SettingsTableViewController.swift in Sources */,
 				762E74E127A115DD00F1D16E /* BlockedUsersViewController.swift in Sources */,
 				7696B50D27A0501600CC5245 /* Download.swift in Sources */,
