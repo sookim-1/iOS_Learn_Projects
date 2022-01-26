@@ -24,13 +24,13 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewWillAppear(animated)
         
         loadRecentChats()
-        
+
         tableView.tableFooterView = UIView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         recentListener.remove()
     }
     
@@ -52,9 +52,12 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
 
     @IBAction func createNewChatButtonPressed(_ sender: Any) {
-        let userVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "usersTableView") as! UsersTableViewController
-        
-        self.navigationController?.pushViewController(userVC, animated: true)
+        selectUserForChat(isGroup: false)
+    }
+    
+    
+    @objc func groupButtonPressed() {
+        selectUserForChat(isGroup: true)
     }
     
     // MARK: - TableViewDataSource
@@ -193,9 +196,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.tableHeaderView = headerView
     }
     
-    @objc func groupButtonPressed() {
-        print("hello")
-    }
     
     // MARK: - RecentChatsCell delegate
     func didTapAvatarImage(indexPath: IndexPath) {
@@ -245,6 +245,15 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     //MARK: Helper functions
+    
+    func selectUserForChat(isGroup: Bool) {
+        
+        let contactsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "contactsView") as! ContactsTableViewController
+        
+        contactsVC.isGroup = isGroup
+        
+        self.navigationController?.pushViewController(contactsVC, animated: true)
+    }
     
     func updatePushMembers(recent: NSDictionary, mute: Bool) {
         
