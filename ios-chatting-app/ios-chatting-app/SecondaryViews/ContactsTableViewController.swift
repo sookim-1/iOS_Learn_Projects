@@ -53,7 +53,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
             
             do {
-                let containerResults = try     contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
+                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
                 results.append(contentsOf: containerResults)
             } catch {
                 print("Error fetching results for container")
@@ -258,7 +258,12 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
     @objc func nextButtonPressed() {
-        print("nextButtonPressed")
+        let newGroupVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newGroupView") as! NewGroupViewController
+        
+        newGroupVC.memberIds = memberIdsOfGroupChat
+        newGroupVC.allMembers = membersOfGroupChat
+        
+        self.navigationController?.pushViewController(newGroupVC, animated: true)
         
     }
     
@@ -346,6 +351,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
                     let phoneNumber = fulMobNumVar.value(forKey: "digits") as? String
                     
                     let contactNumber = removeCountryCode(countryCodeLetters: countryCode!, fullPhoneNumber: phoneNumber!)
+                    print(contactNumber)
                     
                     //compare phoneNumber of contact with given user's phone number
                     if contactNumber == phoneNumberToCompareAgainst {
