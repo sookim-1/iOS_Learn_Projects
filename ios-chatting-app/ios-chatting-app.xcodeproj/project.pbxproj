@@ -21,6 +21,10 @@
 		762E74FA27A1654F00F1D16E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74F927A1654F00F1D16E /* GroupViewController.swift */; };
 		762E74FC27A168DE00F1D16E /* InviteUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74FB27A168DE00F1D16E /* InviteUsersTableViewController.swift */; };
 		762E74FE27A1845000F1D16E /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74FD27A1845000F1D16E /* Encryption.swift */; };
+		762E750327A1BA5400F1D16E /* CallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E750227A1BA5400F1D16E /* CallTableViewCell.swift */; };
+		762E750527A1BB7400F1D16E /* CallClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E750427A1BB7400F1D16E /* CallClass.swift */; };
+		762E750727A1BEC000F1D16E /* CallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E750627A1BEC000F1D16E /* CallTableViewController.swift */; };
+		762E750927A1BF1800F1D16E /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E750827A1BF1800F1D16E /* Badges.swift */; };
 		767C489A279E7B2C00F48F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C4899279E7B2C00F48F2B /* AppDelegate.swift */; };
 		767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C489B279E7B2C00F48F2B /* SceneDelegate.swift */; };
 		767C48A1279E7B2C00F48F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767C489F279E7B2C00F48F2B /* Main.storyboard */; };
@@ -75,6 +79,12 @@
 		762E74F927A1654F00F1D16E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		762E74FB27A168DE00F1D16E /* InviteUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersTableViewController.swift; sourceTree = "<group>"; };
 		762E74FD27A1845000F1D16E /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		762E74FF27A189D200F1D16E /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		762E750127A1971F00F1D16E /* ios-chatting-app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ios-chatting-app.entitlements"; sourceTree = "<group>"; };
+		762E750227A1BA5400F1D16E /* CallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTableViewCell.swift; sourceTree = "<group>"; };
+		762E750427A1BB7400F1D16E /* CallClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallClass.swift; sourceTree = "<group>"; };
+		762E750627A1BEC000F1D16E /* CallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTableViewController.swift; sourceTree = "<group>"; };
+		762E750827A1BF1800F1D16E /* Badges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
 		767C4896279E7B2C00F48F2B /* ios-chatting-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-chatting-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		767C4899279E7B2C00F48F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767C489B279E7B2C00F48F2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +168,7 @@
 		767C4898279E7B2C00F48F2B /* ios-chatting-app */ = {
 			isa = PBXGroup;
 			children = (
+				762E750127A1971F00F1D16E /* ios-chatting-app.entitlements */,
 				7696B4FA279EE57100CC5245 /* CustomCells */,
 				7696B4F7279EE45D00CC5245 /* Protocols */,
 				767C4899279E7B2C00F48F2B /* AppDelegate.swift */,
@@ -185,6 +196,7 @@
 				767C48B5279E8C3500F48F2B /* CollectionReference.swift */,
 				7696B50C27A0501600CC5245 /* Download.swift */,
 				7696B50E27A0525C00CC5245 /* Keys.swift */,
+				762E750827A1BF1800F1D16E /* Badges.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -203,6 +215,7 @@
 				762E74ED27A13DED00F1D16E /* CountryCode.swift */,
 				762E74F527A14D7F00F1D16E /* Group.swift */,
 				762E74FD27A1845000F1D16E /* Encryption.swift */,
+				762E750427A1BB7400F1D16E /* CallClass.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -233,6 +246,7 @@
 				7696B51A27A0874600CC5245 /* PicturesCollectionViewCell.swift */,
 				762E74E427A11BE400F1D16E /* BackgroundCollectionViewCell.swift */,
 				762E74F127A14CE800F1D16E /* GroupMemberCollectionViewCell.swift */,
+				762E750227A1BA5400F1D16E /* CallTableViewCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -251,6 +265,7 @@
 			children = (
 				767C48BD279EB22800F48F2B /* SettingsTableViewController.swift */,
 				767C48C6279ECC7D00F48F2B /* ChatsViewController.swift */,
+				762E750627A1BEC000F1D16E /* CallTableViewController.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -284,6 +299,7 @@
 		D4F0865DC6573FFBF37F0A36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				762E74FF27A189D200F1D16E /* ImagePicker.framework */,
 				4B6465CA363F375B232F32E6 /* Pods_ios_chatting_app.framework */,
 			);
 			name = Frameworks;
@@ -411,6 +427,7 @@
 				7696B509279F277100CC5245 /* IncomingMessages.swift in Sources */,
 				767C48B8279E8CEB00F48F2B /* HelperFunctions.swift in Sources */,
 				762E74F427A14D0E00F1D16E /* GroupMemberCollectionViewCellDelegate.swift in Sources */,
+				762E750527A1BB7400F1D16E /* CallClass.swift in Sources */,
 				762E74FA27A1654F00F1D16E /* GroupViewController.swift in Sources */,
 				762E74F627A14D7F00F1D16E /* Group.swift in Sources */,
 				7696B51127A0590F00CC5245 /* PhotoMediaItem.swift in Sources */,
@@ -423,6 +440,7 @@
 				767C48AE279E7E6700F48F2B /* WelcomeViewController.swift in Sources */,
 				7696B4F6279EE11800CC5245 /* ProfileViewTableViewController.swift in Sources */,
 				762E74F027A14C1000F1D16E /* NewGroupViewController.swift in Sources */,
+				762E750327A1BA5400F1D16E /* CallTableViewCell.swift in Sources */,
 				7696B507279F200F00CC5245 /* OutgoingMessages.swift in Sources */,
 				7696B51927A086D700CC5245 /* PicturesCollectionViewController.swift in Sources */,
 				767C48C7279ECC7D00F48F2B /* ChatsViewController.swift in Sources */,
@@ -436,6 +454,7 @@
 				7696B505279F123900CC5245 /* ChatViewController.swift in Sources */,
 				7696B503279EFEE900CC5245 /* RecentChatsTableViewCellDelegate.swift in Sources */,
 				767C48BA279E996E00F48F2B /* FinishRegistrationViewController.swift in Sources */,
+				762E750727A1BEC000F1D16E /* CallTableViewController.swift in Sources */,
 				762E74EC27A13BA300F1D16E /* ContactsTableViewController.swift in Sources */,
 				762E74F227A14CE800F1D16E /* GroupMemberCollectionViewCell.swift in Sources */,
 				767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */,
@@ -447,6 +466,7 @@
 				7696B50D27A0501600CC5245 /* Download.swift in Sources */,
 				762E74EE27A13DED00F1D16E /* CountryCode.swift in Sources */,
 				767C48C2279EC23B00F48F2B /* UIImage+Ext.swift in Sources */,
+				762E750927A1BF1800F1D16E /* Badges.swift in Sources */,
 				762E74E727A11EC200F1D16E /* TermsAndConditionViewController.swift in Sources */,
 				7696B51727A0771900CC5245 /* MapViewController.swift in Sources */,
 			);
@@ -596,6 +616,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ios-chatting-app/ios-chatting-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2MRY8P7863;
@@ -633,6 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ios-chatting-app/ios-chatting-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2MRY8P7863;

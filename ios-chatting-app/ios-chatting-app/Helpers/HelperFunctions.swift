@@ -119,3 +119,30 @@ func dataImageFromString(pictureString: String, withBlock: (_ image: Data?) -> V
     
     withBlock(imageData as Data?)
 }
+
+// 전화 시간 포맷팅
+func formatCallTime(date: Date) -> String {
+    
+    let seconds = NSDate().timeIntervalSince(date)
+    
+    var elapsed: String?
+    
+    
+    if (seconds < 60) {
+        elapsed = "Just now"
+    }  else if (seconds < 24 * 60 * 60) {
+        
+        let currentDateFormater = dateFormatter()
+        currentDateFormater.dateFormat = "HH:mm"
+        
+        elapsed = "\(currentDateFormater.string(from: date))"
+    } else {
+        let currentDateFormater = dateFormatter()
+        currentDateFormater.dateFormat = "dd/MM/YYYY"
+        
+        elapsed = "\(currentDateFormater.string(from: date))"
+    }
+    
+    return elapsed!
+}
+
