@@ -106,6 +106,11 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         navigationItem.largeTitleDisplayMode = .never
         
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"), style: .plain, target: self, action: #selector(self.backAction))]
+        
+        if isGroup! {
+            getCurrentGroup(withId: chatRoomId)
+        }
+        
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
@@ -592,6 +597,20 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)
     }
     
+    func setUIForGroupChat() {
+        
+        imageFromData(pictureData: (group![kAVATAR] as! String)) { (image) in
+            
+            if image != nil {
+                avatarButton.setImage(image!.circleMasked, for: .normal)
+            }
+        }
+        
+        titleLabel.text = titleName
+        subTitleLabel.text = ""
+    }
+    
+    
     @objc func infoButtonPressed() {
         let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mediaView") as! PicturesCollectionViewController
         
@@ -991,6 +1010,19 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
         if updatedChatListener != nil {
             updatedChatListener!.remove()
+        }
+    }
+    
+    func getCurrentGroup(withId: String) {
+        
+        reference(.Group).document(withId).getDocument { (snapshot, error) in
+            
+            guard let snapshot = snapshot else { return }
+            
+            if snapshot.exists {
+                self.group = snapshot.data() as! NSDictionary
+                self.setUIForGroupChat()
+            }
         }
     }
     
