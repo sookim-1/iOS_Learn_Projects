@@ -20,6 +20,7 @@
 		762E74F627A14D7F00F1D16E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74F527A14D7F00F1D16E /* Group.swift */; };
 		762E74FA27A1654F00F1D16E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74F927A1654F00F1D16E /* GroupViewController.swift */; };
 		762E74FC27A168DE00F1D16E /* InviteUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74FB27A168DE00F1D16E /* InviteUsersTableViewController.swift */; };
+		762E74FE27A1845000F1D16E /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E74FD27A1845000F1D16E /* Encryption.swift */; };
 		767C489A279E7B2C00F48F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C4899279E7B2C00F48F2B /* AppDelegate.swift */; };
 		767C489C279E7B2C00F48F2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C489B279E7B2C00F48F2B /* SceneDelegate.swift */; };
 		767C48A1279E7B2C00F48F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767C489F279E7B2C00F48F2B /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		762E74F527A14D7F00F1D16E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		762E74F927A1654F00F1D16E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		762E74FB27A168DE00F1D16E /* InviteUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersTableViewController.swift; sourceTree = "<group>"; };
+		762E74FD27A1845000F1D16E /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		767C4896279E7B2C00F48F2B /* ios-chatting-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-chatting-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		767C4899279E7B2C00F48F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767C489B279E7B2C00F48F2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				7696B51427A06C6200CC5245 /* AudioViewController.swift */,
 				762E74ED27A13DED00F1D16E /* CountryCode.swift */,
 				762E74F527A14D7F00F1D16E /* Group.swift */,
+				762E74FD27A1845000F1D16E /* Encryption.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				762E74F627A14D7F00F1D16E /* Group.swift in Sources */,
 				7696B51127A0590F00CC5245 /* PhotoMediaItem.swift in Sources */,
 				7696B51527A06C6200CC5245 /* AudioViewController.swift in Sources */,
+				762E74FE27A1845000F1D16E /* Encryption.swift in Sources */,
 				767C48B4279E899E00F48F2B /* Constants.swift in Sources */,
 				762E74E927A136B800F1D16E /* EditProfileTableViewController.swift in Sources */,
 				767C48C5279EC4DC00F48F2B /* UsersTableViewController.swift in Sources */,
