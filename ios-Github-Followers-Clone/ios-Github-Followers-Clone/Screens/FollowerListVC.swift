@@ -49,9 +49,10 @@ class FollowerListVC: UIViewController {
     }
     
     func getFollowers(username: String, page: Int) {
+        showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
-            
+            self.dismissLoadingView()
             switch result {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollowers = false }
@@ -84,9 +85,9 @@ class FollowerListVC: UIViewController {
 
 extension FollowerListVC: UICollectionViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let offsetY = scrollView.contentOffset.y // 총 컨텐츠사이즈 중 어느 위치 ex 4842
-        let contentHeight = scrollView.contentSize.height // 스크롤뷰의 총 컨텐츠사이즈 높이 ex 5465
-        let height = scrollView.frame.size.height // 화면사이즈의 높이 ex 812
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
             guard hasMoreFollowers else { return }
