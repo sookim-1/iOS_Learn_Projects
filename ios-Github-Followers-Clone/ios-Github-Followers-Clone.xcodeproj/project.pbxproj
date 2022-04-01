@@ -11,6 +11,8 @@
 		7627E44527F1AA8800A17FB0 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7627E44427F1AA8800A17FB0 /* FavoriteCell.swift */; };
 		763C1D0B27D18DB2000FF597 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C1D0A27D18DB2000FF597 /* UserInfoVC.swift */; };
 		76801CFE27F776C600CB5F8C /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76801CFD27F776C600CB5F8C /* GFTabBarController.swift */; };
+		76801D0027F7906D00CB5F8C /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76801CFF27F7906D00CB5F8C /* GFAlertContainerView.swift */; };
+		76801D0227F7978700CB5F8C /* GFDataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76801D0127F7978700CB5F8C /* GFDataLoadingVC.swift */; };
 		7690AC6327217DA600884843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690AC6227217DA600884843 /* AppDelegate.swift */; };
 		7690AC6527217DA600884843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7690AC6427217DA600884843 /* SceneDelegate.swift */; };
 		7690AC6C27217DA700884843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7690AC6B27217DA700884843 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		7627E44427F1AA8800A17FB0 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		763C1D0A27D18DB2000FF597 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		76801CFD27F776C600CB5F8C /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
+		76801CFF27F7906D00CB5F8C /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
+		76801D0127F7978700CB5F8C /* GFDataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingVC.swift; sourceTree = "<group>"; };
 		7690AC5F27217DA600884843 /* ios-Github-Followers-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-Github-Followers-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7690AC6227217DA600884843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7690AC6427217DA600884843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 			children = (
 				7697AEA727CFBC5E0005A6AA /* GFEmptyStateView.swift */,
 				76A57EFE27D5714300964930 /* GFItemInfoView.swift */,
+				76801CFF27F7906D00CB5F8C /* GFAlertContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				76A57F0627D57C8100964930 /* ItemInfoVC */,
 				76B808452722E5460020FB0A /* GFAlertVC.swift */,
 				76A57EF827D55E1000964930 /* GFUserInfoHeaderVC.swift */,
+				76801D0127F7978700CB5F8C /* GFDataLoadingVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				76A57EF927D55E1000964930 /* GFUserInfoHeaderVC.swift in Sources */,
 				76B8083A2722A1580020FB0A /* GFButton.swift in Sources */,
 				7690ACB82721A3D900884843 /* SearchVC.swift in Sources */,
+				76801D0227F7978700CB5F8C /* GFDataLoadingVC.swift in Sources */,
 				7697AEA827CFBC5E0005A6AA /* GFEmptyStateView.swift in Sources */,
 				76A57EFB27D55E7B00964930 /* GFSecondaryTitleLabel.swift in Sources */,
 				76B8083E2722CEA60020FB0A /* FollowerListVC.swift in Sources */,
@@ -370,6 +377,7 @@
 				7690AC6327217DA600884843 /* AppDelegate.swift in Sources */,
 				76B808422722E3010020FB0A /* GFTitleLabel.swift in Sources */,
 				76B808402722DA120020FB0A /* String+Ext.swift in Sources */,
+				76801D0027F7906D00CB5F8C /* GFAlertContainerView.swift in Sources */,
 				76A57F0127D5763800964930 /* GFItemInfoVC.swift in Sources */,
 				76A57F0527D57C3600964930 /* GFFollowerItemVC.swift in Sources */,
 				7627E44327F19F1E00A17FB0 /* PersistenceManager.swift in Sources */,
