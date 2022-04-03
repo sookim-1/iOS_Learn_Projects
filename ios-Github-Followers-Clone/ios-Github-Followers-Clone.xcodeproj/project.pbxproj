@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7621A11727F9D88D00452446 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7621A11627F9D88D00452446 /* UITableView+Ext.swift */; };
 		7627E44327F19F1E00A17FB0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7627E44227F19F1E00A17FB0 /* PersistenceManager.swift */; };
 		7627E44527F1AA8800A17FB0 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7627E44427F1AA8800A17FB0 /* FavoriteCell.swift */; };
 		763C1D0B27D18DB2000FF597 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C1D0A27D18DB2000FF597 /* UserInfoVC.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7621A11627F9D88D00452446 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		7627E44227F19F1E00A17FB0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		7627E44427F1AA8800A17FB0 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		763C1D0A27D18DB2000FF597 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				76B808472722EF320020FB0A /* UIViewController+Ext.swift */,
 				76A57F0727D57FC800964930 /* Date+Ext.swift */,
 				76801D0827F7A9DF00CB5F8C /* UIView+Ext.swift */,
+				7621A11627F9D88D00452446 /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				769564442724657C00B0F886 /* Follower.swift in Sources */,
 				7690AC6327217DA600884843 /* AppDelegate.swift in Sources */,
 				76B808422722E3010020FB0A /* GFTitleLabel.swift in Sources */,
+				7621A11727F9D88D00452446 /* UITableView+Ext.swift in Sources */,
 				76B808402722DA120020FB0A /* String+Ext.swift in Sources */,
 				76801D0027F7906D00CB5F8C /* GFAlertContainerView.swift in Sources */,
 				76A57F0127D5763800964930 /* GFItemInfoVC.swift in Sources */,
