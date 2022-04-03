@@ -8,6 +8,7 @@
 import UIKit
 
 class FavoritesListVC: GFDataLoadingVC {
+    
     let tableView = UITableView()
     var favorites: [Follower] = []
     
@@ -61,9 +62,11 @@ class FavoritesListVC: GFDataLoadingVC {
             }
         }
     }
+    
 }
 
 extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorites.count
     }
@@ -98,4 +101,5 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
             self.presentGFAlertOnMainThread(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
         }
     }
+    
 }

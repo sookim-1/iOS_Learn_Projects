@@ -95,9 +95,11 @@ class SearchVC: UIViewController {
 }
 
 extension SearchVC: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
         
         return true
     }
+    
 }

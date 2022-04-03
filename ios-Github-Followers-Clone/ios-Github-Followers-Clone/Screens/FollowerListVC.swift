@@ -146,9 +146,11 @@ class FollowerListVC: GFDataLoadingVC {
             
         }
     }
+    
 }
 
 extension FollowerListVC: UICollectionViewDelegate {
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -171,9 +173,11 @@ extension FollowerListVC: UICollectionViewDelegate {
         let navController = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
     }
+    
 }
 
 extension FollowerListVC: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {
             filterdFollowers.removeAll()
@@ -185,9 +189,11 @@ extension FollowerListVC: UISearchResultsUpdating {
         filterdFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filterdFollowers)
     }
+    
 }
 
 extension FollowerListVC: UserInfoVCDelegate {
+    
     func didRequestFollowers(for username: String) {
         self.username = username
         title = username
@@ -197,4 +203,5 @@ extension FollowerListVC: UserInfoVCDelegate {
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         getFollowers(username: username, page: page)
     }
+    
 }

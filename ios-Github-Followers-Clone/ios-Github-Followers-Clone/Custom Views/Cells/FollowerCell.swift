@@ -8,6 +8,7 @@
 import UIKit
 
 class FollowerCell: UICollectionViewCell {
+    
     static let reuseID = "FollowerCell"
     
     let avatarImageView = GFAvatarImageView(frame: .zero)
@@ -50,4 +51,5 @@ class FollowerCell: UICollectionViewCell {
             usernameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
+    
 }

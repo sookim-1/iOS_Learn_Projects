@@ -28,5 +28,4 @@ class GFAvatarImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    
 }
