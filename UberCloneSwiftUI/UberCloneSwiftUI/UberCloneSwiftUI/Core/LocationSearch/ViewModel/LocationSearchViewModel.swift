@@ -12,7 +12,9 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     // MARK: - 프로퍼티
     @Published var results: [MKLocalSearchCompletion] = []          // 부분적인 문자열을 완성하는 완전한 형식의 문자열 (검색한 결과에 대한 title, subtitle을 담고있는 객체)
-    @Published var selectedLocationCoordinate: CLLocationCoordinate2D?
+    @Published var selectedUberLocation: UberLocation?
+    @Published var pickupTime: String?
+    @Published var dropOffTime: String?
     
     private let searchCompleter = MKLocalSearchCompleter()          // 검색하기 위해 사용할 객체
     
@@ -48,7 +50,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
             guard let item = response?.mapItems.first else { return }
             let coordinate = item.placemark.coordinate
             
-            self.selectedLocationCoordinate = coordinate
+            self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
             print("선택된 위치 좌표: \(coordinate)")
         }
     }
@@ -63,7 +65,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     }
     
     func computeRiderPrice(forType type: RideType) -> Double {
-        guard let destCoordinate = selectedLocationCoordinate else { return 0.0 }
+        guard let destCoordinate = selectedUberLocation?.coordinate else { return 0.0 }
         guard let userCoordinate = self.userLocation else { return 0.0 }
         
         let userLocation = CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)
@@ -72,6 +74,39 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         let tripDistanceInMeters = userLocation.distance(from: destination)
         
         return type.computePrice(for: tripDistanceInMeters)
+    }
+    
+    // 경로가져오는 메서드
+    func getDestinationRoute(from userLocation: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping (MKRoute) -> Void) {
+        let userPlacemark = MKPlacemark(coordinate: userLocation)
+        let destPlacemark = MKPlacemark(coordinate: destination)
+        let request = MKDirections.Request()
+        
+        request.source = MKMapItem(placemark: userPlacemark)
+        request.destination = MKMapItem(placemark: destPlacemark)
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { response, error in
+            if let error {
+                print("경로 계산 오류: \(error.localizedDescription)")
+                
+                return
+            }
+
+            guard let route = response?.routes.first else { return }
+            self.configurePickupAndDropoffTimes(with: route.expectedTravelTime)
+            completion(route)
+        }
+    }
+    
+    // 예상이동시간 구하는 메서드
+    func configurePickupAndDropoffTimes(with expectedTravelTime: Double) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        
+        pickupTime = formatter.string(from: Date())
+        dropOffTime = formatter.string(from: Date() + expectedTravelTime)
     }
     
 }

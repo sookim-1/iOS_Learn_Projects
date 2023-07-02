@@ -22,6 +22,7 @@
 		7657E8BD2A51BE0A00C97878 /* RideRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8BC2A51BE0A00C97878 /* RideRequestView.swift */; };
 		7657E8BF2A51CBDA00C97878 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8BE2A51CBDA00C97878 /* RideType.swift */; };
 		7657E8C12A51D2CF00C97878 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8C02A51D2CF00C97878 /* Double+Extension.swift */; };
+		7657E8C32A51D54C00C97878 /* UberLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8C22A51D54C00C97878 /* UberLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		7657E8BC2A51BE0A00C97878 /* RideRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestView.swift; sourceTree = "<group>"; };
 		7657E8BE2A51CBDA00C97878 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
 		7657E8C02A51D2CF00C97878 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		7657E8C22A51D54C00C97878 /* UberLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				764BCA7B2A516DE300575FAE /* MapViewState.swift */,
 				7657E8BE2A51CBDA00C97878 /* RideType.swift */,
+				7657E8C22A51D54C00C97878 /* UberLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				7636B3D12A51434B006D29A2 /* UberCloneSwiftUIApp.swift in Sources */,
 				7636B3E82A514460006D29A2 /* UberMapViewRepresentable.swift in Sources */,
 				7636B3E62A5143C6006D29A2 /* HomeView.swift in Sources */,
+				7657E8C32A51D54C00C97878 /* UberLocation.swift in Sources */,
 				7636B3F02A514C70006D29A2 /* LocationSearchActivationView.swift in Sources */,
 				7636B3F62A5150AD006D29A2 /* LocationSearchResultCell.swift in Sources */,
 				7657E8BF2A51CBDA00C97878 /* RideType.swift in Sources */,
