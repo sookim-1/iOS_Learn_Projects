@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LocationSearchActivationView: View {
+    
     var body: some View {
         HStack {
-            
             Rectangle()
                 .fill(Color.black)
                 .frame(width: 8, height: 8)
@@ -28,6 +28,7 @@ struct LocationSearchActivationView: View {
                 .shadow(color: .black, radius: 6)
         )
     }
+    
 }
 
 struct LocationSearchActivationView_Previews: PreviewProvider {
