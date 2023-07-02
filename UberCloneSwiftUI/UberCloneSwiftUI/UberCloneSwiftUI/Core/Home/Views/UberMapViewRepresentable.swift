@@ -32,6 +32,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         if let coordinate = locationViewModel.selectedLocationCoordinate {
             print("지도 화면에서 선택된 위치 : \(coordinate) ")
+            context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
         }
     }
     
@@ -46,15 +47,19 @@ extension UberMapViewRepresentable {
     
     class MapCoordinator: NSObject, MKMapViewDelegate {
         
+        // MARK: - 프로퍼티
         let parent: UberMapViewRepresentable
         
+        // MARK: - Lifecycle
         init(parent: UberMapViewRepresentable) {
             self.parent = parent
             
             super.init()
         }
         
-        // 지도 업데이트
+        // MARK: - MKMapViewDelegate
+        
+        // 지도 업데이트될 때 호출되는 메서드
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
             // center: 위경도 좌표, span: 확대축소
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude),
@@ -63,6 +68,19 @@ extension UberMapViewRepresentable {
             parent.mapView.setRegion(region, animated: true)
         }
 
+        // MARK: - Helpers
+        
+        // 맵뷰 annotation추가하는 메서드
+        func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+            parent.mapView.removeAnnotations(parent.mapView.annotations)             // 마커 모두 제거
+            
+            let destinationAnno = MKPointAnnotation()
+            destinationAnno.coordinate = coordinate
+            parent.mapView.addAnnotation(destinationAnno)
+            parent.mapView.selectAnnotation(destinationAnno, animated: true)
+            
+            parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)  // 현재위치와 도착지 마커를 지도 반경에 맞도록 설정
+        }
     }
     
 }
