@@ -12,6 +12,7 @@
 		7636B3D82A51434E006D29A2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7636B3D72A51434E006D29A2 /* Preview Assets.xcassets */; };
 		7636B3E62A5143C6006D29A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7636B3E52A5143C6006D29A2 /* HomeView.swift */; };
 		7636B3E82A514460006D29A2 /* UberMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7636B3E72A514460006D29A2 /* UberMapViewRepresentable.swift */; };
+		7636B3EA2A514673006D29A2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7636B3E92A514673006D29A2 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		7636B3D72A51434E006D29A2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7636B3E52A5143C6006D29A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7636B3E72A514460006D29A2 /* UberMapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberMapViewRepresentable.swift; sourceTree = "<group>"; };
+		7636B3E92A514673006D29A2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		7636B3E12A514362006D29A2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				7636B3E92A514673006D29A2 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7636B3EA2A514673006D29A2 /* LocationManager.swift in Sources */,
 				7636B3D12A51434B006D29A2 /* UberCloneSwiftUIApp.swift in Sources */,
 				7636B3E82A514460006D29A2 /* UberMapViewRepresentable.swift in Sources */,
 				7636B3E62A5143C6006D29A2 /* HomeView.swift in Sources */,
@@ -330,6 +334,7 @@
 				DEVELOPMENT_TEAM = 2MRY8P7863;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한을 요청하겠습니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -359,6 +364,7 @@
 				DEVELOPMENT_TEAM = 2MRY8P7863;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한을 요청하겠습니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
