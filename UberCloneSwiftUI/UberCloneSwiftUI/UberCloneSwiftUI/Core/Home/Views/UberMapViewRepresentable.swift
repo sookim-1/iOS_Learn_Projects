@@ -15,7 +15,6 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     // 해당 괄호의 메서드들은 모두 UIViewRepresentable의 메서드이고 MKMapViewDelegate는 Coordinator를 통해서 처리합니다.
     
     let mapView = MKMapView()
-    let locationManager = LocationManager()
     @Binding var mapState: MapViewState
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
     

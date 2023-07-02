@@ -10,6 +10,8 @@ import CoreLocation
 class LocationManager: NSObject, ObservableObject {
     
     private let locationManager = CLLocationManager()
+    static let shared = LocationManager()                   // EnvironMentObject로도 구현할 수 있음
+    @Published var userLocation: CLLocationCoordinate2D?
     
     override init() {
         super.init()
@@ -26,8 +28,9 @@ extension LocationManager: CLLocationManagerDelegate {
     
     // 위치업데이트
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard !locations.isEmpty else { return }
-        
+        guard let location = locations.first else { return }
+    
+        self.userLocation = location.coordinate
         print("위치 업데이트 시작: \(String(describing: locations.first))")
         locationManager.stopUpdatingLocation()                              // 해당 메서드를 한번만 호출하기 위해서 중지처리
     }
