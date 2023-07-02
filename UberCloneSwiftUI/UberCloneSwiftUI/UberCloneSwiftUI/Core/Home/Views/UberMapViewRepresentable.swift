@@ -16,6 +16,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
     let locationManager = LocationManager()
+    @Binding var mapState: MapViewState
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
     // 뷰를 생성
@@ -30,10 +31,21 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     
     // 뷰를 실제로 업데이트
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        if let coordinate = locationViewModel.selectedLocationCoordinate {
-            print("지도 화면에서 선택된 위치 : \(coordinate) ")
-            context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
-            context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
+        print("MapState 변경 : \(mapState)")
+        
+        switch mapState {
+        case .noInput:
+            context.coordinator.clearMapViewAndRecenterOnUserLocation()
+            break
+        case .searchingForLocation:
+            break
+        case .locationSelected:
+            if let coordinate = locationViewModel.selectedLocationCoordinate {
+                print("지도 화면에서 선택된 위치 : \(coordinate) ")
+                context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
+                context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
+            }
+            break
         }
     }
     
@@ -51,6 +63,7 @@ extension UberMapViewRepresentable {
         // MARK: - 프로퍼티
         let parent: UberMapViewRepresentable
         var userLocationCoordinate: CLLocationCoordinate2D?
+        var currentRegion: MKCoordinateRegion?
         
         // MARK: - Lifecycle
         init(parent: UberMapViewRepresentable) {
@@ -68,6 +81,7 @@ extension UberMapViewRepresentable {
             // center: 위경도 좌표, span: 확대축소
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude),
                                             span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+            self.currentRegion = region
             
             parent.mapView.setRegion(region, animated: true)
         }
@@ -130,6 +144,16 @@ extension UberMapViewRepresentable {
                 completion(route)
             }
         }
+        
+        func clearMapViewAndRecenterOnUserLocation() {
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            parent.mapView.removeOverlays(parent.mapView.overlays)
+            
+            if let currentRegion {
+                parent.mapView.setRegion(currentRegion, animated: true)
+            }
+        }
+        
     }
     
 }
