@@ -33,6 +33,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         print("MapState 변경 : \(mapState)")
         
+        // FIXME: break 호출해야 하는 이유, 이전에 경로가 제거되지 않던 이유 ->
         switch mapState {
         case .noInput:
             context.coordinator.clearMapViewAndRecenterOnUserLocation()
