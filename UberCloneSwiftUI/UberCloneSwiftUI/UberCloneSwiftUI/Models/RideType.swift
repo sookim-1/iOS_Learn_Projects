@@ -27,7 +27,7 @@ enum RideType: Int, CaseIterable, Identifiable {
     var imageName: String {
         switch self {
         case .uberX: return "uber-x"
-        case .black: return "uber-x"
+        case .black: return "uber-black"
         case .uberXL: return "uber-x"
         }
     }
