@@ -12,6 +12,8 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     // MARK: - 프로퍼티
     @Published var results: [MKLocalSearchCompletion] = []          // 부분적인 문자열을 완성하는 완전한 형식의 문자열 (검색한 결과에 대한 title, subtitle을 담고있는 객체)
+    @Published var selectedLocation: String?
+    
     private let searchCompleter = MKLocalSearchCompleter()          // 검색하기 위해 사용할 객체
     
     // 도착지 검색결과를 뷰모델에 저장하기 위해 사용
@@ -22,6 +24,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         }
     }
     
+    // MARK: Lifecycle
     override init() {
         super.init()
         
@@ -29,6 +32,12 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         searchCompleter.queryFragment = queryFragment
     }
     
+    // MARK: - Helpers
+    func selectLocation(_ location: String) {
+        self.selectedLocation = location
+        
+        print("선택한 주소 : \(String(describing: self.selectedLocation))")
+    }
 }
 
 // MARK: - MKLocalSearchCompleterDelegate
