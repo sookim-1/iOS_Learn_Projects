@@ -33,6 +33,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
         if let coordinate = locationViewModel.selectedLocationCoordinate {
             print("지도 화면에서 선택된 위치 : \(coordinate) ")
             context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
+            context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
         }
     }
     
@@ -49,6 +50,7 @@ extension UberMapViewRepresentable {
         
         // MARK: - 프로퍼티
         let parent: UberMapViewRepresentable
+        var userLocationCoordinate: CLLocationCoordinate2D?
         
         // MARK: - Lifecycle
         init(parent: UberMapViewRepresentable) {
@@ -61,11 +63,24 @@ extension UberMapViewRepresentable {
         
         // 지도 업데이트될 때 호출되는 메서드
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+            self.userLocationCoordinate = userLocation.coordinate
+            
             // center: 위경도 좌표, span: 확대축소
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude),
                                             span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
             
             parent.mapView.setRegion(region, animated: true)
+        }
+        
+        
+        // 지도에 오버레이를 그리도록 지시하는 경우 사용하는 메서드
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            let polyline = MKPolylineRenderer(overlay: overlay)
+            
+            polyline.strokeColor = .systemBlue
+            polyline.lineWidth = 6
+            
+            return polyline
         }
 
         // MARK: - Helpers
@@ -80,6 +95,40 @@ extension UberMapViewRepresentable {
             parent.mapView.selectAnnotation(destinationAnno, animated: true)
             
             parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)  // 현재위치와 도착지 마커를 지도 반경에 맞도록 설정
+        }
+        
+        // 지도에 경로 그리는 메서드
+        func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
+            guard let userLocationCoordinate else { return }
+            
+            getDestinationRoute(from: userLocationCoordinate, to: coordinate) { [weak self] route in
+                guard let self else { return }
+                
+                self.parent.mapView.addOverlay(route.polyline)
+            }
+        }
+        
+        // 경로가져오는 메서드
+        func getDestinationRoute(from userLocation: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping (MKRoute) -> Void) {
+            let userPlacemark = MKPlacemark(coordinate: userLocation)
+            let destPlacemark = MKPlacemark(coordinate: destination)
+            let request = MKDirections.Request()
+            
+            request.source = MKMapItem(placemark: userPlacemark)
+            request.destination = MKMapItem(placemark: destPlacemark)
+            
+            let directions = MKDirections(request: request)
+            
+            directions.calculate { response, error in
+                if let error {
+                    print("경로 계산 오류: \(error.localizedDescription)")
+                    
+                    return
+                }
+
+                guard let route = response?.routes.first else { return }
+                completion(route)
+            }
         }
     }
     
