@@ -108,8 +108,6 @@ extension UberMapViewRepresentable {
             destinationAnno.coordinate = coordinate
             parent.mapView.addAnnotation(destinationAnno)
             parent.mapView.selectAnnotation(destinationAnno, animated: true)
-            
-            parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)  // 현재위치와 도착지 마커를 지도 반경에 맞도록 설정
         }
         
         // 지도에 경로 그리는 메서드
@@ -120,6 +118,11 @@ extension UberMapViewRepresentable {
                 guard let self else { return }
                 
                 self.parent.mapView.addOverlay(route.polyline)
+                
+                // 현재위치와 도착지 마커를 지도 반경에 맞도록 설정
+                let rect = self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect, edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
+                
+                self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }
         

@@ -10,6 +10,7 @@ import SwiftUI
 struct MapViewActionButton: View {
     
     @Binding var mapState: MapViewState
+    @EnvironmentObject var viewModel: LocationSearchViewModel
     
     var body: some View {
         Button {
@@ -38,6 +39,7 @@ struct MapViewActionButton: View {
         case .locationSelected:
             print("메인 버튼 클릭: locationSelected")
             mapState = .noInput
+            viewModel.selectedLocationCoordinate = nil
         }
     }
     
