@@ -30,8 +30,8 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     
     // 뷰를 실제로 업데이트
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        if let selectedLocation = locationViewModel.selectedLocation {
-            print("지도 화면에서 선택된 위치 : \(selectedLocation) ")
+        if let coordinate = locationViewModel.selectedLocationCoordinate {
+            print("지도 화면에서 선택된 위치 : \(coordinate) ")
         }
     }
     

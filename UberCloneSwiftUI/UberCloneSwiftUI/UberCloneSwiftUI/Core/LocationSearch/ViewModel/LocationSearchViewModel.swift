@@ -12,7 +12,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     // MARK: - 프로퍼티
     @Published var results: [MKLocalSearchCompletion] = []          // 부분적인 문자열을 완성하는 완전한 형식의 문자열 (검색한 결과에 대한 title, subtitle을 담고있는 객체)
-    @Published var selectedLocation: String?
+    @Published var selectedLocationCoordinate: CLLocationCoordinate2D?
     
     private let searchCompleter = MKLocalSearchCompleter()          // 검색하기 위해 사용할 객체
     
@@ -33,11 +33,33 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     }
     
     // MARK: - Helpers
-    func selectLocation(_ location: String) {
-        self.selectedLocation = location
+    func selectLocation(_ localSearch: MKLocalSearchCompletion) {
+        print("선택된 주소: \(localSearch.title)")
         
-        print("선택한 주소 : \(String(describing: self.selectedLocation))")
+        locationSearch(forLocalSearchCompletion: localSearch) { response, error in
+            if let error {
+                print("에러 발생 : \(error.localizedDescription)")
+
+                return
+            }
+            
+            guard let item = response?.mapItems.first else { return }
+            let coordinate = item.placemark.coordinate
+            
+            self.selectedLocationCoordinate = coordinate
+            print("선택된 위치 좌표: \(coordinate)")
+        }
     }
+    
+    // 주소 문자열을 이용하여 위경도 좌표 구하는 메서드
+    func locationSearch(forLocalSearchCompletion localSearch: MKLocalSearchCompletion, completion: @escaping (MKLocalSearch.CompletionHandler)) {
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = localSearch.title.appending(localSearch.subtitle)
+        
+        let search = MKLocalSearch(request: searchRequest)
+        search.start(completionHandler: completion)
+    }
+    
 }
 
 // MARK: - MKLocalSearchCompleterDelegate
