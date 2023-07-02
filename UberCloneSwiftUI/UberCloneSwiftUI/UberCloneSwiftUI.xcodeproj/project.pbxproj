@@ -23,6 +23,7 @@
 		7657E8BF2A51CBDA00C97878 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8BE2A51CBDA00C97878 /* RideType.swift */; };
 		7657E8C12A51D2CF00C97878 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8C02A51D2CF00C97878 /* Double+Extension.swift */; };
 		7657E8C32A51D54C00C97878 /* UberLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8C22A51D54C00C97878 /* UberLocation.swift */; };
+		7657E8C52A51DA8E00C97878 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8C42A51DA8E00C97878 /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		7657E8BE2A51CBDA00C97878 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
 		7657E8C02A51D2CF00C97878 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		7657E8C22A51D54C00C97878 /* UberLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberLocation.swift; sourceTree = "<group>"; };
+		7657E8C42A51DA8E00C97878 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				7657E8C02A51D2CF00C97878 /* Double+Extension.swift */,
+				7657E8C42A51DA8E00C97878 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7636B3F82A515581006D29A2 /* LocationSearchViewModel.swift in Sources */,
+				7657E8C52A51DA8E00C97878 /* Color+Extension.swift in Sources */,
 				7636B3F42A514EA7006D29A2 /* LocationSearchView.swift in Sources */,
 				7636B3EA2A514673006D29A2 /* LocationManager.swift in Sources */,
 				7657E8BD2A51BE0A00C97878 /* RideRequestView.swift in Sources */,
