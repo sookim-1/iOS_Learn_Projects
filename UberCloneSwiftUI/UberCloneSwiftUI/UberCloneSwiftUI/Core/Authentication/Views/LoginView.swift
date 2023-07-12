@@ -36,41 +36,10 @@ struct LoginView: View {
                 
                 VStack(spacing: 32) {
                     // email
-                    VStack(alignment: .leading, spacing: 12) {
-                        // title
-                        Text("이메일")
-                            .foregroundColor(.white)
-                            .fontWeight(.semibold)
-                            .font(.footnote)
-                        
-                        // text fields
-                        TextField("이메일을 입력해주세요", text: $email)
-                            .foregroundColor(.white)
-                    
-                        // divider
-                        Rectangle()
-                            .foregroundColor(Color(.init(white: 1, alpha: 0.3)))
-                            .frame(width: UIScreen.main.bounds.width - 32, height: 0.7)
-                    }
-                    
-                    
+                    CustomInputField(text: $email, title: "이메일", placeholder: "이메일을 입력해주세요")
+                
                     // password
-                    VStack(alignment: .leading, spacing: 12) {
-                        // title
-                        Text("비밀번호")
-                            .foregroundColor(.white)
-                            .fontWeight(.semibold)
-                            .font(.footnote)
-                        
-                        // text fields
-                        TextField("비밀번호를 입력해주세요", text: $password)
-                            .foregroundColor(.white)
-                    
-                        // divider
-                        Rectangle()
-                            .foregroundColor(Color(.init(white: 1, alpha: 0.3)))
-                            .frame(width: UIScreen.main.bounds.width - 32, height: 0.7)
-                    }
+                    CustomInputField(text: $password, title: "비밀번호", placeholder: "비밀번호를 입력해주세요", isSecureField: true)
                     
                     Button {
                         

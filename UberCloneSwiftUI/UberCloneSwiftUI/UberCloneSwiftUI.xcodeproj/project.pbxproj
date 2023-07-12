@@ -26,6 +26,7 @@
 		7657E8C52A51DA8E00C97878 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657E8C42A51DA8E00C97878 /* Color+Extension.swift */; };
 		768CA4352A5EDB1400FE8114 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768CA4342A5EDB1400FE8114 /* LoginView.swift */; };
 		768CA4372A5EDB2000FE8114 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768CA4362A5EDB2000FE8114 /* RegistrationView.swift */; };
+		76A8F9F92A5EE2F2006EFE50 /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		7657E8C42A51DA8E00C97878 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		768CA4342A5EDB1400FE8114 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		768CA4362A5EDB2000FE8114 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		7636B3CF2A51434B006D29A2 /* UberCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				76A8F9F72A5EE2C1006EFE50 /* ReusableItems */,
 				7636B3DE2A514352006D29A2 /* App */,
 				7636B3DF2A514357006D29A2 /* Core */,
 				7636B3E22A514368006D29A2 /* Models */,
@@ -232,6 +235,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		76A8F9F72A5EE2C1006EFE50 /* ReusableItems */ = {
+			isa = PBXGroup;
+			children = (
+				76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */,
+			);
+			path = ReusableItems;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,6 +329,7 @@
 				7636B3F02A514C70006D29A2 /* LocationSearchActivationView.swift in Sources */,
 				7636B3F62A5150AD006D29A2 /* LocationSearchResultCell.swift in Sources */,
 				768CA4352A5EDB1400FE8114 /* LoginView.swift in Sources */,
+				76A8F9F92A5EE2F2006EFE50 /* CustomInputField.swift in Sources */,
 				7657E8BF2A51CBDA00C97878 /* RideType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
