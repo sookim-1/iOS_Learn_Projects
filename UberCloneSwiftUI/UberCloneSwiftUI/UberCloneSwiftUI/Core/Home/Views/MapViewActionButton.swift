@@ -11,6 +11,7 @@ struct MapViewActionButton: View {
     
     @Binding var mapState: MapViewState
     @EnvironmentObject var viewModel: LocationSearchViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         Button {
@@ -33,6 +34,8 @@ struct MapViewActionButton: View {
         switch state {
         case .noInput:
             print("메인 버튼 클릭: No Input")
+            // 임시로 로그아웃 설정
+            authViewModel.signout()
         case .searchingForLocation:
             print("메인 버튼 클릭: SearchingForLocation")
             mapState = .noInput
@@ -59,5 +62,7 @@ struct MapViewActionButton: View {
 struct MapViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
         MapViewActionButton(mapState: .constant(.noInput))
+            .environmentObject(LocationSearchViewModel())
+            .environmentObject(AuthViewModel())
     }
 }

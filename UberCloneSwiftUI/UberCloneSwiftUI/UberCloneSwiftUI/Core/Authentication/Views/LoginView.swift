@@ -11,6 +11,7 @@ struct LoginView: View {
     
     @State var email = ""
     @State var password = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationStack {
@@ -103,7 +104,7 @@ struct LoginView: View {
                     
                     // sign in button
                     Button {
-                        
+                        viewModel.signIn(withEmail: email, password: password)
                     } label: {
                         HStack {
                             Text("로그인")
@@ -143,5 +144,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(AuthViewModel())
     }
 }
