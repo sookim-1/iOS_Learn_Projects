@@ -34,6 +34,8 @@
 		76A8FA042A5EEA88006EFE50 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8FA032A5EEA88006EFE50 /* FirebaseStorage */; };
 		76A8FA062A5EED3F006EFE50 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA052A5EED3F006EFE50 /* AuthViewModel.swift */; };
 		76A8FA082A602CC5006EFE50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA072A602CC5006EFE50 /* User.swift */; };
+		76A8FA0D2A603041006EFE50 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA0C2A603041006EFE50 /* SideMenuView.swift */; };
+		76A8FA0F2A6032A1006EFE50 /* SideMenuOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA0E2A6032A1006EFE50 /* SideMenuOptionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76A8FA052A5EED3F006EFE50 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		76A8FA072A602CC5006EFE50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		76A8FA0C2A603041006EFE50 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		76A8FA0E2A6032A1006EFE50 /* SideMenuOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 		7636B3DF2A514357006D29A2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				76A8FA092A603027006EFE50 /* SideMenu */,
 				768CA4312A5EDAEE00FE8114 /* Authentication */,
 				7636B3EB2A514C34006D29A2 /* Home */,
 				7636B3EC2A514C40006D29A2 /* LocationSearch */,
@@ -260,6 +265,31 @@
 			path = ReusableItems;
 			sourceTree = "<group>";
 		};
+		76A8FA092A603027006EFE50 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				76A8FA0A2A603030006EFE50 /* ViewModel */,
+				76A8FA0B2A603036006EFE50 /* Views */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		76A8FA0A2A603030006EFE50 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76A8FA0E2A6032A1006EFE50 /* SideMenuOptionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		76A8FA0B2A603036006EFE50 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76A8FA0C2A603041006EFE50 /* SideMenuView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -343,6 +373,7 @@
 				7636B3F82A515581006D29A2 /* LocationSearchViewModel.swift in Sources */,
 				7657E8C52A51DA8E00C97878 /* Color+Extension.swift in Sources */,
 				7636B3F42A514EA7006D29A2 /* LocationSearchView.swift in Sources */,
+				76A8FA0F2A6032A1006EFE50 /* SideMenuOptionViewModel.swift in Sources */,
 				7636B3EA2A514673006D29A2 /* LocationManager.swift in Sources */,
 				7657E8BD2A51BE0A00C97878 /* RideRequestView.swift in Sources */,
 				768CA4372A5EDB2000FE8114 /* RegistrationView.swift in Sources */,
@@ -355,6 +386,7 @@
 				7636B3E82A514460006D29A2 /* UberMapViewRepresentable.swift in Sources */,
 				7636B3E62A5143C6006D29A2 /* HomeView.swift in Sources */,
 				7657E8C32A51D54C00C97878 /* UberLocation.swift in Sources */,
+				76A8FA0D2A603041006EFE50 /* SideMenuView.swift in Sources */,
 				7636B3F02A514C70006D29A2 /* LocationSearchActivationView.swift in Sources */,
 				7636B3F62A5150AD006D29A2 /* LocationSearchResultCell.swift in Sources */,
 				768CA4352A5EDB1400FE8114 /* LoginView.swift in Sources */,
