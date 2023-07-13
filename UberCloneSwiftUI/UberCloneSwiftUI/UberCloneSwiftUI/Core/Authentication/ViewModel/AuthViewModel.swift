@@ -13,6 +13,7 @@ class AuthViewModel: ObservableObject {
     
     // Firebase 인증 세션 : 로그인 한 사용자에 대한 정보들 저장하고 해당 값으로 로그인 여부 판별
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
     
     init() {
         userSession = Auth.auth().currentUser
@@ -86,6 +87,7 @@ class AuthViewModel: ObservableObject {
             
             print("DEBUG: 사용자 이름 \(user.fullname)")
             print("DEBUG: 사용자 이메일 \(user.email)")
+            self.currentUser = user
         }
     }
                   
