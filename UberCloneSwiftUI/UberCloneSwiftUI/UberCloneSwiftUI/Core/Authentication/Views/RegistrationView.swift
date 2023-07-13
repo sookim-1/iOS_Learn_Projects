@@ -13,6 +13,7 @@ struct RegistrationView: View {
     @State private var email = ""
     @State private var password = ""
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         ZStack {
@@ -41,7 +42,7 @@ struct RegistrationView: View {
                     VStack(spacing: 56) {
                         CustomInputField(text: $fullname, title: "이름", placeholder: "이름을 입력해주세요")
                         CustomInputField(text: $email, title: "이메일", placeholder: "이메일을 입력해주세요")
-                        CustomInputField(text: $password, title: "비밀번호", placeholder: "비밀번호를 입력해주세요")
+                        CustomInputField(text: $password, title: "비밀번호", placeholder: "비밀번호를 입력해주세요", isSecureField: true)
                     }
                     .padding(.leading)
                     
@@ -49,7 +50,7 @@ struct RegistrationView: View {
                     
                     // sign in button
                     Button {
-                        
+                        viewModel.registerUser(withEmail: email, password: password, fullname: fullname)
                     } label: {
                         HStack {
                             Text("회원가입")

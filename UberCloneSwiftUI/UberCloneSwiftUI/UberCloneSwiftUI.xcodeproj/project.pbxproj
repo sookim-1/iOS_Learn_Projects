@@ -32,6 +32,7 @@
 		76A8FA002A5EEA88006EFE50 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8F9FF2A5EEA88006EFE50 /* FirebaseFirestore */; };
 		76A8FA022A5EEA88006EFE50 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8FA012A5EEA88006EFE50 /* FirebaseFirestoreSwift */; };
 		76A8FA042A5EEA88006EFE50 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8FA032A5EEA88006EFE50 /* FirebaseStorage */; };
+		76A8FA062A5EED3F006EFE50 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA052A5EED3F006EFE50 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		768CA4362A5EDB2000FE8114 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76A8FA052A5EED3F006EFE50 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 		768CA4332A5EDB0000FE8114 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				76A8FA052A5EED3F006EFE50 /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				7636B3EA2A514673006D29A2 /* LocationManager.swift in Sources */,
 				7657E8BD2A51BE0A00C97878 /* RideRequestView.swift in Sources */,
 				768CA4372A5EDB2000FE8114 /* RegistrationView.swift in Sources */,
+				76A8FA062A5EED3F006EFE50 /* AuthViewModel.swift in Sources */,
 				7657E8C12A51D2CF00C97878 /* Double+Extension.swift in Sources */,
 				764BCA7C2A516DE300575FAE /* MapViewState.swift in Sources */,
 				7636B3F22A514DA5006D29A2 /* MapViewActionButton.swift in Sources */,
