@@ -40,6 +40,9 @@
 		76A8FA162A603C47006EFE50 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA152A603C47006EFE50 /* SettingsView.swift */; };
 		76A8FA182A603E3E006EFE50 /* SavedLocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA172A603E3E006EFE50 /* SavedLocationRowView.swift */; };
 		76A8FA1A2A603F2D006EFE50 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA192A603F2D006EFE50 /* SettingsRowView.swift */; };
+		76A8FA1C2A604311006EFE50 /* SavedLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA1B2A604311006EFE50 /* SavedLocationViewModel.swift */; };
+		76A8FA1E2A604565006EFE50 /* SavedLocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA1D2A604565006EFE50 /* SavedLocationSearchView.swift */; };
+		76A8FA202A604A24006EFE50 /* LocationSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA1F2A604A24006EFE50 /* LocationSearchResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +76,9 @@
 		76A8FA152A603C47006EFE50 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		76A8FA172A603E3E006EFE50 /* SavedLocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationRowView.swift; sourceTree = "<group>"; };
 		76A8FA192A603F2D006EFE50 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		76A8FA1B2A604311006EFE50 /* SavedLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationViewModel.swift; sourceTree = "<group>"; };
+		76A8FA1D2A604565006EFE50 /* SavedLocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationSearchView.swift; sourceTree = "<group>"; };
+		76A8FA1F2A604A24006EFE50 /* LocationSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +226,7 @@
 				7636B3EF2A514C70006D29A2 /* LocationSearchActivationView.swift */,
 				7636B3F32A514EA7006D29A2 /* LocationSearchView.swift */,
 				7636B3F52A5150AD006D29A2 /* LocationSearchResultCell.swift */,
+				76A8FA1D2A604565006EFE50 /* SavedLocationSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +279,7 @@
 				76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */,
 				76A8FA172A603E3E006EFE50 /* SavedLocationRowView.swift */,
 				76A8FA192A603F2D006EFE50 /* SettingsRowView.swift */,
+				76A8FA1F2A604A24006EFE50 /* LocationSearchResultsView.swift */,
 			);
 			path = ReusableItems;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 		76A8FA132A603C32006EFE50 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				76A8FA1B2A604311006EFE50 /* SavedLocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -407,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7636B3F82A515581006D29A2 /* LocationSearchViewModel.swift in Sources */,
+				76A8FA1E2A604565006EFE50 /* SavedLocationSearchView.swift in Sources */,
 				76A8FA182A603E3E006EFE50 /* SavedLocationRowView.swift in Sources */,
 				7657E8C52A51DA8E00C97878 /* Color+Extension.swift in Sources */,
 				7636B3F42A514EA7006D29A2 /* LocationSearchView.swift in Sources */,
@@ -415,6 +425,8 @@
 				7657E8BD2A51BE0A00C97878 /* RideRequestView.swift in Sources */,
 				768CA4372A5EDB2000FE8114 /* RegistrationView.swift in Sources */,
 				76A8FA062A5EED3F006EFE50 /* AuthViewModel.swift in Sources */,
+				76A8FA202A604A24006EFE50 /* LocationSearchResultsView.swift in Sources */,
+				76A8FA1C2A604311006EFE50 /* SavedLocationViewModel.swift in Sources */,
 				7657E8C12A51D2CF00C97878 /* Double+Extension.swift in Sources */,
 				76A8FA1A2A603F2D006EFE50 /* SettingsRowView.swift in Sources */,
 				76A8FA082A602CC5006EFE50 /* User.swift in Sources */,

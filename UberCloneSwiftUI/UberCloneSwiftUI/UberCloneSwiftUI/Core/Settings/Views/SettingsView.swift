@@ -49,9 +49,14 @@ struct SettingsView: View {
                 }
                 
                 Section("즐겨찾기") {
-                    SavedLocationRowView(imageName: "house.circle.fill", title: "집", subtitle: "추가하기")
-                    
-                    SavedLocationRowView(imageName: "archivebox.circle.fill", title: "직장", subtitle: "추가하기")
+                    ForEach(SavedLocationViewModel.allCases) { viewModel in
+                        // 각각의 버튼이 같은 곳을 향하기 때문 navigationDestination을 사용하지 않는다.
+                        NavigationLink {
+                            SavedLocationSearchView()
+                        } label: {
+                            SavedLocationRowView(viewModel: viewModel)
+                        }
+                    }
                 }
                 
                 Section("설정") {

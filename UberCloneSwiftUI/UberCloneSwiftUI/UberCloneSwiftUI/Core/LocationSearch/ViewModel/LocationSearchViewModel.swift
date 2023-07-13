@@ -8,6 +8,11 @@
 import Foundation
 import MapKit
 
+enum LocationResultsViewConfig {
+    case ride
+    case saveLocation
+}
+
 class LocationSearchViewModel: NSObject, ObservableObject {
     
     // MARK: - 프로퍼티
@@ -37,21 +42,26 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     }
     
     // MARK: - Helpers
-    func selectLocation(_ localSearch: MKLocalSearchCompletion) {
+    func selectLocation(_ localSearch: MKLocalSearchCompletion, config: LocationResultsViewConfig) {
         print("선택된 주소: \(localSearch.title)")
         
-        locationSearch(forLocalSearchCompletion: localSearch) { response, error in
-            if let error {
-                print("에러 발생 : \(error.localizedDescription)")
+        switch config {
+        case .ride:
+            locationSearch(forLocalSearchCompletion: localSearch) { response, error in
+                if let error {
+                    print("에러 발생 : \(error.localizedDescription)")
 
-                return
+                    return
+                }
+                
+                guard let item = response?.mapItems.first else { return }
+                let coordinate = item.placemark.coordinate
+                
+                self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
+                print("선택된 위치 좌표: \(coordinate)")
             }
-            
-            guard let item = response?.mapItems.first else { return }
-            let coordinate = item.placemark.coordinate
-            
-            self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
-            print("선택된 위치 좌표: \(coordinate)")
+        case .saveLocation:
+            print("DEBUG: 저장된 주소")
         }
     }
     

@@ -68,6 +68,7 @@ struct SideMenuView: View {
             // option list
             VStack {
                 ForEach(SideMenuOptionViewModel.allCases) { viewModel in
+                    // 각각의 버튼이 다른 곳을 향하기 때문 navigationDestination을 사용합니다.
                     NavigationLink(value: viewModel) {
                         SideMenuOptionView(viewModel: viewModel)
                             .padding()
