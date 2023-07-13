@@ -10,6 +10,7 @@ import SwiftUI
 struct MapViewActionButton: View {
     
     @Binding var mapState: MapViewState
+    @Binding var showSideMenu: Bool
     @EnvironmentObject var viewModel: LocationSearchViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
     
@@ -34,8 +35,7 @@ struct MapViewActionButton: View {
         switch state {
         case .noInput:
             print("메인 버튼 클릭: No Input")
-            // 임시로 로그아웃 설정
-            authViewModel.signout()
+            showSideMenu.toggle()
         case .searchingForLocation:
             print("메인 버튼 클릭: SearchingForLocation")
             mapState = .noInput
@@ -61,7 +61,7 @@ struct MapViewActionButton: View {
 
 struct MapViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
-        MapViewActionButton(mapState: .constant(.noInput))
+        MapViewActionButton(mapState: .constant(.noInput), showSideMenu: .constant(false))
             .environmentObject(LocationSearchViewModel())
             .environmentObject(AuthViewModel())
     }
