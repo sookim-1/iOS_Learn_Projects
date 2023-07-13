@@ -36,6 +36,7 @@
 		76A8FA082A602CC5006EFE50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA072A602CC5006EFE50 /* User.swift */; };
 		76A8FA0D2A603041006EFE50 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA0C2A603041006EFE50 /* SideMenuView.swift */; };
 		76A8FA0F2A6032A1006EFE50 /* SideMenuOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA0E2A6032A1006EFE50 /* SideMenuOptionViewModel.swift */; };
+		76A8FA112A6033CB006EFE50 /* SideMenuOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA102A6033CB006EFE50 /* SideMenuOptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		76A8FA072A602CC5006EFE50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		76A8FA0C2A603041006EFE50 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		76A8FA0E2A6032A1006EFE50 /* SideMenuOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionViewModel.swift; sourceTree = "<group>"; };
+		76A8FA102A6033CB006EFE50 /* SideMenuOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				76A8FA0C2A603041006EFE50 /* SideMenuView.swift */,
+				76A8FA102A6033CB006EFE50 /* SideMenuOptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				764BCA7C2A516DE300575FAE /* MapViewState.swift in Sources */,
 				7636B3F22A514DA5006D29A2 /* MapViewActionButton.swift in Sources */,
 				7636B3D12A51434B006D29A2 /* UberCloneSwiftUIApp.swift in Sources */,
+				76A8FA112A6033CB006EFE50 /* SideMenuOptionView.swift in Sources */,
 				7636B3E82A514460006D29A2 /* UberMapViewRepresentable.swift in Sources */,
 				7636B3E62A5143C6006D29A2 /* HomeView.swift in Sources */,
 				7657E8C32A51D54C00C97878 /* UberLocation.swift in Sources */,
