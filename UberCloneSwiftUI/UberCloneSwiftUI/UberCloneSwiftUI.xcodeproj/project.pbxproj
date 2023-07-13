@@ -43,6 +43,7 @@
 		76A8FA1C2A604311006EFE50 /* SavedLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA1B2A604311006EFE50 /* SavedLocationViewModel.swift */; };
 		76A8FA1E2A604565006EFE50 /* SavedLocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA1D2A604565006EFE50 /* SavedLocationSearchView.swift */; };
 		76A8FA202A604A24006EFE50 /* LocationSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA1F2A604A24006EFE50 /* LocationSearchResultsView.swift */; };
+		76A8FA222A604C59006EFE50 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8FA212A604C59006EFE50 /* SavedLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		76A8FA1B2A604311006EFE50 /* SavedLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationViewModel.swift; sourceTree = "<group>"; };
 		76A8FA1D2A604565006EFE50 /* SavedLocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationSearchView.swift; sourceTree = "<group>"; };
 		76A8FA1F2A604A24006EFE50 /* LocationSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsView.swift; sourceTree = "<group>"; };
+		76A8FA212A604C59006EFE50 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				7657E8BE2A51CBDA00C97878 /* RideType.swift */,
 				7657E8C22A51D54C00C97878 /* UberLocation.swift */,
 				76A8FA072A602CC5006EFE50 /* User.swift */,
+				76A8FA212A604C59006EFE50 /* SavedLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				76A8FA1A2A603F2D006EFE50 /* SettingsRowView.swift in Sources */,
 				76A8FA082A602CC5006EFE50 /* User.swift in Sources */,
 				764BCA7C2A516DE300575FAE /* MapViewState.swift in Sources */,
+				76A8FA222A604C59006EFE50 /* SavedLocation.swift in Sources */,
 				7636B3F22A514DA5006D29A2 /* MapViewActionButton.swift in Sources */,
 				7636B3D12A51434B006D29A2 /* UberCloneSwiftUIApp.swift in Sources */,
 				76A8FA112A6033CB006EFE50 /* SideMenuOptionView.swift in Sources */,

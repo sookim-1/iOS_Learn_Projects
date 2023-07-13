@@ -10,6 +10,7 @@ import SwiftUI
 struct SavedLocationRowView: View {
     
     let viewModel: SavedLocationViewModel
+    let user: User
     
     var body: some View {
         HStack(spacing: 12) {
@@ -23,16 +24,10 @@ struct SavedLocationRowView: View {
                     .font(.system(size: 15, weight: .semibold))
                     .foregroundColor(Color.theme.primaryTextColor)
                 
-                Text(viewModel.subtitle)
+                Text(viewModel.subtitle(forUser: user))
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
             }
         }
-    }
-}
-
-struct SavedLocationRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedLocationRowView(viewModel: .home)
     }
 }

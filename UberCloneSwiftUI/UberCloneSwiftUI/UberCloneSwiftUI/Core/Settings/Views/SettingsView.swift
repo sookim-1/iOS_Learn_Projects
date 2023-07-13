@@ -52,9 +52,9 @@ struct SettingsView: View {
                     ForEach(SavedLocationViewModel.allCases) { viewModel in
                         // 각각의 버튼이 같은 곳을 향하기 때문 navigationDestination을 사용하지 않는다.
                         NavigationLink {
-                            SavedLocationSearchView()
+                            SavedLocationSearchView(config: viewModel)
                         } label: {
-                            SavedLocationRowView(viewModel: viewModel)
+                            SavedLocationRowView(viewModel: viewModel, user: user)
                         }
                     }
                 }
