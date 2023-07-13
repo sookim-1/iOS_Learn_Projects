@@ -12,7 +12,7 @@ struct CustomInputField: View {
     @Binding var text: String
     let title: String
     let placeholder: String
-    var isSecureField = false
+    var isSecureField = false                   // 기본값을 제공하는 경우 생성자 파라미터로 옵셔널로 전달할 수 있습니다.
     
     var body: some View {
         // inputField

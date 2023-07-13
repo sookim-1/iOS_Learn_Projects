@@ -19,22 +19,24 @@ struct LoginView: View {
                     .ignoresSafeArea()
                 
                 VStack {
+                    
+                    // image and title
                     VStack(spacing: -16) {
                     
-                    // image
-                    Image(systemName: "car")
-                        .resizable()
-                        .foregroundColor(.white)
-                        .frame(width: 200, height: 200)
-                        .scaledToFill()
+                        // image
+                        Image(systemName: "car")
+                            .resizable()
+                            .foregroundColor(.white)
+                            .frame(width: 200, height: 200)
+                            .scaledToFill()
+                        
+                        // title
+                        Text("UBER")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                    }
                     
-                    // title
-                    Text("UBER")
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
                     // input fields
-                    
                     VStack(spacing: 32) {
                         // email
                         CustomInputField(text: $email, title: "이메일", placeholder: "이메일을 입력해주세요")
@@ -124,7 +126,7 @@ struct LoginView: View {
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         HStack {
-                            Text("계정이 생각나지 않아요!")
+                            Text("계정이 없으신가요?")
                                 .font(.system(size: 14))
                             
                             Text("회원가입")
