@@ -32,11 +32,14 @@ class AuthViewModel: ObservableObject {
             if let result {
                 print("DEBUG: User id\(result.user.uid))")
                 self.userSession = result.user
+                self.fetchUser()
             }
         }
     }
     
     func registerUser(withEmail email:String, password: String, fullname: String) {
+        guard let location = LocationManager.shared.userLocation else { return }
+        
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error {
                 print("DEBUG: 회원가입 에러발생: \(error.localizedDescription)")
@@ -52,9 +55,10 @@ class AuthViewModel: ObservableObject {
                 let user = User(fullname: fullname,
                                 email: email,
                                 uid: firebaseUser.uid,
-                                coordinates: GeoPoint(latitude: 37.577949, longitude: 126.973046),
+                                coordinates: GeoPoint(latitude: location.latitude, longitude: location.longitude),
                                 accountType: .driver)
                 
+                self.currentUser = user
                 // 인코딩된 객체를 저장
                 guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
                 
