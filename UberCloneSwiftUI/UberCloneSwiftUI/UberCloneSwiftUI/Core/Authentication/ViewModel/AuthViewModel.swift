@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import Firebase
 import FirebaseFirestoreSwift
 
@@ -14,6 +15,9 @@ class AuthViewModel: ObservableObject {
     // Firebase 인증 세션 : 로그인 한 사용자에 대한 정보들 저장하고 해당 값으로 로그인 여부 판별
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    
+    private let service = UserService.shared
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         userSession = Auth.auth().currentUser
@@ -87,16 +91,14 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchUser() {
-        guard let uid = self.userSession?.uid else { return }
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
-            guard let snapshot else { return }
-            
-            guard let user = try? snapshot.data(as: User.self) else { return }
-            
-            print("DEBUG: 사용자 이름 \(user.fullname)")
-            print("DEBUG: 사용자 이메일 \(user.email)")
-            self.currentUser = user
-        }
+        service.$user
+            .sink { [weak self] user in
+                guard let self
+                else { return }
+                
+                self.currentUser = user
+            }
+            .store(in: &cancellables)
     }
                   
 }
