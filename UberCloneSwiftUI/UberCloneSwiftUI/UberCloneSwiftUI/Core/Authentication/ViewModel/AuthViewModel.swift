@@ -49,7 +49,11 @@ class AuthViewModel: ObservableObject {
                 let firebaseUser = result.user
                 self.userSession = firebaseUser
                 print("DEBUG: User id\(firebaseUser.uid))")
-                let user = User(fullname: fullname, email: email, uid: firebaseUser.uid)
+                let user = User(fullname: fullname,
+                                email: email,
+                                uid: firebaseUser.uid,
+                                coordinates: GeoPoint(latitude: 37.577949, longitude: 126.973046),
+                                accountType: .driver)
                 
                 // 인코딩된 객체를 저장
                 guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
