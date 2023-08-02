@@ -25,6 +25,7 @@ struct UberCloneSwiftUIApp: App {
     // * 이렇게 하지 않으면, 각각의 화면에서 인스턴스를 생성할시 각각의 인스턴스는 다른 인스턴스이기 때문에 값을 전달하지 않는다.
     @StateObject var locationViewModel = LocationSearchViewModel()
     @StateObject var authViewModel = AuthViewModel()
+    @StateObject var homeViewModel = HomeViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
@@ -32,6 +33,7 @@ struct UberCloneSwiftUIApp: App {
             HomeView()
                 .environmentObject(locationViewModel)
                 .environmentObject(authViewModel)
+                .environmentObject(homeViewModel)
         }
     }
     
