@@ -31,6 +31,7 @@
 		768E52D92A7A9E7400114316 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E52D82A7A9E7400114316 /* DriverAnnotation.swift */; };
 		768E52DC2A7AA27D00114316 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E52DB2A7AA27D00114316 /* UserService.swift */; };
 		768E52DE2A7F496300114316 /* AcceptTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E52DD2A7F496300114316 /* AcceptTripView.swift */; };
+		768E52E02A7F4E5F00114316 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E52DF2A7F4E5F00114316 /* Trip.swift */; };
 		76A8F9F92A5EE2F2006EFE50 /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */; };
 		76A8F9FB2A5EE9A1006EFE50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */; };
 		76A8F9FE2A5EEA88006EFE50 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8F9FD2A5EEA88006EFE50 /* FirebaseAuth */; };
@@ -77,6 +78,7 @@
 		768E52D82A7A9E7400114316 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		768E52DB2A7AA27D00114316 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		768E52DD2A7F496300114316 /* AcceptTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTripView.swift; sourceTree = "<group>"; };
+		768E52DF2A7F4E5F00114316 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76A8FA052A5EED3F006EFE50 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				764BCA7B2A516DE300575FAE /* MapViewState.swift */,
+				768E52DF2A7F4E5F00114316 /* Trip.swift */,
 				7657E8BE2A51CBDA00C97878 /* RideType.swift */,
 				7657E8C22A51D54C00C97878 /* UberLocation.swift */,
 				76A8FA072A602CC5006EFE50 /* User.swift */,
@@ -453,6 +456,7 @@
 				768E52D52A7A928700114316 /* DeveloperPreview.swift in Sources */,
 				7657E8BD2A51BE0A00C97878 /* RideRequestView.swift in Sources */,
 				768E52DE2A7F496300114316 /* AcceptTripView.swift in Sources */,
+				768E52E02A7F4E5F00114316 /* Trip.swift in Sources */,
 				768CA4372A5EDB2000FE8114 /* RegistrationView.swift in Sources */,
 				76A8FA062A5EED3F006EFE50 /* AuthViewModel.swift in Sources */,
 				76A8FA202A604A24006EFE50 /* LocationSearchResultsView.swift in Sources */,

@@ -16,7 +16,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
     @Binding var mapState: MapViewState
-    @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    // @EnvironmentObject var locationViewModel: LocationSearchViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
     
     // 뷰를 생성
@@ -42,7 +42,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
         case .searchingForLocation:
             break
         case .locationSelected:
-            if let coordinate = locationViewModel.selectedUberLocation?.coordinate {
+            if let coordinate = homeViewModel.selectedUberLocation?.coordinate {
                 print("🚨 (updateUIView 계속해서 호출) 지도 화면에서 선택된 위치 : \(coordinate) ")
                 context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
                 context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
@@ -129,7 +129,7 @@ extension UberMapViewRepresentable {
         func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
             guard let userLocationCoordinate else { return }
             
-            parent.locationViewModel.getDestinationRoute(from: userLocationCoordinate, to: coordinate) { [weak self] route in
+            parent.homeViewModel.getDestinationRoute(from: userLocationCoordinate, to: coordinate) { [weak self] route in
                 guard let self else { return }
                 
                 self.parent.mapView.addOverlay(route.polyline)

@@ -10,7 +10,7 @@ import SwiftUI
 struct SavedLocationSearchView: View {
     
     // EnvironMentObject를 사용하지 않는 이유? EnvironMentObject를 사용하면 검색결과가 변경되어서 재사용하는 경우 동일한 인스턴스를 가지고 있어서 다른화면에서도 값이 일정하지 않기 때문
-    @StateObject var viewModel = LocationSearchViewModel()
+    @StateObject var viewModel = HomeViewModel()
     let config: SavedLocationViewModel
     
     var body: some View {
