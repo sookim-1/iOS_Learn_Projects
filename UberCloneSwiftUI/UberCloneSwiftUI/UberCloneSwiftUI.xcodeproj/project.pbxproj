@@ -38,6 +38,7 @@
 		768F51562A7FAF8100A7D95C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51552A7FAF8100A7D95C /* AuthViewModel.swift */; };
 		768F51582A7FB0C500A7D95C /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51572A7FB0C400A7D95C /* Spinner.swift */; };
 		768F515C2A7FBFF000A7D95C /* PickupPassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F515B2A7FBFF000A7D95C /* PickupPassengerView.swift */; };
+		768F515F2A7FCBD400A7D95C /* TripCancelledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F515E2A7FCBD400A7D95C /* TripCancelledView.swift */; };
 		76A8F9F92A5EE2F2006EFE50 /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */; };
 		76A8F9FB2A5EE9A1006EFE50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */; };
 		76A8F9FE2A5EEA88006EFE50 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8F9FD2A5EEA88006EFE50 /* FirebaseAuth */; };
@@ -90,6 +91,7 @@
 		768F51552A7FAF8100A7D95C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		768F51572A7FB0C400A7D95C /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		768F515B2A7FBFF000A7D95C /* PickupPassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupPassengerView.swift; sourceTree = "<group>"; };
+		768F515E2A7FCBD400A7D95C /* TripCancelledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCancelledView.swift; sourceTree = "<group>"; };
 		76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76A8FA072A602CC5006EFE50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 		7657E8BB2A51BDF900C97878 /* Trips */ = {
 			isa = PBXGroup;
 			children = (
+				768F515D2A7FCBC500A7D95C /* Shared */,
 				768F515A2A7FBFA900A7D95C /* Drivers */,
 				768F51592A7FBFA400A7D95C /* Passengers */,
 			);
@@ -330,6 +333,14 @@
 				768F515B2A7FBFF000A7D95C /* PickupPassengerView.swift */,
 			);
 			path = Drivers;
+			sourceTree = "<group>";
+		};
+		768F515D2A7FCBC500A7D95C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				768F515E2A7FCBD400A7D95C /* TripCancelledView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		76A8F9F72A5EE2C1006EFE50 /* ReusableItems */ = {
@@ -502,6 +513,7 @@
 				76A8FA222A604C59006EFE50 /* SavedLocation.swift in Sources */,
 				7636B3F22A514DA5006D29A2 /* MapViewActionButton.swift in Sources */,
 				768F515C2A7FBFF000A7D95C /* PickupPassengerView.swift in Sources */,
+				768F515F2A7FCBD400A7D95C /* TripCancelledView.swift in Sources */,
 				768F51532A7FABFA00A7D95C /* TripAcceptedView.swift in Sources */,
 				7636B3D12A51434B006D29A2 /* UberCloneSwiftUIApp.swift in Sources */,
 				76A8FA112A6033CB006EFE50 /* SideMenuOptionView.swift in Sources */,

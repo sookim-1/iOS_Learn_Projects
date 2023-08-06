@@ -15,4 +15,6 @@ enum MapViewState {
     case tripRequested                  // 여정요청상태
     case tripRejected                   // 여정거절상태
     case tripAccepted                   // 여정수락상태
+    case tripCancelledByPassenger       // 고객이 취소
+    case tripCancelledByDriver          // 기사가 취소
 }

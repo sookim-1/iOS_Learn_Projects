@@ -48,6 +48,59 @@ class HomeViewModel: NSObject, ObservableObject {
         searchCompleter.delegate = self
         searchCompleter.queryFragment = queryFragment
     }
+    
+    // MARK: - Helpers
+    
+    var tripCancelledMessage: String {
+        guard let user = currentUser, let trip = trip else { return "" }
+        
+        if user.accountType == .passenger {
+            if trip.state == .driverCancelled {
+                return "기사가 여정을 취소했습니다."
+            } else if trip.state == .passengerCancelled {
+                return "여정을 취소했습니다."
+            }
+        } else {
+            if trip.state == .driverCancelled {
+                return "여정을 취소했습니다."
+            } else if trip.state == .passengerCancelled {
+                return "고객이 여정을 취소했습니다."
+            }
+        }
+        
+        return ""
+    }
+    
+    func viewForState(_ state: MapViewState, user: User) -> some View {
+        switch state {
+        case .locationSelected, .polylineAdded:
+            return AnyView(RideRequestView())
+        case .tripRequested:
+            if user.accountType == .passenger {
+                return AnyView(TripLoadingView())
+            } else {
+                if let trip = self.trip {
+                    return AnyView(AcceptTripView(trip: trip))
+                }
+            }
+        case .tripAccepted:
+            if user.accountType == .passenger {
+                // 여기서는 환경변수로 trip 데이터 전달
+                return AnyView(TripAcceptedView())
+            } else {
+                if let trip = self.trip {
+                    // 아래에서는 의존성 주입
+                    return AnyView(PickupPassengerView(trip: trip))
+                }
+            }
+        case .tripCancelledByPassenger, .tripCancelledByDriver:
+            return AnyView(TripCancelledView())
+        default:
+            break
+        }
+        
+        return AnyView(Text(""))
+    }
 
     // MARK: - User API
     
@@ -68,6 +121,28 @@ class HomeViewModel: NSObject, ObservableObject {
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    private func updateTripStatus(state: TripState) {
+        guard let trip else { return }
+        
+        var data = ["state": state.rawValue]
+        
+        if state == .accepted {
+            data["travelTimeToPassenger"] = trip.travelTimeToPassenger
+        }
+        
+        Firestore.firestore().collection("trips").document(trip.id).updateData(data) { _ in
+            print("DEBUG: 요청 상태 \(state) 업데이트")
+        }
+    }
+    
+    func deleteTrip() {
+        guard let trip else { return }
+        
+        Firestore.firestore().collection("trips").document(trip.id).delete { _ in
+            self.trip = nil
+        }
     }
  
 }
@@ -142,6 +217,10 @@ extension HomeViewModel {
         }
     }
     
+    func cancelTripAsPassenger() {
+        updateTripStatus(state: .passengerCancelled)
+    }
+    
 }
 
 // MARK: - Driver API
@@ -199,18 +278,8 @@ extension HomeViewModel {
         updateTripStatus(state: .accepted)
     }
     
-    private func updateTripStatus(state: TripState) {
-        guard let trip else { return }
-        
-        var data = ["state": state.rawValue]
-        
-        if state == .accepted {
-            data["travelTimeToPassenger"] = trip.travelTimeToPassenger
-        }
-        
-        Firestore.firestore().collection("trips").document(trip.id).updateData(data) { _ in
-            print("DEBUG: 요청 상태 \(state) 업데이트")
-        }
+    func cancelTripAsDriver() {
+        updateTripStatus(state: .driverCancelled)
     }
     
 }

@@ -100,7 +100,7 @@ struct TripAcceptedView: View {
             }
             
             Button {
-                print("여정 취소")
+                viewModel.cancelTripAsPassenger()
             } label: {
                 Text("취소하기")
                     .fontWeight(.bold)

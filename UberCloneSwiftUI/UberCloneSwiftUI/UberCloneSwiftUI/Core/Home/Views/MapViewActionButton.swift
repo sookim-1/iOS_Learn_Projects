@@ -43,7 +43,9 @@ struct MapViewActionButton: View {
                 .polylineAdded,
                 .tripRejected,
                 .tripAccepted,
-                .tripRequested:
+                .tripRequested,
+                .tripCancelledByDriver,
+                .tripCancelledByPassenger:
             print("메인 버튼 클릭: locationSelected")
             mapState = .noInput
             viewModel.selectedUberLocation = nil
@@ -59,7 +61,9 @@ struct MapViewActionButton: View {
                 .polylineAdded,
                 .tripRejected,
                 .tripRequested,
-                .tripAccepted:
+                .tripAccepted,
+                .tripCancelledByDriver,
+                .tripCancelledByPassenger:
             return "arrow.left"
         }
     }
