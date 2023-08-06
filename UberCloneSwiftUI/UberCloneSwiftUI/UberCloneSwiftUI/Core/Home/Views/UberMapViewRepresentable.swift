@@ -50,6 +50,13 @@ struct UberMapViewRepresentable: UIViewRepresentable {
             break
         case .polylineAdded:
             break
+        case .tripAccepted:
+            guard let trip = homeViewModel.trip else { return }
+            guard let driver = homeViewModel.currentUser, driver.accountType == .driver else { return }
+            guard let route = homeViewModel.routeToPickupLocation else { return }
+            
+            context.coordinator.configurePolylineToPickupLocation(withRoute: route)
+            context.coordinator.addAndSelectAnnotation(withCoordinate: trip.pickupLocation.toCoordinate())
         default:
             break
         }
@@ -116,6 +123,16 @@ extension UberMapViewRepresentable {
         }
 
         // MARK: - Helpers
+        
+        // 기사가 요청수락 후 픽업주소까지의 경로
+        func configurePolylineToPickupLocation(withRoute route: MKRoute) {
+            self.parent.mapView.addOverlay(route.polyline)
+
+            // 현재위치와 도착지 마커를 지도 반경에 맞도록 설정
+            let rect = self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect, edgePadding: .init(top: 88, left: 32, bottom: 360, right: 32))
+            
+            self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+        }
         
         // 맵뷰 annotation추가하는 메서드
         func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {

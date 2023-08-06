@@ -19,7 +19,8 @@ class HomeViewModel: NSObject, ObservableObject {
     @Published var trip: Trip?
     private let service = UserService.shared
     private var cancellables = Set<AnyCancellable>()
-    private var currentUser: User?
+    var currentUser: User?
+    var routeToPickupLocation: MKRoute?
     
     // LocationSearchViewModel 프로퍼티
     @Published var results: [MKLocalSearchCompletion] = []          // 부분적인 문자열을 완성하는 완전한 형식의 문자열 (검색한 결과에 대한 title, subtitle을 담고있는 객체)
@@ -161,6 +162,7 @@ extension HomeViewModel {
                 self.trip = trip
                 
                 self.getDestinationRoute(from: trip.driverLocation.toCoordinate(), to: trip.pickupLocation.toCoordinate()) { route in
+                    self.routeToPickupLocation = route
                     self.trip?.travelTimeToPassenger = Int(route.expectedTravelTime / 60)
                     self.trip?.distanceToPassenger = route.distance
                 }
