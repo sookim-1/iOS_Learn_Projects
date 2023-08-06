@@ -66,9 +66,18 @@ extension HomeView {
             
             if let user = authViewModel.currentUser {
                 if user.accountType == .passenger {
+                    
                     if mapState == .locationSelected || mapState == .polylineAdded {
                         RideRequestView()
                             .transition(.move(edge: .bottom))
+                    } else if mapState == .tripRequested {
+                        TripLoadingView()
+                            .transition(.move(edge: .bottom))
+                    } else if mapState == .tripAccepted {
+                        TripAcceptedView()
+                            .transition(.move(edge: .bottom))
+                    } else if mapState == .tripRejected {
+                        
                     }
                 } else {
                     if let trip = homeViewModel.trip {
@@ -93,13 +102,15 @@ extension HomeView {
         .onReceive(homeViewModel.$trip) { trip in
             guard let trip else { return }
             
-            switch trip.state {
-            case .requested:
-                print("DEBUG: 여정 요청")
-            case .rejected:
-                print("DEBUG: 여정 거절")
-            case .accepted:
-                print("DEBUG: 여정 수락")
+            withAnimation(.spring()) {
+                switch trip.state {
+                case .requested:
+                    self.mapState = .tripRequested
+                case .rejected:
+                    self.mapState = .tripRejected
+                case .accepted:
+                    self.mapState = .tripAccepted
+                }
             }
         }
     }
