@@ -17,7 +17,7 @@ struct HomeView: View {
     
     var body: some View {
         Group {
-            if authViewModel.userSession == nil {
+            if $authViewModel.userSession == nil {
                 LoginView()
             } else if let user = authViewModel.currentUser {
                 NavigationStack {
@@ -66,6 +66,11 @@ extension HomeView {
             
             if mapState == .locationSelected || mapState == .polylineAdded {
                 RideRequestView()
+                    .transition(.move(edge: .bottom))
+            }
+            
+            if let trip = homeViewModel.trip {
+                AcceptTripView(trip: trip)
                     .transition(.move(edge: .bottom))
             }
         }

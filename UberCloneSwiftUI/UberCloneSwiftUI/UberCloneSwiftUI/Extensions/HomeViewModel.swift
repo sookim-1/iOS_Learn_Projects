@@ -16,6 +16,7 @@ class HomeViewModel: NSObject, ObservableObject {
     // MARK: - 프로퍼티
     
     @Published var drivers: [User] = []
+    @Published var trip: Trip?
     private let service = UserService.shared
     private var cancellables = Set<AnyCancellable>()
     private var currentUser: User?
@@ -49,6 +50,29 @@ class HomeViewModel: NSObject, ObservableObject {
 
     // MARK: - User API
     
+    /// 현재 사용자가 승객인 경우만 드라이버 정보 가져오는 메서드
+    func fetchUser() {
+        service.$user
+            .sink { [weak self] user in
+                guard let self else { return }
+                self.currentUser = user
+                
+                guard let user else { return }
+                
+                if user.accountType == .passenger {
+                    self.fetchDrivers()
+                } else {
+                    self.fetchTrips()
+                }
+            }
+            .store(in: &cancellables)
+    }
+ 
+}
+
+// MARK: - Passenger API
+extension HomeViewModel {
+    
     /// 드라이버 정보만 가져오기
     func fetchDrivers() {
         Firestore.firestore().collection("users")
@@ -61,25 +85,6 @@ class HomeViewModel: NSObject, ObservableObject {
                 self.drivers = drivers
             }
     }
-    
-    /// 현재 사용자가 승객인 경우만 드라이버 정보 가져오는 메서드
-    func fetchUser() {
-        service.$user
-            .sink { [weak self] user in
-                guard let self else { return }
-                self.currentUser = user
-                
-                guard let user else { return }
-                guard user.accountType == .passenger else { return }
-                self.fetchDrivers()
-            }
-            .store(in: &cancellables)
-    }
- 
-}
-
-// MARK: - Passenger API
-extension HomeViewModel {
     
     func requestTrip() {
         guard let driver = drivers.first else { return }
@@ -94,23 +99,27 @@ extension HomeViewModel {
         self.getPlacemark(forLocation: userLocation) { placemark, error in
             guard let placemark else { return }
             
+            let tripCost = self.computeRiderPrice(forType: .uberX)
+            
             let trip = Trip(id: NSUUID().uuidString,
                             passengerUid: currentUser.uid,
-                            deriverUid: driver.uid,
+                            driverUid: driver.uid,
                             passengerName: currentUser.fullname,
                             driverName: driver.fullname,
                             passengerLocation: currentUser.coordinates,
                             driverLocation: driver.coordinates,
                             pickupLocationName: placemark.name ?? "현재 주소",
                             dropoffLocationName: dropoffLocation.title,
-                            pickupLocationAddress: "테스트 주소",
+                            pickupLocationAddress: self.addressFromPlacemark(placemark),
                             pickupLocation: currentUser.coordinates,
                             dropoffLocation: dropoffGeoPoint,
-                            tripCost: 50.0)
+                            tripCost: tripCost,
+                            distanceToPassenger: 0.0,
+                            travelTimeToPassenger: 0)
             
             guard let encodedTrip = try? Firestore.Encoder().encode(trip) else { return }
             Firestore.firestore().collection("trips").document().setData(encodedTrip) { _ in
-                print("여정 DB 저장 오류")
+                print("여정 DB 저장 완료")
             }
         }
     }
@@ -120,10 +129,48 @@ extension HomeViewModel {
 // MARK: - Driver API
 extension HomeViewModel {
     
+    func fetchTrips() {
+        guard let currentUser else { return }
+        
+        Firestore.firestore().collection("trips")
+            .whereField("driverUid", isEqualTo: currentUser.uid)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents,
+                      let document = documents.first else { return }
+                
+                guard let trip = try? document.data(as: Trip.self) else { return }
+
+                self.trip = trip
+                
+                self.getDestinationRoute(from: trip.driverLocation.toCoordinate(), to: trip.pickupLocation.toCoordinate()) { route in
+                    self.trip?.travelTimeToPassenger = Int(route.expectedTravelTime / 60)
+                    self.trip?.distanceToPassenger = route.distance
+                }
+            }
+    }
+    
 }
 
 // MARK: - LocationSearchHelpers
 extension HomeViewModel {
+    
+    func addressFromPlacemark(_ placemark: CLPlacemark) -> String {
+        var result = ""
+        
+        if let thoroughfare = placemark.thoroughfare {
+            result += thoroughfare
+        }
+        
+        if let subThoroughfare = placemark.subThoroughfare {
+            result += " \(subThoroughfare)"
+        }
+        
+        if let subadministrativeArea = placemark.subAdministrativeArea {
+            result += ", \(subadministrativeArea)"
+        }
+        
+        return result
+    }
     
     // reverse geocoding
     func getPlacemark(forLocation location: CLLocation, completion: @escaping(CLPlacemark?, Error?) -> Void) {

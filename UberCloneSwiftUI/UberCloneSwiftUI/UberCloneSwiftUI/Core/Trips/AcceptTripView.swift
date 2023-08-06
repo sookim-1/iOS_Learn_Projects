@@ -11,12 +11,16 @@ import SwiftUI
 struct AcceptTripView: View {
     
     @State private var region: MKCoordinateRegion
+    let trip: Trip
+    let annotationItem: UberLocation
     
-    init() {
-        let center = CLLocationCoordinate2D(latitude: 37.3346, longitude: -122.0090)
+    init(trip: Trip) {
+        let center = CLLocationCoordinate2D(latitude: trip.pickupLocation.latitude, longitude: trip.pickupLocation.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
         
         self.region = MKCoordinateRegion(center: center, span: span)
+        self.trip = trip
+        self.annotationItem = UberLocation(title: trip.pickupLocationName, coordinate: trip.pickupLocation.toCoordinate())
     }
     
     var body: some View {
@@ -39,7 +43,7 @@ struct AcceptTripView: View {
                     Spacer()
                     
                     VStack {
-                        Text("10")
+                        Text("\(trip.travelTimeToPassenger)")
                             .bold()
                         
                         Text("분")
@@ -65,7 +69,7 @@ struct AcceptTripView: View {
                         .clipShape(Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("테스트")
+                        Text(trip.passengerName)
                             .fontWeight(.bold)
                         
                         HStack {
@@ -84,7 +88,7 @@ struct AcceptTripView: View {
                     VStack(spacing: 6) {
                         Text("요금")
                         
-                        Text("$22.04")
+                        Text(trip.tripCost.toCurrency())
                             .font(.system(size: 24, weight: .semibold))
                     }
                 }
@@ -99,10 +103,10 @@ struct AcceptTripView: View {
                 HStack {
                     // address info
                     VStack(alignment: .leading, spacing: 6) {
-                        Text("종로구")
+                        Text(trip.pickupLocationName)
                             .font(.headline)
                         
-                        Text("종각빌딩 5층")
+                        Text(trip.pickupLocationAddress)
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
@@ -111,7 +115,7 @@ struct AcceptTripView: View {
                     
                     // distance
                     VStack() {
-                        Text("5.2")
+                        Text(trip.distanceToPassenger.distanceInMileString())
                             .font(.headline)
                             .fontWeight(.semibold)
                         
@@ -123,11 +127,13 @@ struct AcceptTripView: View {
                 .padding(.horizontal)
                 
                 // map
-                Map(coordinateRegion: $region)
-                    .frame(height: 220)
-                    .cornerRadius(10)
-                    .shadow(color: .black.opacity(0.6), radius: 10)
-                    .padding()
+                Map(coordinateRegion: $region, annotationItems: [annotationItem]) { item in
+                    MapMarker(coordinate: item.coordinate)
+                }
+                .frame(height: 220)
+                .cornerRadius(10)
+                .shadow(color: .black.opacity(0.6), radius: 10)
+                .padding()
                 
                 // divider
                 Divider()
@@ -164,12 +170,16 @@ struct AcceptTripView: View {
             }
             .padding(.top)
             .padding(.horizontal)
+            .padding(.bottom, 24)
         }
+        .background(Color.theme.backgroundColor)
+        .cornerRadius(16)
+        .shadow(color: Color.theme.secondaryBackgroundColor, radius: 20)
     }
 }
 
 struct AcceptTripView_Previews: PreviewProvider {
     static var previews: some View {
-        AcceptTripView()
+        AcceptTripView(trip: dev.mockTrip)
     }
 }

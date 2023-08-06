@@ -18,8 +18,23 @@ extension Double {
         return formatter
     }
     
+    // 거리
+    private var distanceFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 1
+        
+        return formatter
+    }
+    
     func toCurrency() -> String {
         return currencyFormatter.string(for: self) ?? ""
     }
+    
+    func distanceInMileString() -> String {
+        return distanceFormatter.string(for: self / 1600) ?? "0"
+    }
+    
     
 }
