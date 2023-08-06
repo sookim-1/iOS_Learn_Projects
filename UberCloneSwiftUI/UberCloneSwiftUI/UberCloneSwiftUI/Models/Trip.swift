@@ -7,10 +7,17 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
+
+enum TripState: Int, Codable {
+    case requested
+    case rejected
+    case accepted
+}
 
 struct Trip: Identifiable, Codable {
     
-    let id: String
+    @DocumentID var tripId: String?               // firebasefirestorSwift에서 제공하는 기능 DB 문서 ID값을 가져옵니다.
     let passengerUid: String
     let driverUid: String
     let passengerName: String
@@ -25,4 +32,9 @@ struct Trip: Identifiable, Codable {
     let tripCost: Double
     var distanceToPassenger: Double
     var travelTimeToPassenger: Int
+    var state: TripState
+    
+    var id: String {
+        return tripId ?? ""
+    }
 }

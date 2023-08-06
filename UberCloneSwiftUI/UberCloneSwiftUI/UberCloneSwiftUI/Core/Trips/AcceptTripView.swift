@@ -13,6 +13,7 @@ struct AcceptTripView: View {
     @State private var region: MKCoordinateRegion
     let trip: Trip
     let annotationItem: UberLocation
+    @EnvironmentObject var viewModel: HomeViewModel
     
     init(trip: Trip) {
         let center = CLLocationCoordinate2D(latitude: trip.pickupLocation.latitude, longitude: trip.pickupLocation.longitude)
@@ -143,6 +144,7 @@ struct AcceptTripView: View {
             
             HStack {
                 Button {
+                    viewModel.rejectTrip()
                 } label: {
                     Text("거절")
                         .font(.headline)
@@ -157,6 +159,7 @@ struct AcceptTripView: View {
                 Spacer()
                 
                 Button {
+                    viewModel.acceptTrip()
                 } label: {
                     Text("수락")
                         .font(.headline)
