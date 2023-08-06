@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TripAcceptedView: View {
+    
+    @EnvironmentObject var viewModel: HomeViewModel
+    
     var body: some View {
         VStack {
             Capsule()
@@ -15,83 +18,86 @@ struct TripAcceptedView: View {
                 .frame(width: 48, height: 6)
                 .padding(8)
             
-            // pickup info view
-            VStack {
-                HStack {
-                    Text("기사가 기사위치에서 출발지로 출발하였습니다.")
-                        .font(.body)
-                        .frame(height: 44)
-                        .lineLimit(2)
-                    .padding(.trailing)
-                    
-                    Spacer()
-                    
-                    VStack {
-                        Text("10")
-                            .bold()
-                        
-                        Text("분")
-                            .bold()
-                    }
-                    .frame(width: 56, height: 56)
-                    .foregroundColor(.white)
-                    .background(Color(.systemBlue))
-                    .cornerRadius(10)
-                }
-                .padding()
+            if let trip = viewModel.trip {
                 
-                Divider()
-            }
-            
-            // driver info view
-            VStack {
-                HStack {
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 80)
-                        .clipShape(Circle())
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("승객이름")
-                            .fontWeight(.bold)
+                // pickup info view
+                VStack {
+                    HStack {
+                        Text("기사가 \(trip.pickupLocationName)에서 \(trip.dropoffLocationName)로 여정을 진행합니다.")
+                            .font(.body)
+                            .frame(height: 44)
+                            .lineLimit(2)
+                            .padding(.trailing)
                         
-                        HStack {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(Color(.systemYellow))
-                                .imageScale(.small)
+                        Spacer()
+                        
+                        VStack {
+                            Text("\(trip.travelTimeToPassenger)")
+                                .bold()
                             
-                            Text("4.8")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                            Text("분")
+                                .bold()
                         }
+                        .frame(width: 56, height: 56)
+                        .foregroundColor(.white)
+                        .background(Color(.systemBlue))
+                        .cornerRadius(10)
                     }
+                    .padding()
                     
-                    Spacer()
-                    
-                    // driver vehicle info
-                    VStack(alignment: .center) {
-                        Image("uber-x")
+                    Divider()
+                }
+                
+                // driver info view
+                VStack {
+                    HStack {
+                        Image(systemName: "person.fill")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 120, height: 64)
+                            .frame(width: 80, height: 80)
+                            .clipShape(Circle())
                         
-                        HStack {
-                            Text("EF 소나타")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.gray)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(trip.driverName)
+                                .fontWeight(.bold)
                             
-                            Text("36허 1234")
-                                .font(.system(size: 14, weight: .semibold))
+                            HStack {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(Color(.systemYellow))
+                                    .imageScale(.small)
+                                
+                                Text("4.8")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
                         }
-                        .frame(width: 160)
-                        .padding(.bottom)
+                        
+                        Spacer()
+                        
+                        // driver vehicle info
+                        VStack(alignment: .center) {
+                            Image("uber-x")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 120, height: 64)
+                            
+                            HStack {
+                                Text("EF 소나타")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.gray)
+                                
+                                Text("36허 1234")
+                                    .font(.system(size: 14, weight: .semibold))
+                            }
+                            .frame(width: 160)
+                            .padding(.bottom)
+                        }
                     }
+                    
+                    Divider()
                 }
-                
-                Divider()
+                .padding()
             }
-            .padding()
             
             Button {
                 print("여정 취소")

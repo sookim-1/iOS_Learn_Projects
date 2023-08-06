@@ -176,9 +176,14 @@ extension HomeViewModel {
     
     private func updateTripStatus(state: TripState) {
         guard let trip else { return }
-        Firestore.firestore().collection("trips").document(trip.id).updateData([
-            "state": state.rawValue
-        ]) { _ in
+        
+        var data = ["state": state.rawValue]
+        
+        if state == .accepted {
+            data["travelTimeToPassenger"] = trip.travelTimeToPassenger
+        }
+        
+        Firestore.firestore().collection("trips").document(trip.id).updateData(data) { _ in
             print("DEBUG: 요청 상태 \(state) 업데이트")
         }
     }

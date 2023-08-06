@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TripLoadingView: View {
+
     var body: some View {
         VStack {
             Capsule()
@@ -16,16 +17,9 @@ struct TripLoadingView: View {
                 .padding(8)
             
             HStack {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("기사님에게 요청 중...")
-                        .font(.headline)
-                    
-                    Text("예상 도착시간 오후 1:30분")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(.systemBlue))
-                }
-                .padding()
+                Text("기사님에게 요청 중...")
+                    .font(.headline)
+                    .padding()
                 
                 Spacer()
                 
