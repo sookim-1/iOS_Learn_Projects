@@ -63,7 +63,7 @@ class HomeViewModel: NSObject, ObservableObject {
                     self.fetchDrivers()
                     self.addTripObserverForPassenger()
                 } else {
-                    self.fetchTrips()
+                    self.addTripObserverForDriver()
                 }
             }
             .store(in: &cancellables)
@@ -146,6 +146,28 @@ extension HomeViewModel {
 // MARK: - Driver API
 extension HomeViewModel {
     
+    func addTripObserverForDriver() {
+        guard let currentUser = currentUser,
+                currentUser.accountType == .driver else { return }
+        
+        Firestore.firestore().collection("trips")
+            .whereField("driverUid", isEqualTo: currentUser.uid)
+            .addSnapshotListener { snapshot, _ in
+                guard let change = snapshot?.documentChanges.first,
+                        change.type == .added || change.type == .modified else { return }
+                
+                guard let trip = try? change.document.data(as: Trip.self) else { return }
+                
+                self.trip = trip
+                
+                self.getDestinationRoute(from: trip.driverLocation.toCoordinate(), to: trip.pickupLocation.toCoordinate()) { route in
+                    self.trip?.travelTimeToPassenger = Int(route.expectedTravelTime / 60)
+                    self.trip?.distanceToPassenger = route.distance
+                }
+            }
+    }
+    
+    /*
     func fetchTrips() {
         guard let currentUser else { return }
         
@@ -165,6 +187,7 @@ extension HomeViewModel {
                 }
             }
     }
+    */
     
     func rejectTrip() {
         updateTripStatus(state: .rejected)
