@@ -141,7 +141,7 @@ struct RideRequestView: View {
             
             // request ride button
             Button {
-                
+                homeViewModel.requestTrip()
             } label: {
                 Text("호출하기")
                     .fontWeight(.bold)

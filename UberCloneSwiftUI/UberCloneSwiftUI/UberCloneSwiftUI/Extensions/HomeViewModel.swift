@@ -18,6 +18,7 @@ class HomeViewModel: NSObject, ObservableObject {
     @Published var drivers: [User] = []
     private let service = UserService.shared
     private var cancellables = Set<AnyCancellable>()
+    private var currentUser: User?
     
     // LocationSearchViewModel 프로퍼티
     @Published var results: [MKLocalSearchCompletion] = []          // 부분적인 문자열을 완성하는 완전한 형식의 문자열 (검색한 결과에 대한 title, subtitle을 담고있는 객체)
@@ -65,19 +66,78 @@ class HomeViewModel: NSObject, ObservableObject {
     func fetchUser() {
         service.$user
             .sink { [weak self] user in
-                guard let self,
-                      let user else { return }
+                guard let self else { return }
+                self.currentUser = user
                 
+                guard let user else { return }
                 guard user.accountType == .passenger else { return }
                 self.fetchDrivers()
             }
             .store(in: &cancellables)
     }
+ 
+}
+
+// MARK: - Passenger API
+extension HomeViewModel {
+    
+    func requestTrip() {
+        guard let driver = drivers.first else { return }
+        guard let currentUser else { return }
+        guard let dropoffLocation = selectedUberLocation else { return }
+
+        
+        let dropoffGeoPoint = GeoPoint(latitude: dropoffLocation.coordinate.latitude, longitude: dropoffLocation.coordinate.longitude)
+        let userLocation = CLLocation(latitude: currentUser.coordinates.latitude, longitude: currentUser.coordinates.longitude)
+
+        
+        self.getPlacemark(forLocation: userLocation) { placemark, error in
+            guard let placemark else { return }
+            
+            let trip = Trip(id: NSUUID().uuidString,
+                            passengerUid: currentUser.uid,
+                            deriverUid: driver.uid,
+                            passengerName: currentUser.fullname,
+                            driverName: driver.fullname,
+                            passengerLocation: currentUser.coordinates,
+                            driverLocation: driver.coordinates,
+                            pickupLocationName: placemark.name ?? "현재 주소",
+                            dropoffLocationName: dropoffLocation.title,
+                            pickupLocationAddress: "테스트 주소",
+                            pickupLocation: currentUser.coordinates,
+                            dropoffLocation: dropoffGeoPoint,
+                            tripCost: 50.0)
+            
+            guard let encodedTrip = try? Firestore.Encoder().encode(trip) else { return }
+            Firestore.firestore().collection("trips").document().setData(encodedTrip) { _ in
+                print("여정 DB 저장 오류")
+            }
+        }
+    }
+    
+}
+
+// MARK: - Driver API
+extension HomeViewModel {
     
 }
 
 // MARK: - LocationSearchHelpers
 extension HomeViewModel {
+    
+    // reverse geocoding
+    func getPlacemark(forLocation location: CLLocation, completion: @escaping(CLPlacemark?, Error?) -> Void) {
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            if let error {
+                completion(nil, error)
+                
+                return
+            }
+            
+            guard let placemark = placemarks?.first else { return }
+            completion(placemark, nil)
+        }
+    }
     
     func selectLocation(_ localSearch: MKLocalSearchCompletion, config: LocationResultsViewConfig) {
         print("선택된 주소: \(localSearch.title)")
