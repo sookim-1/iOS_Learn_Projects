@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
 
 final class AddTaskViewController: UIViewController {
 
@@ -25,6 +26,11 @@ final class AddTaskViewController: UIViewController {
     }
 
     lazy private var saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(touchedSaveButton))
+    
+    private let taskSubject = PublishSubject<Task>()
+    var taskSubjectObservable: Observable<Task> {
+        return taskSubject.asObservable()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +66,9 @@ final class AddTaskViewController: UIViewController {
         }
         
         let task = Task(title: title, priority: priority)
+        
+        taskSubject.onNext(task)
+        self.dismiss(animated: true)
     }
     
 }

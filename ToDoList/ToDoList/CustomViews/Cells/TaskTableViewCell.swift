@@ -7,19 +7,36 @@
 
 import UIKit
 
-class TaskTableViewCell: UITableViewCell {
+final class TaskTableViewCell: UITableViewCell {
 
     static let reuseID = String(describing: TaskTableViewCell.self)
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    lazy private var titleLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 13)
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        addSubviews()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func addSubviews() {
+        self.addSubview(titleLabel)
+    }
+    
+    private func setupConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureUI(text: String) {
+        self.titleLabel.text = text
     }
-
 }
