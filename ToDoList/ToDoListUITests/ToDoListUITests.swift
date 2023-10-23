@@ -1,13 +1,13 @@
 //
-//  UdemyRxSwiftCloneUITests.swift
-//  UdemyRxSwiftCloneUITests
+//  ToDoListUITests.swift
+//  ToDoListUITests
 //
-//  Created by sookim on 10/3/23.
+//  Created by sookim on 10/23/23.
 //
 
 import XCTest
 
-final class UdemyRxSwiftCloneUITests: XCTestCase {
+final class ToDoListUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

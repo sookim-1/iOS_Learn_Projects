@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  UdemyRxSwiftClone
+//  ToDoList
 //
-//  Created by sookim on 10/3/23.
+//  Created by sookim on 10/23/23.
 //
 
 import UIKit
