@@ -24,7 +24,7 @@ final class GoodNewsTableViewController: UITableViewController {
     }
     
     private func populateNews() {
-        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=0cf790498275413a9247f8b94b3843fd")!
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=\(NewsAPIKey.dummyNewsAPIKey)")!
         
         Observable.just(url)
             .flatMap { url -> Observable<Data> in

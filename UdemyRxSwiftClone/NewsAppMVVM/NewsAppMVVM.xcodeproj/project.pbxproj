@@ -21,6 +21,7 @@
 		766416B22AEFEB5B0021B322 /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766416B12AEFEB5B0021B322 /* URLRequest+Extensions.swift */; };
 		766416B52AEFECC20021B322 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766416B42AEFECC20021B322 /* ArticleViewModel.swift */; };
 		766416B82AEFEE640021B322 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766416B72AEFEE640021B322 /* NewsTableViewCell.swift */; };
+		76B2573C2B0DB772007EDBCB /* NewsAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2573B2B0DB772007EDBCB /* NewsAPIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		766416B12AEFEB5B0021B322 /* URLRequest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extensions.swift"; sourceTree = "<group>"; };
 		766416B42AEFECC20021B322 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		766416B72AEFEE640021B322 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		76B2573B2B0DB772007EDBCB /* NewsAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				766416A32AEFE73B0021B322 /* Controllers */,
 				766416742AEFE6C80021B322 /* AppDelegate.swift */,
 				766416762AEFE6C80021B322 /* SceneDelegate.swift */,
+				76B2573B2B0DB772007EDBCB /* NewsAPIKey.swift */,
 				7664167D2AEFE6C90021B322 /* Assets.xcassets */,
 				7664167F2AEFE6C90021B322 /* LaunchScreen.storyboard */,
 				766416822AEFE6C90021B322 /* Info.plist */,
@@ -211,6 +214,7 @@
 				766416AF2AEFEA1C0021B322 /* Article.swift in Sources */,
 				766416B82AEFEE640021B322 /* NewsTableViewCell.swift in Sources */,
 				766416A52AEFE7860021B322 /* NewsTableViewController.swift in Sources */,
+				76B2573C2B0DB772007EDBCB /* NewsAPIKey.swift in Sources */,
 				766416752AEFE6C80021B322 /* AppDelegate.swift in Sources */,
 				766416B52AEFECC20021B322 /* ArticleViewModel.swift in Sources */,
 				766416B22AEFEB5B0021B322 /* URLRequest+Extensions.swift in Sources */,

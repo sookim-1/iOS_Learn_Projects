@@ -13,8 +13,9 @@ struct ArticlesList: Codable {
 
 extension ArticlesList {
     
+    // NewsAPI - dummyKey값
     static var all: Resource<ArticlesList> = {
-        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=0cf790498275413a9247f8b94b3843fd")!
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=\(NewsAPIKey.dummyNewsAPIKey)")!
         
         return Resource(url: url)
     }()

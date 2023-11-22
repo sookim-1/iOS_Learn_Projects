@@ -22,6 +22,7 @@
 		76B168072AE7F4CC003673DD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B168062AE7F4CC003673DD /* Article.swift */; };
 		76B168092AE7F650003673DD /* GoodNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B168082AE7F650003673DD /* GoodNewsTableViewCell.swift */; };
 		76B1680C2AE7F8E6003673DD /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1680B2AE7F8E6003673DD /* URLRequest+Extensions.swift */; };
+		76B2573A2B0DB70D007EDBCB /* NewsAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B257392B0DB70D007EDBCB /* NewsAPIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		76B168062AE7F4CC003673DD /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		76B168082AE7F650003673DD /* GoodNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodNewsTableViewCell.swift; sourceTree = "<group>"; };
 		76B1680B2AE7F8E6003673DD /* URLRequest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extensions.swift"; sourceTree = "<group>"; };
+		76B257392B0DB70D007EDBCB /* NewsAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				76B167C62AE7EBB3003673DD /* SceneDelegate.swift */,
 				76B167CD2AE7EBB4003673DD /* Assets.xcassets */,
 				76B167CF2AE7EBB4003673DD /* LaunchScreen.storyboard */,
+				76B257392B0DB70D007EDBCB /* NewsAPIKey.swift */,
 				76B167D22AE7EBB4003673DD /* Info.plist */,
 				76B167FF2AE7ECAD003673DD /* README.md */,
 			);
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B168072AE7F4CC003673DD /* Article.swift in Sources */,
+				76B2573A2B0DB70D007EDBCB /* NewsAPIKey.swift in Sources */,
 				76B167C52AE7EBB3003673DD /* AppDelegate.swift in Sources */,
 				76B168092AE7F650003673DD /* GoodNewsTableViewCell.swift in Sources */,
 				76B1680C2AE7F8E6003673DD /* URLRequest+Extensions.swift in Sources */,
