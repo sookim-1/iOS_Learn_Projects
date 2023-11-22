@@ -40,7 +40,6 @@
 		768F515C2A7FBFF000A7D95C /* PickupPassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F515B2A7FBFF000A7D95C /* PickupPassengerView.swift */; };
 		768F515F2A7FCBD400A7D95C /* TripCancelledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F515E2A7FCBD400A7D95C /* TripCancelledView.swift */; };
 		76A8F9F92A5EE2F2006EFE50 /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */; };
-		76A8F9FB2A5EE9A1006EFE50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */; };
 		76A8F9FE2A5EEA88006EFE50 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8F9FD2A5EEA88006EFE50 /* FirebaseAuth */; };
 		76A8FA002A5EEA88006EFE50 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8F9FF2A5EEA88006EFE50 /* FirebaseFirestore */; };
 		76A8FA022A5EEA88006EFE50 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76A8FA012A5EEA88006EFE50 /* FirebaseFirestoreSwift */; };
@@ -93,7 +92,6 @@
 		768F515B2A7FBFF000A7D95C /* PickupPassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupPassengerView.swift; sourceTree = "<group>"; };
 		768F515E2A7FCBD400A7D95C /* TripCancelledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCancelledView.swift; sourceTree = "<group>"; };
 		76A8F9F82A5EE2F2006EFE50 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
-		76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76A8FA072A602CC5006EFE50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		76A8FA0C2A603041006EFE50 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		76A8FA0E2A6032A1006EFE50 /* SideMenuOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionViewModel.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 		7636B3CF2A51434B006D29A2 /* UberCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				76A8F9FA2A5EE9A1006EFE50 /* GoogleService-Info.plist */,
 				768E52DA2A7AA26C00114316 /* Services */,
 				76A8F9F72A5EE2C1006EFE50 /* ReusableItems */,
 				7636B3DE2A514352006D29A2 /* App */,
@@ -475,7 +472,6 @@
 			files = (
 				7636B3D82A51434E006D29A2 /* Preview Assets.xcassets in Resources */,
 				7636B3D52A51434E006D29A2 /* Assets.xcassets in Resources */,
-				76A8F9FB2A5EE9A1006EFE50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
